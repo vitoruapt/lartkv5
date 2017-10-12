@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+
+<launch>
+<node name="rosbag_node" pkg="rosbag" type="rosbag" args="play $(find driver_recognition)/../../../bags/parking/andre_1.bag  --clock ">
+		<remap from="/velocity_status" to="/vhc/velocity/status"/>
+		<remap from="/partial_status" to="/vhc/driver/status"/>
+		<remap from="/atc/base/status/plc" to="/vhc/plc/status"/>
+</node>
+
+<!-- /media/Data/bags/following_passing/avenida_2_ultrapassagem.bag       avenida_1.bag      autoestrada_log.bag   log_alboi_dep.bag  -->
+</launch>

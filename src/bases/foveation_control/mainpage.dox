@@ -1,0 +1,11 @@
+/**
+\mainpage Foveation Control
+\htmlinclude manifest.html
+
+This package provides control over the PTU mounted on the atlascar by doing
+foveation control.
+
+It computes to where should the cameras be pointing given a position in 3D
+space, so that the cameras view that point in the center of the image.
+
+*/

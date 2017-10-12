@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<robot name="PHUA">
+  <!--######################################################-->
+  <!--####################  DEVICES  ########################-->
+  <!--######################################################-->
+  <!-- udevadm info -q all -n /dev/ttyACM0 -->
+  
+  <sensor name="arduino_1">
+    <device_information>
+      <SUBSYSTEM>tty</SUBSYSTEM>
+      <ID_SERIAL_SHORT>64936333936351A06111</ID_SERIAL_SHORT>  <!-- Cabo branco  -->
+      <ID_VENDOR_ID>2341</ID_VENDOR_ID>
+    </device_information>
+  </sensor>
+  
+  <sensor name="arduino_2">
+    <device_information>
+      <SUBSYSTEM>tty</SUBSYSTEM>
+      <ID_SERIAL_SHORT>6493633393635180F001</ID_SERIAL_SHORT>    <!-- Cabo transparente  -->
+      <ID_VENDOR_ID>2341</ID_VENDOR_ID>
+    </device_information>
+  </sensor>
+
+    <sensor name="serial_com1">
+    <device_information>
+      <SUBSYSTEM>tty</SUBSYSTEM>
+      <ID_MODEL_ID>2008</ID_MODEL_ID>    <!-- Cabo transparente RS-232 para USB -->
+      <ID_VENDOR_ID>0557</ID_VENDOR_ID>
+    </device_information>
+  </sensor>
+
+  
+</robot>

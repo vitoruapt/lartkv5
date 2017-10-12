@@ -1,0 +1,18 @@
+/**
+\mainpage
+\htmlinclude manifest.html
+
+\b laser_rotate_3d is the gateway to the PIC MCU controlling the rotation of the motor.
+
+<!-- 
+To be used for rotating the laser externally in order to generate 3D point clouds
+-->
+
+
+\section codeapi Code API
+
+<!--
+-->
+
+
+*/

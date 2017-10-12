@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- This is an lar3 launch file for starting up flea0 camera on the atlascar. -->
+  <!-- fisrt we launch the camera1394 node-->
+  <group ns="/snr/cam/1">
+    <node pkg="camera1394" type="camera1394_node" name="node" args="_video_mode:=320x240_yuv422 _format7_color_coding:=rgb8 _bayer_pattern:=rggb camera:= ">
+	  <param name="guid" value="00b09d01007de43b"/>
+      <param name="frame_id" value="/atc/camera/right_roof/foveated"/>
+	  <rosparam file="$(find atlascar)/flea_configuration/right_roof_foveated.yaml"/>
+    </node>
+    <!-- now we launch the image_proc node for debayering the image-->
+	<node name="image_proc" pkg="image_proc" type="image_proc"/>
+  </group>
+<!-- 	<node name="image_view" pkg="image_view" type="image_view" 	args="image:=/snr/cam/1/image_rect"/> -->
+
+</launch>

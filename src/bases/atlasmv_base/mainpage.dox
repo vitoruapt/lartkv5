@@ -1,0 +1,8 @@
+/**
+\mainpage Atlasmv Base node
+\htmlinclude manifest.html
+
+This node establishes communications with all the atlasmv base hardware and controls it.\n
+The hardware corresponds to a maxon servo amplifier, an input/output card and two hitec robotic servos.\n
+Three rs232 lines are created to communicate will the hardware and its all processed in parallel using several threads.
+*/

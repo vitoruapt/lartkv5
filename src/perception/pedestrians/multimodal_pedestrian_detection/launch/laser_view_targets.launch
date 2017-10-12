@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- this is comment-->
+    
+    <node name="Client" pkg="multimodal_pedestrian_detection" type="client_multimodal_lasergather" output="screen">  </node>
+
+    
+</launch>

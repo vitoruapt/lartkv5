@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<launch>
+<!--
+    <remap from="/tf" to="/trf/frames"/>
+-->
+    
+<!--
+    <remap from="demo/laser_1" to="/snr/las/1/scan"/>
+    <remap from="demo/laser_2" to="/snr/las/2/scan"/>
+    <remap from="demo/laser_3" to="/snr/las/3/scan"/>
+    <remap from="demo/atlascar_status" to="/vhc/plc/status"/>
+    <remap from="demo/atlascar_velocity_status" to="/vhc/velocity/status"/>
+-->
+    
+<!--
+    <remap from="base_link" to="/atc/vehicle/center_bumper"/>
+-->
+    
+   
+    
+<!--
+    <param name="use_sim_time" value="true" />
+-->
+    
+    <node name="bag2txt" pkg="humanoid_control" type="bag2txt" >
+        <remap from="arduino_1_values_report" to="/home/emilio/Desktop/arduino_1_values"/>
+        <remap from="arduino_2_values_report" to="/home/emilio/Desktop/arduino_2_values"/>
+        
+        <remap from="cop_left_right_report" to="/home/emilio/Desktop/cop_left_right"/>
+        <remap from="cop_left_report" to="/home/emilio/Desktop/cop_left"/>
+        <remap from="cop_right_report" to="/home/emilio/Desktop/cop_right"/>
+        
+        <remap from="force_report_name_" to="/home/emilio/Desktop/force"/>
+        <remap from="humanoid_state_report" to="/home/emilio/Desktop/humanoid_state"/>
+        <remap from="phantom_state_report" to="/home/emilio/Desktop/phantom_state"/>
+    
+    </node>
+</launch>

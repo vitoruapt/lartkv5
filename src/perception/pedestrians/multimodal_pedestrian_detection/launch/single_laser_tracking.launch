@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+
+    <group ns="laser_1">
+        <node name="laser_1" pkg="lms1xx" type="lms1xx">
+            <param name="host" value="10.0.0.10"/>
+            <param name="frame_id" value="/laser_1"/>
+        </node>
+    </group>
+    
+    <remap from="/laserscan0" to="/laser_1/scan"/>
+    <remap from="/laserscan1" to="/null"/>
+        
+    <remap from="/tracking_frame" to="/laser_1"/> 
+    <remap from="/pc_out" to="/laser/points"/>
+        
+    <node name="planar_pc" pkg="mtt" type="simple_planar_pc_generator">
+        <param name="output_frequency" value="50.0"/>
+        <param name="perpendicular_treshold" value="0.15"/>
+    </node>
+        
+</launch>

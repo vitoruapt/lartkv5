@@ -1,0 +1,77 @@
+/**
+\mainpage
+\author Joel Pereira
+\htmlinclude manifest.html
+
+\b points_from_volume is a package that includes points_from_volume library 
+
+The points_from_volume library extracts points from the inside/outside of a polygon.
+
+\section Usage
+
+<h1>  How to use? </h1>
+
+<h2>  Class declaration  </h2>
+On the code do:
+\code
+// The input pcl could be either a PointXYZ or a PointXYZRGB
+points_from_volume<pcl::PointXYZ> pfv;
+\endcode
+
+<h2>  Definition of parameters  (Mandatory)  </h2>
+\code
+// After the ROS initialization you must declare 3 parameters
+ros::init(argc, argv, "points_from_volume_nodelet"); 
+ros::NodeHandle n("~"); 
+p_n=&n;
+// Positive offset of the convexhull
+n.param("positive_offset", positive, 2.0);
+// Negative ofset of the convexhull
+n.param("negative_offset", negative, -0.1);
+// Flag that defines is you are searching for points inside(flag=false) or outside (flag=true) the convexhull
+n.param("flag_in_out", flag, false);
+\endcode
+
+<h2>  ROS subscription </h2>
+\code
+// You need to subscribe 2 point clouds. 
+// The first one contains the points needed to define the convexhull
+ros::Subscriber sub1 = n.subscribe ("/points_convexhull", 1, cb_points_convexhull);
+// The second one is the point cloud with the points to filter
+ros::Subscriber sub2 = n.subscribe ("/point_cloud_input", 1, cloud_cb);  
+\endcode
+
+<h2>  Callbaks  </h2>
+\code
+// The first callbak (cb_points_convexhull) needs to call a function from the points_from_volume class to set the convexhull
+pfv.set_convex_hull(pcmsg_convexhull_in);
+
+// The second callbak (cloud_cb) sets the convexhull solid... 
+pfv.convexhull_function(pc_in, positive, negative, flag);
+// And then you can return the filtered point cloud		
+pfv.get_pc_in_volume();
+\endcode
+
+<h2> Publish the point cloud </h2>
+\code
+ros::Publisher = n.advertise<sensor_msgs::PointCloud2>("/pcmsg_out", 1); // Where /pcmsg_out is the name of the publisher
+\endcode
+
+
+<h1>  The example nodelet </h1>
+
+<h2>  Example of a xml launch file for a point cloud received from a Kinect sensor</h2>
+
+\code
+<launch>
+  <node name="openni_node" pkg="openni_camera" type="openni_node" />	
+  <node name="points_from_volume_nodelet" pkg="points_from_volume" type="points_from_volume_nodelet" args="point_cloud_input:=/camera/depth/points"/>
+  <!-- Setting parameters -->
+    <param  name= "positive_offset" type="float"  value="2.0" />  
+    <param  name= "negative_offset" type="float" value="-0.1" /> 
+    <param  name= "flag_in_out" type="bool" value="false" />
+  <!-- !!!You need to publish your convexhull points too!!! -->   
+</launch>
+\endcode
+*/
+

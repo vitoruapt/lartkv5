@@ -1,0 +1,380 @@
+<?xml version="1.0"?>
+<robot name="atlascar">
+  <!--######################################################-->
+  <!--####################  LINKS  ########################-->
+  <!--######################################################-->
+  <link name="/atc/vehicle/center_bumper">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://atlascar_base/models/FordEscort.DAE"/>
+      </geometry>
+      <material name="green">
+        <color rgba=".2 .2 .2 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="/atc/laser/left_bumper">
+    <visual>
+      <origin xyz="0 0 -0.0577" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.152" radius="0.047"/>
+      </geometry>
+      <material name="grey">
+        <color rgba="0.6 0.6 1 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="/atc/laser/right_bumper">
+    <visual>
+      <origin xyz="0 0 -0.0577" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.152" radius="0.047"/>
+      </geometry>
+      <material name="grey">
+        <color rgba="0.6 0.6 1 1"/>
+      </material>
+    </visual>
+  </link>
+  <!--I suppose next link entry has been commented out by Matos in May 2013-please document. V. Santos, 02-Jun-2012-->
+  <!--<link name="/atc/laser/roof_rotating">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size=".156 .155 .185"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.1 0.1 1 1"/>
+      </material>
+    </visual>
+  </link>-->
+  <link name="/atc/laser/roof_rotating/base">
+  </link>
+  <link name="/atc/camera/xb3/right">
+    <visual>
+      <origin xyz="-0.120 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size=".277 .0418 .037"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="0.6 0.6 0 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="/atc/camera/xb3/center">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size=".001 .001 .001"/>
+      </geometry>
+      <material name="yellow"/>
+    </visual>
+  </link>
+  <link name="/atc/camera/xb3/left">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size=".001 .001 .001"/>
+      </geometry>
+      <material name="yellow">
+</material>
+    </visual>
+    <!-- I suppose next line has a SYNTAX ERROR. Please check - V. Santos, 02-Jun-2013 -->
+  </link>
+  <link name="/atc/ptu/base">
+    <visual>
+      <origin xyz="0 0 0.02286" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.089789 0.05715 0.04572 "/>
+      </geometry>
+      <material name="black">
+        <color rgba="0.2 0.2 0.2 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="/atc/ptu/pan_block">
+    <visual>
+      <origin xyz="0 0 0.02286" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.089789 0.0437134 0.04572"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <link name="/atc/ptu/tilt_block">
+    <visual>
+      <origin xyz="0 0 0.022987" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0254 0.064135 0.045974"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <link name="/atc/camera/flea_peripheral">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.0421" radius="0.0145"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <link name="/atc/camera/flea_foveated">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.0421" radius="0.0145"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <link name="/atc/laser/center_top_roof">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0254 0.0254 0.04"/>
+      </geometry>
+      <material name="orange">
+        <color rgba="0.7 0.2 0.7 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="/atc/vehicle/right_wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://atlascar_base/models/FordEscort_Wheel_only.DAE"/>
+      </geometry>
+          </visual>
+  </link>
+  <link name="/atc/vehicle/left_wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 3.14"/>
+      <geometry>
+        <mesh filename="package://atlascar_base/models/FordEscort_Wheel_only.DAE"/>
+      </geometry>
+          </visual>
+  </link>
+<link name="/atc/imu/xsens">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0254 0.0254 0.04"/>
+      </geometry>
+      <material name="orange">
+        <color rgba="0.8 0.2 0.3 1"/>
+      </material>
+    </visual>
+  </link>
+<!--<link name="/base_footprint">-->
+<link name="/atc/vehicle/rear_axis">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0254 0.0254 0.04"/>
+      </geometry>
+      <material name="orange">
+        <color rgba="0.7 0.2 0.7 1"/>
+      </material> 
+          </visual>
+  </link>
+<link name="/atc/vehicle/ground">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0254 0.0254 0.04"/>
+      </geometry>
+      <material name="orange">
+        <color rgba="0.7 0.2 0.7 1"/>
+      </material> 
+          </visual>
+  </link>
+<link name="/atc/vehicle/center_car_axis">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0254 0.0254 0.04"/>
+      </geometry>
+      <material name="orange">
+        <color rgba="0.7 0.2 0.7 1"/>
+      </material> 
+          </visual>
+  </link>
+  <!--######################################################-->
+  <!--####################  JOINTS  ########################-->
+  <!--######################################################-->
+  <joint name="/connect_laser_bumper_left" type="fixed">
+  <!--This transform was corrected yaw+=pi/2 since in ROS, unlike in lar, the X axis shold point forward to the laser-->
+    <origin xyz="-0.080000 0.835000 0.000000" rpy="0.000000 -0.000000 0.932999"/>
+    <parent link="/atc/vehicle/center_bumper"/>
+    <child link="/atc/laser/left_bumper"/>
+  </joint>
+  <joint name="/connect_laser_bumper_right" type="fixed">
+  <!--This transform was corrected yaw+=pi/2 since in ROS, unlike in lar, the X axis shold point forward to the laser-->
+    <origin xyz="-0.120000 -0.890000 -0.095000" rpy="0.000000 -0.000000 -0.960736"/>
+    <parent link="/atc/vehicle/center_bumper"/>
+    <child link="/atc/laser/right_bumper"/>
+  </joint>
+<!--  <joint name="/connect_laser_roof_rotating" type="continuous">
+    <origin xyz="-1.780300 0.000000 1.186100" rpy="0.087264 0.148343 0.000000"/>
+    <axis xyz="1 0 0"/>
+    <parent link="/atc/vehicle/center_bumper"/>
+    <child link="/atc/laser/roof_rotating"/>
+  </joint>-->
+  <joint name="/connect_laser_roof_rotating_base" type="fixed">
+    <origin xyz="-1.780300 0.000000 1.186100" rpy="0.087264 0.148343 0.000000"/>
+    <axis xyz="1 0 0"/>
+    <parent link="/atc/vehicle/center_bumper"/>
+    <child link="/atc/laser/roof_rotating/base"/>
+  </joint>
+  <joint name="/connect_xb3_right" type="fixed">
+    <origin xyz="-1.840500 0.240000 1.117000" rpy="-1.710445 -0.000000 -1.570796"/>
+    <parent link="/atc/vehicle/center_bumper"/>
+    <child link="/atc/camera/xb3/right"/>
+  </joint>
+  <joint name="/connect_xb3_center" type="fixed">
+    <origin xyz="-0.120 0 0" rpy="0 0 0"/>
+    <parent link="/atc/camera/xb3/right"/>
+    <child link="/atc/camera/xb3/center"/>
+  </joint>
+  <joint name="/connect_xb3_left" type="fixed">
+    <origin xyz="-0.240 0 0" rpy="0 0 0"/>
+    <parent link="/atc/camera/xb3/right"/>
+    <child link="/atc/camera/xb3/left"/>
+  </joint>
+  <joint name="/connect_ptu_base" type="fixed">
+    <origin xyz="-1.877000 -0.492000 0.990000" rpy="0.000000 -0.000000 0.000000"/>
+    <parent link="/atc/vehicle/center_bumper"/>
+    <child link="/atc/ptu/base"/>
+  </joint>
+  <joint name="/connect_ptu_pan" type="revolute">
+    <origin xyz="0 0 0.04572" rpy="0.000000 -0.000000 0.000000"/>
+    <axis xyz="0 0 1"/>
+    <limit upper="3.14" lower="-3.14" effort="10" velocity="10"/>
+    <parent link="/atc/ptu/base"/>
+    <child link="/atc/ptu/pan_block"/>
+  </joint>
+  <joint name="/connect_ptu_tilt" type="revolute">
+    <origin xyz="0 0 0.045974" rpy="0.000000 -0.000000 0.000000"/>
+    <axis xyz="0 -1 0"/>
+    <limit upper="0.5" lower="-0.7" effort="10" velocity="10"/>
+    <parent link="/atc/ptu/pan_block"/>
+    <child link="/atc/ptu/tilt_block"/>
+  </joint>
+  <joint name="/connect_flea_peripheral" type="fixed">
+    <origin xyz="0 0 0.07" rpy="-1.57 0 -1.57"/>
+    <parent link="/atc/ptu/tilt_block"/>
+    <child link="/atc/camera/flea_peripheral"/>
+  </joint>
+  <joint name="/connect_flea_foveated" type="fixed">
+    <origin xyz="0 0 0.11" rpy="-1.57 0 -1.57"/>
+    <parent link="/atc/ptu/tilt_block"/>
+    <child link="/atc/camera/flea_foveated"/>
+  </joint>
+  <joint name="/connect_laser_center_top_roof" type="fixed">
+    <origin xyz="-1.858300 0.000000 0.992700" rpy="0.000000 0.21 0.000000"/>
+    <parent link="/atc/vehicle/center_bumper"/>
+    <child link="/atc/laser/center_top_roof"/>
+  </joint>
+  <joint name="/connect_vehicle_right_wheel" type="revolute">
+    <origin xyz="-0.80 -0.70 -0.15" rpy="0.000000 -0.000000 0.000000"/>
+    <axis xyz="0 0 1"/>
+    <limit upper="0.540" lower="-0.54" effort="10" velocity="10"/>
+    <parent link="/atc/vehicle/center_bumper"/>
+    <child link="/atc/vehicle/right_wheel"/>
+  </joint>
+  <joint name="/connect_vehicle_left_wheel" type="revolute">
+    <origin xyz="-0.80 0.70 -0.15" rpy="0.000000 -0.000000 0.000000"/>
+    <axis xyz="0 0 1"/>
+    <limit upper="0.540" lower="-0.54" effort="10" velocity="10"/>
+    <parent link="/atc/vehicle/center_bumper"/>
+    <child link="/atc/vehicle/left_wheel"/>
+    <!--There is no ros official support for joint mimic for now-->
+    <!--<mimic joint="/atc/vehicle/right_wheel" multiplier="1" offset="0"/>-->
+  </joint>
+  <joint name="/connect_imu_xsens" type="fixed">
+<!--mmust put a value actually measured-->
+    <origin xyz="-2.358300 0.000000 0.992700" rpy="0.000000 0.0000 0.000000"/>
+    <parent link="/atc/vehicle/center_bumper"/>
+    <child link="/atc/imu/xsens"/>
+  </joint>
+  <joint name="/connect_vehicle_center_bumper" type="fixed">
+    <origin xyz="3.4 0.000000 0.25" rpy="0.000000 0.0000 0.000000"/>
+    <!--<parent link="/base_footprint"/>-->
+    <parent link="/atc/vehicle/rear_axis"/>
+    <child link="/atc/vehicle/center_bumper"/>
+  </joint>
+  <joint name="/connect_vehicle_ground" type="fixed">
+  <!--claculated with jante's radius + tire radius-->
+    <origin xyz="0 0.000000 -0.2371" rpy="0.000000 0.0000 0.000000"/>
+    <!--<parent link="/base_footprint"/>-->
+    <parent link="/atc/vehicle/rear_axis"/>
+    <child link="/atc/vehicle/ground"/>
+  </joint>
+<joint name="/connect_center_car_axis" type="fixed">
+  <!--claculated with jante's radius + tire radius-->
+    <origin xyz="-0.48 0.000000 -0.0" rpy="0.000000 0.0000 0.000000"/>
+    <!--<parent link="/base_footprint"/>-->
+    <parent link="/atc/vehicle/center_car_axis"/>
+    <child link="/atc/vehicle/rear_axis"/>
+  </joint>
+  <!--######################################################-->
+  <!--####################  DEVICES  ########################-->
+  <!--######################################################-->
+    <!-- USE udevadm info -q all -n /dev/ttyUSB0-->
+  <sensor name="/atc/laser/center_top_roof">
+    <device_information>
+      <SUBSYSTEM>tty</SUBSYSTEM>
+      <ID_SERIAL>Hokuyo_Data_Flex_for_USB_URG-Series_USB_Driver</ID_SERIAL>
+      <ID_VENDOR_ID>15d1</ID_VENDOR_ID>
+    </device_information>
+    <cable_label>Hokuyo</cable_label>
+  </sensor>
+    <sensor name="/atc/laser/roof_rotating/pic">
+    <device_information>
+      <SUBSYSTEM>tty</SUBSYSTEM>
+      <ID_SERIAL>Prolific_Technology_Inc._USB-Serial_Controller_D</ID_SERIAL>
+    </device_information>
+    <cable_label>LAS0-a</cable_label>
+  </sensor>
+  <sensor name="/atc/laser/roof_rotating/lms">
+    <device_information>
+      <SUBSYSTEM>tty</SUBSYSTEM>
+      <ID_SERIAL>FTDI_USB_TO_RS-422_485_ADAPTER_FTBR7FFF</ID_SERIAL>
+      <ID_VENDOR_ID>0403</ID_VENDOR_ID>
+    </device_information>
+    <cable_label>LAS0-a</cable_label>
+  </sensor>
+  <sensor name="/atc/bases/ptu">
+    <device_information>
+      <SUBSYSTEM>tty</SUBSYSTEM>
+      <ID_SERIAL>FTDI_UC232R_FTF90H25</ID_SERIAL>
+    </device_information>
+    <cable_label>PTU</cable_label>
+  </sensor>
+  
+  <!--The gamepad mapping does not work on ubuntu version 11.04 foward -->
+  <!--<sensor name="/atc/bases/gamepad">
+    <device_information>
+      <SUBSYSTEM>input</SUBSYSTEM>
+      <ID_VENDOR_ID>045e</ID_VENDOR_ID>
+      <ID_USB_INTERFACE_NUM>00</ID_USB_INTERFACE_NUM>
+      <ID_MODEL>Xbox_360_Wireless_Receiver_for_Windows</ID_MODEL>
+    </device_information>
+    <cable_label>Gamepad</cable_label>
+  </sensor>-->
+  <sensor name="/atc/gps/magellan">
+    <device_information>
+      <SUBSYSTEM>tty</SUBSYSTEM>
+      <ID_SERIAL>FTDI_UC232R_FTF91LQC</ID_SERIAL>
+    </device_information>
+    <cable_label>GPS</cable_label>
+  </sensor>
+  <sensor name="/atc/imu/xsens">
+    <device_information>
+      <SUBSYSTEM>tty</SUBSYSTEM>
+      <ID_SERIAL>Xsens_Xsens_USB-serial_converter_XSSH43UA</ID_SERIAL>
+    </device_information>
+    <cable_label>Xsens</cable_label>
+  </sensor>
+</robot>

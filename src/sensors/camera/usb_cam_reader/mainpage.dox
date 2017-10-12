@@ -1,0 +1,35 @@
+/**
+\mainpage usb_cam_reader
+\htmlinclude manifest.html
+
+This package is intended to get and publish camera video stream. It also allows camera calibration storing the calibration files for 3 diferent cameras.
+
+
+\section Description Detailed Description
+This package uses the <a href="http://opencv.org/" target="_blank"> OpenCV library</a> to get video frames, which are then 
+published through the "usb_cam_reader/image_raw" topic, using the <a href="http://wiki.ros.org/image_transport" target="_blank"> 
+image_transport ros library</a>.
+The images are previously converted to ros image messages using the <a href="http://wiki.ros.org/cv_bridge" target="_blank"> 
+cv_bridge ros library</a>.
+This package uses <a href="http://wiki.ros.org/camera_calibration?distro=hydro" target="_blank"> camera calibration ros library</a> for easy camera calibration.
+
+\section Calibration Camera Calibration
+This package allows camera calibration, just by changing the value of size and square arguments of the calibration launch file. Which are the checkerboard number of internal squares and their dimension, in meters.
+<br>After the launch file is set run it by doing:
+
+\code
+    roslaunch usb_cam_reader usb_cam_calibration.launch
+\endcode 
+
+\section Usage
+Here is an example on how to use the \b usb_cam_reader package, using the computer webcam ( if there is one ), which index is 0:
+\code
+    roslaunch usb_cam_reader usb_cam_reader_launch.launch
+\endcode 
+
+In order to use an external usb camera, the launch file parameter "cam_id" must be set to the corresponding camera index, which can be obtained by doing:
+\verbatim
+    ls /dev/video*
+\endverbatim
+
+*/

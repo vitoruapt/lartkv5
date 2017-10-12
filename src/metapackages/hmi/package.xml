@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package>
+  <name>hmi</name>
+  <version>5.0.0</version>
+  <description>
+     Contains packages concerning Human Machine Interface.
+This includes monitoring and information display from
+the robots, and teleoperation interfaces.
+  </description>
+  <maintainer email="dem-atlas-admin@ua.pt">vsantos</maintainer>
+  <license>BSD</license>
+  <export>
+    <metapackage/>
+  </export>
+  <buildtool_depend>catkin</buildtool_depend>
+
+    <run_depend>atlascar_teleop</run_depend>
+  <run_depend>atlas_sound_player</run_depend>
+  <run_depend>humanoid_simulation</run_depend>
+  <run_depend>remote_monitor</run_depend>
+  <run_depend>vrep_common</run_depend>
+  <run_depend>vrep_plugin</run_depend>
+
+</package>

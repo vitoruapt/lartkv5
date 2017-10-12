@@ -1,0 +1,12 @@
+/**
+\mainpage Human Driver Monitor
+\htmlinclude manifest.html
+
+This module obtains the information from the human driver monitor system.
+This system monitors some of the actuators of the vehicle.
+
+Currently the monitored actuators are: the lights and the pedals (as a pedal pressure value).
+
+This module establishes a tcp connection with the Arduino using a asynchronous communication class.
+
+*/

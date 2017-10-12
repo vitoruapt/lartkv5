@@ -1,0 +1,33 @@
+/**
+\mainpage Device mapper, The device organizer system
+\htmlinclude manifest.html
+
+This module automatically detects devices attached to the PC 
+and creates \c ros parameters that publish the device's communication port.
+
+It implements the \c udev library to receive notifications of events on the
+ports, when a device is unplugged or plugged the device's parameter is updated
+to reflect the most updated info.
+
+This node only searches for devices listed on the robot's \c urdf file, the path to
+this file is inputed as a parameter \c robot_urdf_path.
+The \c urdf file contains the necessary device information under the \c SENSOR and
+\c DEVICE_INFORMATION sections. The device information consists of pairs of rules
+that will be tested for each device, the \c SUBSYSTEM rule should always be present
+given that it is used to prefilter devices improving performance.
+
+To launch this node use the following example:
+@code
+<node pkg="device_mapper" type="device_mapper" name="atc_device_mapper" >
+	<param name="robot_urdf_path" value="$(find atlascar_base)/urdf/atlascar_urdf_3dsmodels.xml" />
+</node>
+@endcode
+
+\page Example
+\anchor expage
+\section example Udev control usage example.
+
+Do not use
+
+
+*/

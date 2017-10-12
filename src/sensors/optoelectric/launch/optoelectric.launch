@@ -1,0 +1,13 @@
+<launch>
+	
+	<group ns="/vhc/base">
+		<remap from="optoelectric/sensor_publish" to="optoelectric"/>
+		
+		<!-- This is a atlascar_base launch files for starting up -->
+		<node pkg="optoelectric" name="optoelectric" type="sensor_GP2D12">
+			<param name="server_ip" value="10.0.0.35"/>  
+			<param name="server_port" value="120"/>  
+			
+		</node>
+	</group>
+</launch> 

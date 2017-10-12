@@ -1,0 +1,8 @@
+/**
+\mainpage Collada wrapper
+\htmlinclude manifest.html
+
+This node is a wrapper that receives as input a description of several polygonal
+primitives and outputs a collada file dae that can be read by rviz.
+
+*/

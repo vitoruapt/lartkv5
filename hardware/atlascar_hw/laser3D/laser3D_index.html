@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<!-- Just insert some automatic text -->
+<script src="subsystemId.js" type="text/javascript"> </script> 
+</head>
+
+<body>
+<h2>Brief description</h2>
+This description deals with a mechanism to control
+the laser3D on the Atlascar.
+
+<h2>System operation</h2>
+The system is designed to rotate a 2D laser about a shaft
+which is perpendicular to the scanner’s internal mirror axle.
+The scanner is in forward looking position because it is to be
+installed onboard a robot with a prevalent sense of motion.
+To rotate the external shaft, a stepper motor is used with its
+angular velocity controlled by an MCU. In order to establish
+connection between the rotating scanner and the fixed part
+of the platform, a slip ring with adequate signal to noise
+ratio and power capability has been installed. [R.Pascoal]
+
+
+<h2>Mechanical components</h2>
+
+<h2>Electrical circuits</h2>
+Schematics developed in Eagle<br>
+<a href="Electrical/microcontroller/LaserF2431_max232_sch.png">Microcontroller schematic</a><br>
+<a href="Electrical/microcontroller/LaserF2431_max232_brd_top.png">PCB top</a><br>
+<a href="Electrical/microcontroller/LaserF2431_max232_brd_bot.png">PCB bottom</a><br>
+
+<h2>Firmware and similar code</h2>
+Use MPLABX to open the project in the Code folder.
+<br>
+Microcontroller board is PIC-based and has the following <br>
+main program: <a href="Code/microcontroller/laser3D_F2431/Laser3D_F2431.X/main.c">PIC code<br>
+</a><br>
+
+</body>
+</html>

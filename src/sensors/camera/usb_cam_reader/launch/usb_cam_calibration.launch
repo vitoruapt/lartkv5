@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+    
+    
+    <node name="usb_cam_reader" pkg="usb_cam_reader" type="usb_cam_reader_node" output="screen">
+    <param name="cam_id" value="1" />
+    <param name="width" value="" />
+    <param name="height" value="" />
+    <param name="camera_name" value="logitech_c310_1280_960_dist" />
+  </node>   
+  
+<!-- You must change the size and square arguments to match your checkerboard dimensions -->
+    <node name="camera_calibration" pkg="camera_calibration" type="cameracalibrator.py" args="--size 8x6 --square 0.030 image:=/usb_cam_reader/image_raw camera:=/usb_cam_reader" />
+  
+</launch>

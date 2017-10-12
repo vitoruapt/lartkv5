@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- This is a atlascar launch files for starting all sensor drivers, the robot state publisher and also the rviz vizualiztion of data. IMPORTANT NOTE: prelaunch_atlascar.launch must be launched before-->
+
+	<!-- Launch /optoelectric -->
+	<include file="$(find optoelectric)/launch/optoelectric.launch"/>
+
+	<!-- Launch /gps -->
+	 <!-- include file="$(find gps_common)/launch/gps.launch"/--> <!-- não tá ligado -->
+	 <include file="$(find gps)/launch/gpsBU-353.launch"/> <!-- for the BU-353 V. Santos, 15-Mai-2013 -->
+
+	<!-- Launch /atc/imu driver -->
+	 <include file="$(find atlascar)/launch/imu_xsens.launch"/> <!-- funca -->
+
+	<!-- Launch /atc/camera/right_roof/foveated -->
+	<include file="$(find atlascar)/launch/ptu_atlascar.launch"/> <!-- não funca -->
+
+	<!-- Launch /atc/laser/center_top_roof driver -->
+	 <include file="$(find atlascar)/launch/laser_center_top_roof.launch"/> <!-- não tá ligado--> 
+
+	<!-- Launch /atc/camera/right_roof/peripheral -->
+	 <include file="$(find atlascar)/launch/camera_right_roof_peripheral.launch"/> <!-- funca mas com uns erros esquesitos-->
+
+	<!-- Launch /atc/camera/right_roof/foveated -->
+	 <include file="$(find atlascar)/launch/camera_right_roof_foveated.launch"/> <!-- funca mas com uns erros esquesitos-->
+
+	<!-- Launch xb3_stereo_processing and vizualization -->
+	 <include file="$(find xb3)/launch/xb3_stereo_processing.launch"/> <!-- funca -->
+
+	<!-- Launch /atc/laser/left_bumper driver -->
+	 <include file="$(find atlascar)/launch/laser_left_bumper.launch"/>  <!-- funca -->
+
+	<!-- Launch /atc/laser/right_bumper driver -->
+	 <include file="$(find atlascar)/launch/laser_right_bumper.launch"/>  <!-- funca -->
+
+	<!-- Launch /atc/laser/roof driver -->
+	 <include file="$(find atlascar)/launch/sicklms200.launch"/>  <!-- não tá ligado -->
+
+	<!-- Launch /atc/laser/left_bumper driver -->
+	 <include file="$(find laser_rotate3D)/launch/laser_rotate3D.launch"/>  <!-- não tá ligado -->
+
+	<!-- Launch the atlascar_ laser 3d  interactive_control--> 
+	 <include file="$(find laser_rotate3D)/launch/laser3d_interactive_control.launch"/> <!-- não tá ligado -->
+	
+	<!-- Launch the foveation control interactive target--> 
+	 <!--<include file="$(find foveation_control)/launch/foveation_control_interactive_target.launch"/>-->
+
+	<!-- Launch the atlascar_ptu interactive_control--> 
+	 <!--<include file="$(find atlascar_ptu)/launch/ptu_interactive_control.launch"/>-->
+
+</launch>

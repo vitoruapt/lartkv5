@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- This is a atlascar_base launch files for starting up -->
+
+	<!-- the following file is used when is necessary to include another launch file-->
+	<!-- <include file="$(find pkg-name)/launch/filename.xml"/> -->
+
+		<!--<param name="port" value="/dev/ttyUSB2"/>-->
+		<!--<remap from="/atc/bases/ptu/port" to="/device_mapper/atc/bases/ptu"/>-->
+	<!--</node>-->
+
+  <group ns="/atc">
+	<node pkg="lse_xsens_mti" name="xsens_node" type="mti_node">
+		<remap from="/atc/xsens_node/port" to="/device_mapper/atc/imu/xsens"/>
+	</node>
+	</group>
+
+</launch>

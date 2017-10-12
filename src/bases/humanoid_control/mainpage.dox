@@ -1,0 +1,17 @@
+/**
+\mainpage humanoid_control Module
+\htmlinclude manifest.html
+
+\b humanoid_control 
+
+<!-- 
+Provide an overview of your package.
+-->
+<p align="left">
+<b> Package description: </b>\n
+\n
+This package commands the humanoid robot and retrives the positions for its joints\n
+\n
+WRITE MORE STUFF!!!\n
+\n
+*/

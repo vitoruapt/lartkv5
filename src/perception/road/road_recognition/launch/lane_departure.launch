@@ -1,0 +1,5 @@
+<launch>
+    	<node name="lane_departure" pkg="road_recognition" type="lane_departure" output="screen">
+    	<remap from="/image" to="snr/cam/0/image_color"/>
+		</node>
+</launch>

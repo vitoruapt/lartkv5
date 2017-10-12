@@ -1,0 +1,61 @@
+
+digraph full_schematic
+{
+	rankdir=TB;
+	
+	PC[shape=box,fontsize=16];
+	Vp[shape=diamond,fontsize=12,label="V+"];
+	PLC[shape=box,fontsize=16]
+	
+	DCc[fontsize=12,label="DC-DC"];
+	SBEC[fontsize=12];
+	Arduino[shape=doublecircle,fontsize=16,label="Arduino\nEthernet"];
+	ECU[shape=box,fontsize=16];
+	
+	t_MTR[fontsize=12,label="motor"];
+	t_PTM[shape=ellipse,fontsize=12,label="potentiometer"];
+	m_CTL[shape=ellipse,fontsize=12,label=<HS-815BB<sup>+</sup> controller>];
+	LC[shape=circle,fontsize=12,label="Level converter"];
+	PEDAL[shape=parallelogram,fontsize=12,label="Pedal pot."];
+	
+	subgraph{
+		rank = same;PC;PLC;Vp;
+	}
+	
+	subgraph{
+		rank = same;Arduino;LC;
+	}
+		
+	subgraph cluster_motor{
+		label = "Intake valve";
+		fontsize=10;
+		penwidth=0.2;
+		rank = same;t_PTM;t_MTR;
+	}
+	
+	
+	Vp -> DCc [color=red,label="14V",fontsize=10,fontcolor=red];
+	Vp -> SBEC [color=red,label="14V",fontsize=10,fontcolor=red];
+	
+	DCc -> Arduino [color=red,label="9V",fontsize=10,fontcolor=red];
+	SBEC -> LC [color=red,label="6V",fontsize=10,fontcolor=red];
+	
+	Arduino -> LC[dir=both,weight=2,label=<I<sup>2</sup>C>,fontsize=10];
+	
+	LC -> ECU[color=blue,weight=1,label="analog signal",fontsize=10,fontcolor=blue];
+
+	LC -> m_CTL[weight=0,color=red,label="6V",fontsize=10,fontcolor=red]
+	LC -> m_CTL[weight=1,label=PWM,fontsize=10]
+// 	Arduino -> m_CTL[weight=1,label=PWM,fontsize=10]
+	
+	LC -> PEDAL[color=red,label="6V",fontsize=10,fontcolor=red];
+	PEDAL -> Arduino[color=blue,label="analog signal",fontsize=10,fontcolor=blue];
+	
+	PC -> Arduino [dir=both,label="ethernet",fontsize=10];
+	PLC -> Arduino [label="auto/manual",fontsize=10];
+	
+	m_CTL -> t_MTR[color=red,weight=4];
+	
+	m_CTL -> t_PTM[dir=both,color="red:blue",weight=2,headport=n];
+	t_PTM -> Arduino[color=blue,weight=2,tailport=n];
+}

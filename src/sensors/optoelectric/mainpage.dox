@@ -1,0 +1,60 @@
+/**
+ \mainpage Optoeletric module
+\htmlinclude manifest.html
+
+This module is responsible for receiving sensor sharp distances, calculate the vehicle orientation and publish them into ros.
+
+\section Using Using the system
+
+1- You need to place the sensors in the vehicle.
+
+2- Connect the system serial port to one of computer usb
+
+3- Connect Vin to 14V and Gnd to ground.
+
+4- Launch the calibration_base and orientation_base, for that use the folow command, roslaunch optoelectric vehicle_sharp_calibration.launch
+
+5- Launch the perception_base and orientation_base, for that use the folow command, roslaunch optoelectric vehicle_sharp.launch 
+
+You could run Rviz to view the markers.
+\section Arduino
+
+Arduino Serial port: "/dev/ttyACM0" 
+Baudrate:115200
+
+\section ROS
+
+Publish mensagens from this module.
+
+Published Topic: 
+
+For sensors distance,
+
+/optoelectic_vehicle_base/sharp_0
+
+/optoelectic_vehicle_base/sharp_2
+
+/optoelectic_vehicle_base/sharp_3
+
+/optoelectic_vehicle_base/sharp_4
+
+/optoelectic_vehicle_base/sharp_5
+
+/optoelectic_vehicle_base/sharp_6
+
+/optoelectic_vehicle_base/sharp_7
+
+For orientation,
+
+/optoelectic_vehicle_preception_base/pose_orientation
+
+For car maker,
+
+/optoelectic_vehicle_preception_base/atlascar_ori
+
+
+
+
+
+
+*/

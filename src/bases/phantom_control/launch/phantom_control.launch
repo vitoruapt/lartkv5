@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+   <!-- This is a launcher for phantom_control pack-->
+      
+    <!-- This is a launches arduino node 1-->
+    <node name="phantom_node" pkg="phantom_control" type="phantom_control">
+<!--
+        <remap from="/device" to ="/device_mapper/arduino_1"/>
+-->
+<!--
+        <param name="/markers" value="default_markers"/>
+-->
+        
+    </node>
+
+    <node name="force_gen_node" pkg="haptic_force" type="cell_force">
+<!--
+        <remap from="/device" to ="/device_mapper/arduino_1"/>
+-->
+<!--
+        <param name="/markers" value="default_markers"/>
+-->
+        
+    </node>
+</launch>

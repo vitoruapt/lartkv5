@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+    
+<!--    <remap from="phidgets_getdata_synchronous/IR_1" to="pedal_monitor_node/IR_1"/>
+    <remap from="phidgets_getdata_synchronous/ForceVal" to="pedal_monitor_node/ForceVal"/>
+    <remap from="phidgets_getdata_synchronous/LC_marker_data" to="pedal_monitor_node/LC_marker_data"/>
+    <remap from="phidgets_getdata_synchronous/FSR_marker_data" to="pedal_monitor_node/FSR_marker_data"/>
+    
+    <node pkg="pedal_monitor" name="phidgets_getdata_synchronous" type="phidgets_getdata_synchronous">
+        <param name="file_name" value="$(find pedal_monitor)/src/calibration_test.xml"/>  
+    </node>-->
+    
+    <node pkg="rosbag" type="play" name="rosbag_play"
+    args="/media/Data/Data_Record/bag1_2014-06-11-16-24-53.bag"/>
+    
+    
+<!--     <node name="rqt_graph" pkg="rqt_graph" type="rqt_graph" output="screen"></node> -->
+ <!--    -->
+</launch>

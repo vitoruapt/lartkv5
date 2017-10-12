@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<launch>
+    
+    
+<!--    <group ns="usb_cam_reader">
+        <node pkg="image_proc" type="image_proc" name="image_proc" />
+        <param name="image_transport" value="compressed"/>
+    </group>-->
+    
+<!--    <node name="image_view" pkg="image_view" type="image_view" respawn="false" output="screen" args="compressed">
+        <remap from="image" to="/usb_cam_reader/image_raw/"/>
+        <param name="autosize" value="true" />
+    </node>-->
+    
+    <node name="image_view" pkg="image_view" type="image_view" respawn="false" output="screen">
+        <remap from="image" to="/usb_cam_reader/image_rect_color"/>
+        <param name="autosize" value="true" />
+        <param name="image_transport" value="compressed"/>
+    </node>
+    
+<!--    <node name="datamatrix_detection" pkg="datamatrix_detection" type="datamatrix_detection_node" output="screen">
+        <param name="image_transport" value="compressed"/>
+    </node>-->
+    
+<!--    <node name="datamatrix_calculations" pkg="datamatrix_detection" type="datamatrix_calculations_node" output="screen">
+        <param name="plant_path" value="/home/luis/Documentos/Dissertação/DEMplant.png"/>
+        <param name="matrix_height" value="0.200"/>-->
+        <!-- m --><!--0.192-->
+<!--         <param name="plant_width" value="7500"/> -->
+        <!-- 1733 cm -->
+        <!-- 7500 cm -->
+<!--        <param name="image_transport" value="compressed"/>
+    </node>-->
+
+<!--    <node name="cam_writer" pkg="multimodal_pedestrian_detection" type="cam_writer" output="screen">
+        
+        <param name="image_transport" value="compressed"/>
+        
+    </node>-->
+    
+    
+    <node pkg="rosbag" type="play" name="rosbag_play"
+    args="-r 1
+    
+    /home/luis/Documentos/Vídeo/Camera/line_2014-07-19-01-05-07.bag
+    
+    
+    "/>
+    
+    
+<!--     <node name="rqt_graph" pkg="rqt_graph" type="rqt_graph" output="screen"></node> -->
+ <!--    -->
+</launch>

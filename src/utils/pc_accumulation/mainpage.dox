@@ -1,0 +1,73 @@
+/**
+\mainpage pc_accumulation
+\author Pedro Salvado
+\htmlinclude manifest.html
+
+\b pc_accumulation
+
+\section Usage
+
+<h1>  How to accumulate a pointCloud </h1>
+
+This is what you should do
+<h3>use pc_accumulation_nodelet:</h3>
+\code
+pc_accumulation lib;
+\endcode
+
+<h3>  Then you must subscribe the desired topic  </h3>
+With this class you can subscribe a sensor_msgs::LaserScan or sensor_msgs::PointCloud.(create respective <i>Callback</i>)
+In order for this to work, you must subscribe also a nav_msgs::Odometry, in order to make the accumulation possible.
+
+<h3>  You must set several parameters  (required)  </h3>
+Must specify:(use them as Global Variables)
+
+<b>Frame of accumulation :</b>  acc_frame =
+<b>Desired frame to remove points from </b>  lib._acc_frame_id =
+<b>Distance </b> distance_from =
+
+<h3>  Publish Accumulated PointCloud </h3>
+
+The message to publish is from type <b>sensor_msgs::PointCloud2</b>
+
+ 
+<h1> To make it simple:  </h1>
+<h2>  Using the nodelet </h2>
+
+<h3>  Example of a xml launch file for xb3</h3>
+
+\code
+<?xml version="1.0"?>
+<launch>
+  <!-- This is a pc_accumulation launch file for starting the pc_accumulation_nodelet-->
+
+  <node name="pc_accumulation_nodelet" pkg="pc_accumulation" type="pc_accumulation_nodelet" >
+       
+              <!--This parameter set the desired max distance removed_from -->
+              <param name="distance_from" value="15" type="double"/>
+              
+              <!--This parameter sets the point from your system -->
+              <param name="removed_from" value="/atc/vehicle/center_bumper"/>
+
+              <!-- Define the time interval between each published message-->
+              <param name="timer_value" value="0.1" type="double"/> <!--Frequency of pub message ( sec ) -->
+
+              <!-- Set the accumulation frame_id-->
+              <param name="acc_frame" value="/world"/> 
+              
+
+              <!-- Subscribe several topics LaserScan and PointClouds (0 - 4)-->
+              <!-- Remmaping topics-->
+              <remap from="/laserscan0" to="/atc/laser/center_top_roof/laser_scan"/> 
+
+             <remap from="/pointcloud0" to="/xb3_short/left/image_raw"/>
+ </node>
+</launch>
+
+\endcode
+
+
+
+
+
+*/

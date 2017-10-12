@@ -1,0 +1,8 @@
+<launch>
+	<param  name="/use_sim_time"   type="bool"  value="true" />
+	
+	<node name="lidar_egomotion" pkg="lidar_egomotion" type="lidar_egomotion"
+	args="/tf:=/trf/frames">
+		<remap from="/tracking_frame" to="/atc/vehicle/center_bumper"/>
+	</node>
+</launch>

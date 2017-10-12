@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <name>applications</name>
+  <version>5.0.0</version>
+  <description>
+     Contains the launch files/commands to deploy applications.
+This also include some base procedures for demonstrations, 
+for example. No source code is expected in this package set. 
+  </description>
+  <maintainer email="dem-atlas-admin@ua.pt">vsantos</maintainer>
+  <license>BSD</license>
+  <export>
+    <metapackage/>
+  </export>
+  <buildtool_depend>catkin</buildtool_depend>
+
+    <run_depend>atlascar</run_depend>
+
+</package>

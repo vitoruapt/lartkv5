@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+    
+    <node name="Client_extrinsic_calibration" pkg="multimodal_pedestrian_detection" type="calibrate_camera_extrinsic" output="screen">
+        
+<!--         Image Points Location txt -->
+       <param name="imagePoints1FileName" value="/home/asus/workingcopies/lar4/src/perception/pedestrians/multimodal_pedestrian_detect/imagePointsAuto_1280_960_xb3_semiAutomatic.txt"/>
+        
+<!--         Object Points Location txt -->
+       <param name="objectPoints1FileName" value="/home/asus/workingcopies/lar4/src/perception/pedestrians/multimodal_pedestrian_detect/objectPointsAuto_1280_960_xb3_semiAutomatic.txt"/>
+       
+<!--        File storage Location  -->
+        <param name="fileStorageYAML" value="/home/asus/workingcopies/lar4/src/perception/pedestrians/multimodal_pedestrian_detect/calibration/bumblebeeXB3_1280_960_transformation_matrix_to_2Dlaser_semiAutomatic.yaml"/>
+        
+    </node>
+</launch>

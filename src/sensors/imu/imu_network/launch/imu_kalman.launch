@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+<!-- launch binary imu_sensors in pckg imu_network-->
+
+        <node name="imu_viz" pkg="imu_network" type="imu_viz"/>
+        <node name="sensors_receiver" pkg="imu_network" type="sensors_receiver"/>
+        <node name="kalman_imu" pkg="imu_network" type="kalman_imu"/>
+
+</launch>

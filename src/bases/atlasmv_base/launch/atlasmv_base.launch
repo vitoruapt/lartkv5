@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- This is a atlasmv_base launch files for starting up -->
+
+	<node pkg="atlasmv_base" name="atlasmv_base" type="atlasmv_base">
+		<remap from="/atlasmv_base/comport_servos" to="/device_mapper/atlasmv/base/servos"/>
+		<remap from="/atlasmv_base/comport_dioc" to="/device_mapper/atlasmv/base/dioc"/>
+		<remap from="/atlasmv_base/comport_DES" to="/device_mapper/atlasmv/base/des"/>  
+<!--         <param name="comport_servos" value=""/> -->
+<!--         <param name="comport_DES" value=""/> -->
+<!--         <param name="comport_dioc" value=""/> -->
+        
+		<!-- Falta por aqui o resto dos parameteros-->
+	</node>
+	
+	<node pkg="atlasmv_base" name="atlasmv_command_publisher" type="atlasmv_command_publisher">
+		<!--<param name="device_gamepad" value="/dev/input/js1" />-->
+		<remap from="/atlasmv_command_publisher/device_gamepad" to="/device_mapper/atlasmv/base/gamepad"/>  
+		<param name="max_forward_speed" value="4"/>
+		<param name="max_backward_speed" value="-1"/>
+	</node>
+	
+	<node pkg="atlasmv_base" name="atlasmv_egomotion" type="atlasmv_egomotion" />
+	
+</launch>

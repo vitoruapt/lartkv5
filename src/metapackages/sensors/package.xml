@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package>
+  <name>sensors</name>
+  <version>5.0.0</version>
+  <description>
+     Contains packages concerning interface with sensors
+without any dedicated data processing. The packages
+connect to hardware or use other packages that interface
+the low level (data acquisition from sensors and similar
+devices). Occasionally, these packages may produce
+several representations of the same data, such as polar
+and cartesian measurements from environment.
+  </description>
+  <maintainer email="dem-atlas-admin@ua.pt">vsantos</maintainer>
+  <license>BSD</license>
+  <export>
+    <metapackage/>
+  </export>
+  <buildtool_depend>catkin</buildtool_depend>
+
+    <run_depend>camera</run_depend>
+  <run_depend>fusion</run_depend>
+  <run_depend>gps</run_depend>
+  <run_depend>human_driver_monitor</run_depend>
+  <run_depend>imu</run_depend>
+  <run_depend>laser</run_depend>
+  <run_depend>multisensor_aquisition</run_depend>
+  <run_depend>odometer</run_depend>
+  <run_depend>optoelectric</run_depend>
+  <run_depend>pedal_monitor</run_depend>
+  <run_depend>pressure_cells</run_depend>
+
+</package>

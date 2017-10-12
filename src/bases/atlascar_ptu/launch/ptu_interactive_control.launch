@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- This is a atlascar launch files for starting a planar_pc_generator from the left and right bumper lasers-->
+  <group ns="/snr/ptu/ctrl">
+	<remap from="/ptu_cmd" to="/snr/ptu/command"/>
+  <node name="direct" pkg="atlascar_ptu" type="ptu_interactive_control" args="tilt:=/connect_ptu_tilt pan:=/connect_ptu_pan">
+  </node>
+	</group>
+</launch>

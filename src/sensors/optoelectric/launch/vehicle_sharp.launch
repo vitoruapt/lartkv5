@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<launch>
+    
+<!--   <node name="optoelectic_vehicle_base" pkg="optoelectric" type="orientation_base">
+        <param name="parameters" value="package://optoelectric/calibrations/atlascar.yaml"/>
+    </node>-->
+    
+    <node name="optoelectic_vehicle_preception_base" pkg="optoelectric" type="orientation_preception_base">
+        <param name="parameters" value="$(find optoelectric)/calibrations/atlascar.yaml"/>
+    </node>
+    
+    
+    <!-- Launch the odometer node -->
+   <!-- <include file="$(find odometer)/launch/monitor.launch"/>
+    
+    <node pkg="rosbag" type="record" name="rosbag_record"
+    args="record -o /media/DATA/carpintas/bag1
+    
+    /optoelectic_vehicle_base/sharp_0
+    /optoelectic_vehicle_base/sharp_1
+    /optoelectic_vehicle_base/sharp_2
+    /optoelectic_vehicle_base/sharp_3
+    /optoelectic_vehicle_base/sharp_4
+    /optoelectic_vehicle_base/sharp_5
+    /optoelectic_vehicle_base/sharp_6
+    /optoelectic_vehicle_base/sharp_7
+    /odometer/status
+    
+    "/>-->
+        
+</launch>

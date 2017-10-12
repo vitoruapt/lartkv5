@@ -1,0 +1,14 @@
+/**
+\mainpage atlascar teleop node
+\htmlinclude manifest.html
+
+This node establish communication with another node like xbox gamepad and allows the interface with atlascar base\n
+
+This node can operate for the moment with a xbox gamepad, for that must be launch with xbox_teleop.launch file.
+
+to launch this node use the following example
+@code
+	<include file="$(find atlascar_teleop)/launch/xbox_teleop.launch"/>
+@endcode
+
+*/

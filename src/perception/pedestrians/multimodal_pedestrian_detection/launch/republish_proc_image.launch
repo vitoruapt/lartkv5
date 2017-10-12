@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+
+    <node ns="/xb3/right" name="republish_right" type="republish" pkg="image_transport" args="compressed in:=image_raw out:=image_decompressed"/>
+        
+    <node ns="/xb3/right" name="info_changer_right" type="camera_info_republisher" pkg="multisensor_aquisition" args="image_raw:=image_decompressed">
+        <param name="camera_calibration_file" value="package://xb3/calibrations/right_full_resolution.yaml"/>
+        <param name="camera_name" value="right"/>
+    </node>
+           
+    <node ns="/xb3/right/new_info" name="right_camera_rectification" type="image_proc" pkg="image_proc"/>
+    
+</launch>

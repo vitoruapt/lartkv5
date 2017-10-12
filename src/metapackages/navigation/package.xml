@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package>
+  <name>navigation</name>
+  <version>5.0.0</version>
+  <description>
+     Contains packages concerning navigation in a
+more broad approach, not included in other specific
+package sets such as planning.
+This may include following a leader, avoid obstacles
+in potential fields or RRT approaches and similar.
+It covers the steps to calculate the actual immediate
+motion directives according to some specific algorithms
+that extract information from perception and possibly
+conditioned to planning restrictions
+  </description>
+  <maintainer email="dem-atlas-admin@ua.pt">vsantos</maintainer>
+  <license>BSD</license>
+  <export>
+    <metapackage/>
+  </export>
+  <buildtool_depend>catkin</buildtool_depend>
+
+    <run_depend>leader_follower</run_depend>
+
+</package>

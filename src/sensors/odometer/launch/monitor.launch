@@ -1,0 +1,6 @@
+<launch>
+	<node pkg="odometer" name="odometer" type="odometer_node">
+		<param name="server_ip" value="10.0.0.31"/>  
+		<param name="server_port" value="120" type="string"/>  
+	</node>
+</launch> 

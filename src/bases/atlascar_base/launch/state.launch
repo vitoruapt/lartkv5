@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<launch>
+	<!-- This is an atlascar launch file for starting the sensors reference systems transforms continuous publication -->
+
+	<!-- the following file is used when is necessary to include another launch file-->
+	<!-- <include file="$(find pkg-name)/launch/filename.xml"/> -->
+
+<!--	<node pkg="atlascar_base" name="atlascar_transforms" type="atlascar_transforms"/> -->
+
+	<!-- load robot urdf to the parameter server -->
+	<param name="robot_description" textfile="$(find atlascar_base)/urdf/atlascar_urdf_3dsmodels.xml" />
+<!-- 	<param name="robot_description" textfile="$(find atlascar_base)/urdf/atlascar_urdf.xml" /> -->
+
+	<!-- launch the robot state publisher -->
+  <group ns="trf/">
+	<node pkg="robot_state_publisher" type="state_publisher"
+	name="robot_state" >
+	<remap from="joint_states" to="/trf/joints"/>
+	<remap from="/tf" to="/trf/frames"/>
+	<param name="publish_frequency" value="150" />
+	</node>
+	</group>
+</launch>

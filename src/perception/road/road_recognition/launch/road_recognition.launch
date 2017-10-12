@@ -1,0 +1,5 @@
+<launch>
+    	<node name="road_recognition" pkg="road_recognition" type="learning_image_transport" output="screen">
+    	<remap from="/image" to="snr/cam/0/image_color"/>
+		</node>
+</launch>

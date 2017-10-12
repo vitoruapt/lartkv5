@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package>
+  <name>bases</name>
+  <version>5.0.0</version>
+  <description>
+     Contains packages concerning the control of hardware
+devices: the bases. Each base (one package) may contain
+several nodes (executables) regarding different hardware
+subsystems. The bases are normally robots basic motion
+units or dedicated subsystems with own motion independent
+of the robot motion itself. Most of these nodes use
+other utils packages for motor driver interface and similar.
+  </description>
+  <maintainer email="dem-atlas-admin@ua.pt">vsantos</maintainer>
+  <license>BSD</license>
+  <export>
+    <metapackage/>
+  </export>
+  <buildtool_depend>catkin</buildtool_depend>
+
+    <run_depend>atlascar_base</run_depend>
+  <run_depend>atlascar_ptu</run_depend>
+  <run_depend>atlasmv_base</run_depend>
+  <run_depend>foveation_control</run_depend>
+  <run_depend>humanoid_control</run_depend>
+  <run_depend>laser_rotate_3d</run_depend>
+  <run_depend>phantom_control</run_depend>
+  <run_depend>phua_haptic</run_depend>
+  <run_depend>wu_ptu</run_depend>
+
+</package>

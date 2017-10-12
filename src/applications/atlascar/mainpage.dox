@@ -1,0 +1,31 @@
+/**
+\mainpage atlascar
+\author Miguel Oliveira et al.
+\htmlinclude manifest.html
+
+The \b atlascar "package" is a special package intended only as an application
+
+Being an application, this package does not contain source code to
+be compiled but instead is made up of several \e launch
+files with the purpose of launching the appropriate nodes
+that constitute the entire application.
+Examples of launch files are given below.
+
+\section Examples Examples of launch files
+
+<ul>
+<li> \b \e prelaunch_atlascar.launch - This is a atlascar pre launch files for starting all basic functionalities
+<li> \b \e all_sensors.launch - This is a atlascar launch files for starting all sensor drivers, the robot state publisher and also the rviz vizualiztion of data. IMPORTANT NOTE: prelaunch_atlascar.launch must be launched before
+<li> \b \e camera_right_roof_foveated.launch
+<li> \b \e camera_right_roof_peripheral.launch
+<li> \b \e imu_xsens.launch
+<li> \b \e laser_center_top_roof.launch
+<li> \b \e laser_left_bumper.launch
+<li> \b \e laser_right_bumper.launch
+<li> \b \e ptu_atlascar.launch
+<li> \b \e sicklms200.launch
+<li> \b \e view_all_sensors.launch - This is a atlascar launch file for starting all sensor drivers, the robot state publisher and also the rviz vizualiztion of data. IMPORTANT NOTE: prelaunch_atlascar.launch must be launched before
+</ul>
+
+
+*/

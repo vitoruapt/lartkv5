@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- This is a launch file for recording the topics for my thesys  -->
+    
+  <node pkg="rosbag" type="rosbag" name="rosbag_record"
+   args="record -o /home/atlascar/Desktop/bags/bags_matos_TMP
+
+	/pointcloud
+	
+	/snr/las/0/scan
+	/snr/las3d/command
+	/snr/las3d/ctrl/imarker/feedback
+	/snr/las3d/ctrl/imarker/update
+	/snr/las3d/ctrl/imarker/update_full
+	
+	/snr/scam/short/left/image_color
+	
+	/trf/frames
+	/trf/joints
+	/vhc/driver/status
+	/vhc/gps/odom
+	/vhc/plc/command
+	/vhc/plc/status
+	/vhc/velocity/status
+	"/>
+
+
+</launch>

@@ -1,0 +1,255 @@
+Background\ ColorR=1
+Background\ ColorG=1
+Background\ ColorB=1
+Fixed\ Frame=/atc/vehicle/center_car_axis
+Target\ Frame=/atc/laser/center_top_roof
+Axes.Enabled=1
+Axes.Length=1
+Axes.Radius=0.1
+Axes.Reference\ Frame=/atc/laser/center_top_roof
+Axes2.Enabled=1
+Axes2.Length=5
+Axes2.Radius=0.1
+Axes2.Reference\ Frame=/atc/vehicle/rear_axis
+Ground_grid.Alpha=0.5
+Ground_grid.Cell\ Size=1
+Ground_grid.ColorR=0.5
+Ground_grid.ColorG=0.5
+Ground_grid.ColorB=0.5
+Ground_grid.Enabled=1
+Ground_grid.Line\ Style=0
+Ground_grid.Line\ Width=0.03
+Ground_grid.Normal\ Cell\ Count=0
+Ground_grid.OffsetX=0
+Ground_grid.OffsetY=0
+Ground_grid.OffsetZ=0
+Ground_grid.Plane=0
+Ground_grid.Plane\ Cell\ Count=100
+Ground_grid.Reference\ Frame=/atc/vehicle/rear_axis
+Image.Enabled=1
+Image.Image\ Topic=/snr/scam/short/right/image_raw
+Image.Transport\ Hint=raw
+Laser_frente_direita.Alpha=1
+Laser_frente_direita.Billboard\ Size=0.01
+Laser_frente_direita.Color\ Transformer=Flat Color
+Laser_frente_direita.Decay\ Time=0
+Laser_frente_direita.Enabled=1
+Laser_frente_direita.Position\ Transformer=XYZ
+Laser_frente_direita.Selectable=1
+Laser_frente_direita.Style=0
+Laser_frente_direita.Topic=/snr/las/3/scan
+Laser_frente_direita..AxisAutocompute\ Value\ Bounds=1
+Laser_frente_direita..AxisAxis=2
+Laser_frente_direita..AxisMax\ Value=10
+Laser_frente_direita..AxisMin\ Value=-10
+Laser_frente_direita..AxisUse\ Fixed\ Frame=1
+Laser_frente_direita..Flat\ ColorColorR=0.870588
+Laser_frente_direita..Flat\ ColorColorG=0.964706
+Laser_frente_direita..Flat\ ColorColorB=0.0627451
+Laser_frente_direita..IntensityAutocompute\ Intensity\ Bounds=1
+Laser_frente_direita..IntensityChannel\ Name=intensity
+Laser_frente_direita..IntensityMax\ ColorR=1
+Laser_frente_direita..IntensityMax\ ColorG=1
+Laser_frente_direita..IntensityMax\ ColorB=1
+Laser_frente_direita..IntensityMax\ Intensity=754
+Laser_frente_direita..IntensityMin\ ColorR=0
+Laser_frente_direita..IntensityMin\ ColorG=0
+Laser_frente_direita..IntensityMin\ ColorB=0
+Laser_frente_direita..IntensityMin\ Intensity=76
+Laser_frente_direita..IntensityUse\ full\ RGB\ spectrum=0
+Laser_frente_esquerda.Alpha=1
+Laser_frente_esquerda.Billboard\ Size=0.01
+Laser_frente_esquerda.Color\ Transformer=Flat Color
+Laser_frente_esquerda.Decay\ Time=0
+Laser_frente_esquerda.Enabled=1
+Laser_frente_esquerda.Position\ Transformer=XYZ
+Laser_frente_esquerda.Selectable=1
+Laser_frente_esquerda.Style=0
+Laser_frente_esquerda.Topic=/snr/las/2/scan
+Laser_frente_esquerda..AxisAutocompute\ Value\ Bounds=1
+Laser_frente_esquerda..AxisAxis=2
+Laser_frente_esquerda..AxisMax\ Value=10
+Laser_frente_esquerda..AxisMin\ Value=-10
+Laser_frente_esquerda..AxisUse\ Fixed\ Frame=1
+Laser_frente_esquerda..Flat\ ColorColorR=0.980392
+Laser_frente_esquerda..Flat\ ColorColorG=0.215686
+Laser_frente_esquerda..Flat\ ColorColorB=0
+Laser_frente_esquerda..IntensityAutocompute\ Intensity\ Bounds=1
+Laser_frente_esquerda..IntensityChannel\ Name=intensity
+Laser_frente_esquerda..IntensityMax\ ColorR=1
+Laser_frente_esquerda..IntensityMax\ ColorG=1
+Laser_frente_esquerda..IntensityMax\ ColorB=1
+Laser_frente_esquerda..IntensityMax\ Intensity=734
+Laser_frente_esquerda..IntensityMin\ ColorR=0
+Laser_frente_esquerda..IntensityMin\ ColorG=0
+Laser_frente_esquerda..IntensityMin\ ColorB=0
+Laser_frente_esquerda..IntensityMin\ Intensity=0
+Laser_frente_esquerda..IntensityUse\ full\ RGB\ spectrum=0
+MarkerArray.Enabled=0
+MarkerArray.Marker\ Array\ Topic=/pcp/trck/mtt/markers
+Point\ Cloud2.Alpha=1
+Point\ Cloud2.Billboard\ Size=0.01
+Point\ Cloud2.Color\ Transformer=Flat Color
+Point\ Cloud2.Decay\ Time=0.1
+Point\ Cloud2.Enabled=0
+Point\ Cloud2.Position\ Transformer=XYZ
+Point\ Cloud2.Selectable=1
+Point\ Cloud2.Style=0
+Point\ Cloud2.Topic=/atc/monitoring/danger_zone
+Point\ Cloud2..AxisAutocompute\ Value\ Bounds=1
+Point\ Cloud2..AxisAxis=2
+Point\ Cloud2..AxisMax\ Value=10
+Point\ Cloud2..AxisMin\ Value=-10
+Point\ Cloud2..AxisUse\ Fixed\ Frame=1
+Point\ Cloud2..Flat\ ColorColorR=0.027451
+Point\ Cloud2..Flat\ ColorColorG=0.0352941
+Point\ Cloud2..Flat\ ColorColorB=0.94902
+Point\ Cloud2..IntensityAutocompute\ Intensity\ Bounds=1
+Point\ Cloud2..IntensityChannel\ Name=intensity
+Point\ Cloud2..IntensityMax\ ColorR=1
+Point\ Cloud2..IntensityMax\ ColorG=1
+Point\ Cloud2..IntensityMax\ ColorB=1
+Point\ Cloud2..IntensityMax\ Intensity=4096
+Point\ Cloud2..IntensityMin\ ColorR=0
+Point\ Cloud2..IntensityMin\ ColorG=0
+Point\ Cloud2..IntensityMin\ ColorB=0
+Point\ Cloud2..IntensityMin\ Intensity=0
+Point\ Cloud2..IntensityUse\ full\ RGB\ spectrum=0
+Robot\ Model.Alpha=1
+Robot\ Model.Collision\ Enabled=0
+Robot\ Model.Enabled=1
+Robot\ Model.Robot\ Description=robot_description
+Robot\ Model.TF\ Prefix=
+Robot\ Model.Update\ Interval=0
+Robot\ Model.Visual\ Enabled=1
+axes_laser_right.Enabled=0
+axes_laser_right.Length=1
+axes_laser_right.Radius=0.1
+axes_laser_right.Reference\ Frame=<Fixed Frame>
+blink_left.Enabled=1
+blink_left.Marker\ Topic=/prcp/side_text_blink_left_mrk
+blink_right.Enabled=1
+blink_right.Marker\ Topic=/prcp/side_text_blink_right_mrk
+colicion_risk.Enabled=1
+colicion_risk.Marker\ Topic=/prcp/front_text_mrk
+front_cube.Enabled=1
+front_cube.Marker\ Topic=/prcp/front_mrk
+object_detected.Enabled=1
+object_detected.Marker\ Topic=/prcp/side_text_mrk
+side_cube.Enabled=1
+side_cube.Marker\ Topic=/prcp/side_mrk
+Tool\ 2D\ Nav\ GoalTopic=goal
+Tool\ 2D\ Pose\ EstimateTopic=initialpose
+Camera\ Type=rviz::XYOrbitViewController
+Camera\ Config=1.1504 1.3522 35.4543 6.43507 -1.01244e-05 2.06064
+Property\ Grid\ State=selection=Fixed Frame;expanded=.Global Options,Laser_frente_esquerda.Enabled,Image.Enabled,Laser_frente_direita.Enabled,axes_laser_right.Enabled.axes_laser_right.StatusTopStatus,MarkerArray.Enabled,MarkerArray.Enabled.MarkerArray.StatusTopStatus,MarkerArray.Enabled.MarkerArray.Namespaces,Point Cloud2.Enabled.Point Cloud2.StatusTopStatus,front_cube.Enabled.front_cube.Namespaces,colicion_risk.Enabled.colicion_risk.Namespaces,side_cube.Enabled.side_cube.Namespaces,object_detected.Enabled,object_detected.Enabled.object_detected.Namespaces,blink_left.Enabled,blink_left.Enabled.blink_left.Namespaces,blink_right.Enabled,blink_right.Enabled.blink_right.Namespaces;scrollpos=0,0;splitterpos=243,489;ispageselected=1
+[Display0]
+Name=Axes
+Package=rviz
+ClassName=rviz::AxesDisplay
+[Display1]
+Name=Axes2
+Package=rviz
+ClassName=rviz::AxesDisplay
+[Display2]
+Name=Robot Model
+Package=rviz
+ClassName=rviz::RobotModelDisplay
+[Display3]
+Name=Laser_frente_esquerda
+Package=rviz
+ClassName=rviz::LaserScanDisplay
+[Display4]
+Name=Image
+Package=rviz
+ClassName=rviz::ImageDisplay
+[Display5]
+Name=Ground_grid
+Package=rviz
+ClassName=rviz::GridDisplay
+[Display6]
+Name=Laser_frente_direita
+Package=rviz
+ClassName=rviz::LaserScanDisplay
+[Display7]
+Name=axes_laser_right
+Package=rviz
+ClassName=rviz::AxesDisplay
+[Display8]
+Name=MarkerArray
+Package=rviz
+ClassName=rviz::MarkerArrayDisplay
+[Display9]
+Name=Point Cloud2
+Package=rviz
+ClassName=rviz::PointCloud2Display
+[Display10]
+Name=front_cube
+Package=rviz
+ClassName=rviz::MarkerDisplay
+[Display11]
+Name=colicion_risk
+Package=rviz
+ClassName=rviz::MarkerDisplay
+[Display12]
+Name=side_cube
+Package=rviz
+ClassName=rviz::MarkerDisplay
+[Display13]
+Name=object_detected
+Package=rviz
+ClassName=rviz::MarkerDisplay
+[Display14]
+Name=blink_left
+Package=rviz
+ClassName=rviz::MarkerDisplay
+[Display15]
+Name=blink_right
+Package=rviz
+ClassName=rviz::MarkerDisplay
+[Robot\:\ Robot\ Model\ Link\ ]
+[Robot\:\ Robot\ Model\ Link\ /atc]
+[Robot\:\ Robot\ Model\ Link\ /atc/camera]
+flea_foveatedShow\ Axes=0
+flea_foveatedShow\ Trail=0
+flea_peripheralShow\ Axes=0
+flea_peripheralShow\ Trail=0
+[Robot\:\ Robot\ Model\ Link\ /atc/camera/xb3]
+centerShow\ Axes=0
+centerShow\ Trail=0
+leftShow\ Axes=0
+leftShow\ Trail=0
+rightShow\ Axes=0
+rightShow\ Trail=0
+[Robot\:\ Robot\ Model\ Link\ /atc/imu]
+xsensShow\ Axes=0
+xsensShow\ Trail=0
+[Robot\:\ Robot\ Model\ Link\ /atc/laser]
+center_top_roofShow\ Axes=0
+center_top_roofShow\ Trail=0
+left_bumperShow\ Axes=0
+left_bumperShow\ Trail=0
+right_bumperShow\ Axes=0
+right_bumperShow\ Trail=0
+roof_rotatingShow\ Axes=0
+roof_rotatingShow\ Trail=0
+[Robot\:\ Robot\ Model\ Link\ /atc/ptu]
+baseShow\ Axes=0
+baseShow\ Trail=0
+pan_blockShow\ Axes=0
+pan_blockShow\ Trail=0
+tilt_blockShow\ Axes=0
+tilt_blockShow\ Trail=0
+[Robot\:\ Robot\ Model\ Link\ /atc/vehicle]
+center_bumperShow\ Axes=0
+center_bumperShow\ Trail=0
+center_car_axisShow\ Axes=0
+center_car_axisShow\ Trail=0
+groundShow\ Axes=0
+groundShow\ Trail=0
+left_wheelShow\ Axes=0
+left_wheelShow\ Trail=0
+rear_axisShow\ Axes=0
+rear_axisShow\ Trail=0
+right_wheelShow\ Axes=0
+right_wheelShow\ Trail=0

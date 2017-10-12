@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- This is a atlascar pre launch files for starting all basic functionalities-->
+
+	<!-- Launch atlacar_state launch file -->
+	 <include file="$(find atlascar_base)/launch/state.launch"/> 
+
+	<!-- Launch atlacar_base launch file -->
+<!-- 	 <include file="$(find atlascar_base)/launch/base.launch"/> -->
+	 <include file="$(find atlascar_base)/launch/main.launch"/> 
+
+	<!-- Launch atlacar_base devicemapper file -->
+	 <include file="$(find atlascar_base)/launch/device_mapper.launch"/> 
+
+</launch>

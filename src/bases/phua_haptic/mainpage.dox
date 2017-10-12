@@ -1,0 +1,45 @@
+/**
+\mainpage :: PHUA Haptic Interface ::
+\htmlinclude manifest.html
+
+\b phua_haptic_interface
+
+<p align="left">
+<b> Program description: </b>\n
+\n
+This package provides an application (and ROS node) to perform haptic control over the LAR humanoid robot.\n
+\n
+The application was designed to support three distinct haptic demonstrations and is internally separated into threads to take advantage of all available processing power and haptic joystick’s libraries, and it also possesses a custom built graphical user interface.\n
+The haptic demonstrations detail three different approaches for haptic signals integration on teleoperation events and also on enriched data logging applications.\n
+\n
+<ul> 
+<li>A workspace limitations demonstration tries to ensure that the operator does not perform incorrect motions by avoiding workspace limitations, virtualized as haptic objects.</li>
+<li>An object interaction demonstration placed the teleoperated robot interacting with a real world object.</li>
+<li>A leg balancing demonstration tries to show the usefulness of haptic signalling in balance applications.</li>
+</ul>
+\n
+The application provides control over the robot using a SensAble PHANToM OMNI haptic joystick over an RS232 connection using the HITEC BSI protocol.\n
+The interface allows the user to select the limbs or limb groups he wants to command and a set of preferences for each type of command strategies.\n
+\n
+<b> Program usage: </b>\n
+\n
+Calling the application without arguments will force the program to use the standard USB port <i>/dev/ttyUSB0</i>. If the user wishes to use another port, calling the apllication with the path to the selected port will force the program to use it.\n
+\n
+If this aspect is of no importance, and the user only wishes to see the program interface and test functions, calling the aplication with the flag "--debug" will force the program to ignore servomotor communication and joystick initialization routines.\n
+\n
+There is also a "--help" flag that prints to the console a help text for common issues and program usage.\n
+\n
+<b> ROS functionalities: </b>\n
+\n
+This node publishes the four PHANToM frames:\n
+\n
+<ul> 
+<li>Default frame.</li>
+<li>World oriented frame.</li>
+<li>Wrist frame.</li>
+<li>Pen tip frame.</li>
+</ul>
+\n
+For RViz, the node publishes a marker array with the relevant constructions. For a final version, different marker arrays for different demonstrations are recommended.\n
+\n
+*/

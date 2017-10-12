@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+ <!-- Launch pressure_cells module-->
+     <include file="$(find humanoid_control)/launch/humanoid_ph.launch"/>
+
+    <!-- Launch pressure_cells module-->
+     <include file="$(find pressure_cells)/launch/pressure_cells.launch"/>
+
+    <!-- This is a launches  haptic_force node-->
+     <include file="$(find haptic_force)/launch/haptic_force.launch"/>
+    
+</launch>

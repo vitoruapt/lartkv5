@@ -1,0 +1,20 @@
+<launch>
+<!-- Launch file to record action (First launch Atlasmv prelaunch and Atlasmv launch) -->
+  <node name="openni_node" pkg="openni_camera" type="openni_node"/>
+    <include file="$(find openni_camera)/launch/openni_node.launch"/>  
+  <node name="kinect_freq_mod" pkg="parking_detection" type="kinect_freq_mod" args="point_cloud_from_kinect:=/camera/depth/points"/>
+  <node name="pub_transformations" pkg="parking_detection" type="pub_transformations" />
+  <node name="parking_detection" pkg="parking_detection" type="parking_detection" />
+  <node name="pc_accumulation_nodelet" pkg="pc_accumulation" type="pc_accumulation_nodelet" >
+              <param name="distance_from" value="3.0" type="double"/>    <!--Was 2.5-->
+              <param name="timer_value" value="0.1" type="double"/> <!--Frequency of pub message ( sec ) -->
+              <param name="acc_frame" value="/world"/> 
+              <param name="voxel_size" value="0.03" type="double"/>
+              <param name="removed_from" value="/vehicle_odometry"/>
+			  <param name="odometry_topic" value="/vehicle_odometry"/>
+              <remap from="/pointcloud0" to="/point_cloud_input"/> 
+  </node>
+<!--                                     !( CHANGE FOLDER AND RECORDED FILE NAME)!                                      -->
+<!--                             Recording the accomulated point cloud & the transformations                            -->
+  <node name="recorder" pkg="rosbag" type="rosbag" args="record /msg_coordinates /pc_out_pointcloud /pc_parking_location /tf -O /home/mike/bagfiles/June13_two_obstacles.bag"/>  
+</launch>

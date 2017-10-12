@@ -1,0 +1,11 @@
+<launch>
+	<!-- this is comment-->
+	
+	<node name="Client" pkg="PedestrianDetect" type="client" output="screen"/>
+	<node name="Server" pkg="PedestrianDetect" type="server" output="screen"/>
+	
+	<node name="image_view" pkg="image_view" type="image_view"> 
+	   <remap from="image" to="Image_Out"/> 
+	 
+	   </node> 
+</launch>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- load robot urdf to the parameter server -->
+	<param name="robot_description" textfile="$(find atlasmv_base)/urdf/atlasmv_urdf.xml" />
+
+	<!-- launch the device_mapper -->
+	<node pkg="device_mapper" type="device_mapper" name="atlasmv_device_mapper">
+		<param name="robot_urdf_path" value="$(find atlasmv_base)/urdf/atlasmv_urdf.xml" />
+	</node>
+	
+</launch>

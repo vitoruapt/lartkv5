@@ -1,0 +1,20 @@
+/*
+@file navigation
+
+@brief
+Contains packages concerning navigation in a
+more broad approach, not included in other specific
+package sets such as planning.
+This may include following a leader, avoid obstacles
+in potential fields or RRT approaches and similar.
+It covers the steps to calculate the actual immediate
+motion directives according to some specific algorithms
+that extract information from perception and possibly
+conditioned to planning restrictions
+
+@examples
+leader_follower
+
+
+
+*/

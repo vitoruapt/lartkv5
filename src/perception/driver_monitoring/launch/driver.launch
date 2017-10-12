@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<launch>
+   <include file="$(find atlascar)/launch/prelaunch_atlascar.launch"/>
+   <include file="$(find mtt)/launch/generate_planar_pc_from_left_right_bumper_lasers.launch"/>
+   <include file="$(find mtt)/launch/mtt.launch"/>    
+   
+	<param name="/use_sim_time" type="bool" value="true" />
+
+<node  name="colision_time" pkg="driver_monitoring"  type="colision_time" />
+
+ <node name="rviz" pkg="rviz" type="rviz" args="--display-config $(find driver_monitoring)/rviz_config/rviz_final_1.vcg /tf:=/trf/frames"/>
+
+<!--     <node name="rosbag_node" pkg="rosbag" type="rosbag" args="play /media/Data/bags/following_passing/log_alboi_dep.bag -l - -clock -r  1"/>	 -->
+<!-- /media/Data/bags/following_passing/avenida_2_ultrapassagem.bag       avenida_1.bag      autoestrada_log.bag   log_alboi_dep.bag  -->
+</launch>

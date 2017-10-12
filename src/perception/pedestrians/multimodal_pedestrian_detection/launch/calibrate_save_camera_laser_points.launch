@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+    
+    <node name="Client_calibration" pkg="multimodal_pedestrian_detection" type="calibrate_save_camera_laser_points" output="screen" >
+        
+<!--         Location to save Image Points to txt -->
+        <param name="imagePoints1FileName" value="/home/asus/workingcopies/lar4/src/perception/pedestrians/multimodal_pedestrian_detect/imagePointsAuto_1280_960_xb3_semiAutomatic.txt"/>
+
+<!--         Location to save Object Points to txt -->
+        <param name="objectPoints1FileName" value="/home/asus/workingcopies/lar4/src/perception/pedestrians/multimodal_pedestrian_detect/objectPointsAuto_1280_960_xb3_semiAutomatic.txt"/>
+    
+    </node>
+    
+</launch>

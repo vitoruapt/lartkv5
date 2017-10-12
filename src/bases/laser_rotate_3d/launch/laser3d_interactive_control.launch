@@ -1,0 +1,9 @@
+<launch>
+  
+  <!-- Start the rotation of the laser -->
+  <group ns="/snr/las3d/ctrl">
+   <node pkg="laser_rotate3D" type="laser3d_interactive_control" name="node" args="state:=/trf/joints shaft:=/connect_laser_roof_rotating">
+	<remap from="/snr/las3d/ctrl/cmd" to="/snr/las3d/command"/>
+  </node>
+  </group>
+</launch>

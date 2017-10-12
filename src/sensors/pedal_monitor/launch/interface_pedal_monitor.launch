@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    
+    <node pkg="pedal_monitor" name="interface_phidgets_getdata_synchronous" type="interface_phidgets_getdata_synchronous">
+    </node>
+    
+    
+</launch> 

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<launch>
+   <!-- This is a launcher for pressure_cells pack-->
+      
+    <!-- This is a launches arduino node 1-->
+    <node name="arduino1_node" pkg="pressure_cells" type="pressure_cells">
+        <remap from="/device" to ="/device_mapper/arduino_1"/>
+        <remap from="/values" to="/arduino_1_values"/>
+        <param name="/tf_feet" value="/tf_left_feet"/>
+
+<!--
+        <param name="/markers" value="/markers_left"/>
+-->
+        <param name="/markers" value="default_markers"/>
+        
+        
+        <!--Cell Calibration--> <!--DONE-->
+        <param name="cell1" value="5"/>
+        <param name="cell2" value="3"/>
+        <param name="cell3" value="2"/>
+        <param name="cell4" value="8"/>
+    </node>
+    
+    <!-- This is a launches arduino node 2-->
+    <node name="arduino2_node" pkg="pressure_cells" type="pressure_cells">
+        <remap from="/device" to ="/device_mapper/arduino_2"/>
+        <remap from="/values" to="/arduino_2_values"/>
+        <param name="/tf_feet" value="/tf_right_feet"/>
+        
+<!--
+        <param name="/markers" value="/markers_right"/>
+-->
+        <param name="/markers" value="default_markers"/>
+        <!--Cell Calibration-->
+        <param name="cell1" value="1"/>
+        <param name="cell2" value="7"/>
+        <param name="cell3" value="6"/>
+        <param name="cell4" value="4"/>
+    </node>
+
+    <!-- This is a launches force_cop node-->
+    <node name="cop_node" pkg="pressure_cells" type="force_cop">
+        <remap from="/msg1" to="/arduino_1_values"/>
+        <remap from="/msg2" to="/arduino_2_values"/>
+        <remap from="/cop" to="/cop_left_right"/>
+        <remap from="/cop1" to="/cop_left"/>
+        <remap from="/cop2" to="/cop_right"/>
+        <param name="/tf_feet_l" value="/tf_left_feet"/>
+        <param name="/tf_feet_r" value="/tf_right_feet"/>
+        
+        <param name="/markers" value="/markers_cop"/>
+<!--
+        <param name="/markers" value="default_markers"/>
+-->
+
+        
+        <param name="/feet_level" value="/feet_level_ok"/>
+<!--
+        <param name="/feet_level" value="feet_level_default"/>
+-->
+        
+    </node>
+
+</launch>

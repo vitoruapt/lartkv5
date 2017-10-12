@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+    
+<!--    <node name="optoelectic_vehicle_base" pkg="optoelectric" type="orientation_base">
+        <param name="parameters" value="package://optoelectric/calibrations/atlascar.yaml"/>
+    </node>-->
+
+   <node name="optoelectic_vehicle_calibration" pkg="optoelectric" type="orientation_calibration">
+        <param name="parameters" value="package://optoelectric/calibrations/atlascar.yaml"/>
+    </node>
+
+</launch>

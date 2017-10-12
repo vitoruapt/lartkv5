@@ -1,0 +1,7 @@
+\subsubsection usage Usage
+\verbatim
+<node name="xb3" pkg="xb3" type="xb3">
+  <param name="min_ang" type="double" value="-1.57079632679" />
+</node>
+\endverbatim
+

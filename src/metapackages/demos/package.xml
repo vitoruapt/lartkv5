@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package>
+  <name>demos</name>
+  <version>5.0.0</version>
+  <description>
+     Contains packages regarding demonstrations,
+including the required launch files as well
+as instructions or other launch files from
+other packages or applications.
+  </description>
+  <maintainer email="dem-atlas-admin@ua.pt">vsantos</maintainer>
+  <license>BSD</license>
+  <export>
+    <metapackage/>
+  </export>
+  <buildtool_depend>catkin</buildtool_depend>
+
+    <run_depend>follow_pedestrian</run_depend>
+  <run_depend>laser_scan_to_text</run_depend>
+
+</package>

@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<launch>
+
+	<!-- Remap the maneuvers topics to coincide with the manager -->
+	<remap from="maneuvers/command_msg" to="manager/command"/>
+	<remap from="maneuvers/status" to="manager/status"/>
+
+	<!-- Launch the manager_gui -->
+	<node pkg="atlascar_base" name="maneuvers" type="maneuvers"/>
+	
+	<!-- Remap the manager topics to the individual modules -->
+	<remap from="manager/plc_command" to="plc/command"/> -->
+	<remap from="manager/plc_status" to="plc/status"/> -->
+	<remap from="manager/gearbox_command" to="gearbox/command"/>
+	<remap from="manager/gearbox_status" to="gearbox/status"/>
+	<remap from="manager/throttle_command" to="throttle/command"/>
+	<remap from="manager/throttle_status" to="throttle/status"/>
+	<remap from="manager/driver_status" to="human_driver_monitor/status"/>
+	<remap from="manager/odometer_status" to="odometer/status"/> 
+	
+	<!-- Launch the manager -->
+	<node pkg="atlascar_base" name="manager" type="manager" />
+    
+    <!-- Launch all the individual systems -->
+    <!-- Launch the plc node -->
+	<node pkg="atlascar_base" name="plc" type="plc" >
+		<param name="server_port" value="2000" type="string"/>
+		<param name="server_ip" value="10.0.0.5"/>
+		
+		<param name="steering_wheel_from_plc_min" value="3.94"/>
+		<param name="steering_wheel_from_plc_max" value="-2.35"/>
+
+		<param name="steering_wheel_from_plc_rad_min" value="-9.7"/>
+		<param name="steering_wheel_from_plc_rad_max" value="9.2"/>
+		
+		<param name="steering_wheel_to_plc_min" value="4.4"/>
+		<param name="steering_wheel_to_plc_max" value="0.3"/>
+
+		<param name="steering_wheel_to_plc_rad_min" value="-0.5"/>
+		<param name="steering_wheel_to_plc_rad_max" value="0.5"/>
+		
+		<param name="brake_plc_min" value="0.0001"/>
+		<param name="brake_plc_max" value="0.080"/>
+
+		<param name="clutch_plc_min" value="50.0"/>
+		<param name="clutch_plc_max" value="51.0"/>
+	</node>
+	
+    <!-- Launch the odometer node -->
+	<include file="$(find odometer)/launch/monitor.launch"/>
+    
+    <!-- Launch the human_driver_monitor node -->
+<!--     <include file="$(find human_driver_monitor)/launch/monitor.launch"/> This file does not exists both in lar3 or lar4, probably only in the atlascar -->
+		
+	<node pkg="atlascar_base" name="gearbox" type="gearbox" />
+<!-- 		<param name="server_ip_gearbox" value="10.0.0.213"/> -->
+<!-- 		<param name="server_port_gearbox" value="120" type="string"/> -->
+		
+	<node pkg="atlascar_base" name="throttle" type="throttle">
+		<param name="server_ip" value="10.0.0.55"/>
+		<param name="server_port" value="1000" type="string"/>  
+<!-- 			<param name="server_ip" value="192.168.192.135"/>   -->
+<!-- 			<param name="server_port" value="1500" type="string"/>   -->
+	</node>
+
+	<!-- Remap the remote_monitor status topics to coincide with the manager -->
+<!-- 	<remap from="remote_monitor/manager_status" to="manager/status" /> -->
+	
+	<!-- Launch the remote_monitor node -->
+<!-- 	<include file="$(find remote_monitor)/launch/monitor.launch"/> -->
+
+		<!-- Launch the diagnostics agregator -->
+	<node pkg="diagnostic_aggregator" type="aggregator_node" name="diagnostic_aggregator" >
+		<rosparam command="load" file="$(find atlascar_base)/diagnostic/atlascar_diagnostics_aggregator.yaml" />
+	</node>
+	
+	<node pkg="rqt_robot_monitor" name="monitor" type="rqt_robot_monitor" />
+	
+</launch> 

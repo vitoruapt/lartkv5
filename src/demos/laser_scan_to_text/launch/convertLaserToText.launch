@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+	<!-- This is a atlascar_teleop launch files for starting up -->
+
+	<!-- the following file is used when is necessary to include another launch file-->
+	<!-- <include file="$(find pkg-name)/launch/filename.xml"/> -->
+
+<!--		<remap from="/joy" to="/atc/hmi/gamepad"/>
+		<remap from="/cmd_out" to="/atc/base/command"/>
+		<remap from="/joy_node/dev" to="/device_mapper/atc/bases/gamepad"/>-->
+		
+    <node pkg="laser_scan_to_text" name="laser_writer" type="laser_writer" args="laserScan:=/atc/laser/left_bumper/laser_scan" />
+		
+</launch>

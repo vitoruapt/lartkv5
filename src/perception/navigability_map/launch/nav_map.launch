@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<launch>
+	<group ns="/navigability_map">
+
+		<!-- Remmaping topics-->
+		<remap from="/pointcloud0" to="/snr/las3d/fus/pointcloud"/>
+		
+		<node name="nav_map" pkg="navigability_map" type="nav_map">
+			
+			<!-- 	PARAM		 -->
+			<param name="output_frequency" value="200.0"/>
+			
+			<!-- 	PointCloud distance filters	 -->
+			<param name="PointCLoud_Xmin_filter" type="double" value="0"/>
+			<param name="PointCLoud_Xmax_filter" type="double" value="25.0"/>
+			<param name="PointCLoud_Ymax_filter" type="double" value="25.0"/>
+			<param name="PointCLoud_Ymin_filter" type="double" value="-25.0"/>
+			<param name="PointCLoud_Zmax_filter" type="double" value="2"/>
+			<param name="PointCLoud_Zmin_filter" type="double" value="-10.0"/>
+			
+			<!-- 	Cells dimension	     -->
+			<param name="Grid_Sx" type="double" value="0.35"/>
+			<param name="Grid_Sy" type="double" value="0.35"/>
+			
+			<!-- 	Normal Estimation	 -->
+			<param name="Radius_neighbors" type="double" value="0.4"/>
+			<param name="K_neighbors" type="int" value="20"/>
+			<!-- 1 - Use radius search method;
+				 0 - Use neighbours search method -->
+			<param name="Use_Radius_Search" type="int" value="1"/>
+			
+			<!-- 	Acessibility  thresholds	   -->
+			<param name="Zmax_heigh_difference" type="double" value="0.1"/>
+			<param name="angleX_max_difference" type="double" value="0.2"/>
+			<param name="angleY_max_difference" type="double" value="0.2"/>
+			<param name="angleZ_max_difference" type="double" value="0.2"/>
+			
+			<!-- 	Confidence value for a cell with 1 point	 -->
+			<param name="default_confidence" type="double" value="0.5"/>
+			
+			<!-- 	Normalization constants for the confidence	 -->
+			<param name="Standard_Deviation_max_confidence" type="double" value="0.4"/>
+			<param name="Standard_Deviation_anglex_max_confidence" type="double" value="0.8"/>
+			<param name="Standard_Deviation_angley_max_confidence" type="double" value="0.8"/>
+			<param name="Standard_Deviation_anglez_max_confidence" type="double" value="0.8"/>
+			
+			<param name="fator_confidence_neighbour_limit" type="double" value="1"/>
+			
+			<!-- 1 - Z accessibility;
+				 2 - Angle X accessibility
+				 3 - Angle Y accessibility
+				 4 - Angle Z accessibility 
+				 5 - Total accessibility -->
+			<param name="debug_accessibility" type="int" value="5"/>	
+			
+		</node>
+	</group>	
+</launch>

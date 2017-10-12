@@ -1,0 +1,39 @@
+pub_rate: 1.0 # Optional
+analyzers:
+  odometer:
+    type: diagnostic_aggregator/GenericAnalyzer
+    path: Base/Odometer
+    find_and_remove_prefix: vhc base velocity
+    number_itens: 1
+    contains: [
+    'Odometer',
+    ]
+  throttle:
+    type: diagnostic_aggregator/GenericAnalyzer
+    path: Base/Throttle
+    find_and_remove_prefix: vhc base throttle
+    contains: [
+    'Throttle',
+    ]
+  driver:
+    type: diagnostic_aggregator/GenericAnalyzer
+    path: Base/Driver
+    find_and_remove_prefix: vhc base driver
+    contains: [
+    'Driver',
+    ]  
+  plc:
+    type: diagnostic_aggregator/GenericAnalyzer
+    path: Base/Plc
+    find_and_remove_prefix: vhc base plc
+    contains: [
+    'Plc',
+    ]  
+
+  gearbox:
+    type: diagnostic_aggregator/GenericAnalyzer
+    path: Base/Gearbox
+    find_and_remove_prefix: vhc base gearbox
+    contains: [
+    'Gearbox',
+    ]

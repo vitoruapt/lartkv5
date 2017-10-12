@@ -1,0 +1,10 @@
+<launch>
+     <node name="rosbag_node" pkg="rosbag" type="rosbag" args="play /home/artur/ros_workspace/bags/following_passing/log_alboi_dep.bag -l --clock -r  1">
+		
+		<remap from="/partial_status" to="/vhc/driver/status"/>  
+		<remap from="/atc/base/status/plc" to="/vhc/plc/status"/>  
+		<remap from="/velocity_status" to="/vhc/velocity/status"/>  
+      </node>
+
+<!-- /media/Data/bags/following_passing/avenida_2_ultrapassagem.bag       avenida_1.bag      autoestrada_log.bag   log_alboi_dep.bag  -->
+</launch>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- this is comment-->
+    
+    <node name="Client_threshold_imshow" pkg="multimodal_pedestrian_detection" type="threshold_imshow" output="screen">  </node>
+    
+</launch>

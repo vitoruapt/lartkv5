@@ -1,0 +1,20 @@
+/**
+\mainpage haptic_force Module
+\htmlinclude manifest.html
+
+\b haptic_force 
+
+<!-- 
+Provide an overview of your package.
+-->
+
+<p align="left">
+<b> Package description: </b>\n
+\n
+This package transforms the sensors informations to force feedback for the Phantom joystick controled by phantom_control\n
+\n
+WRITE MORE STUFF!!!\n
+\n
+
+
+*/

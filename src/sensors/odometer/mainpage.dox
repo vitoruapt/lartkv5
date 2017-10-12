@@ -1,0 +1,15 @@
+/**
+\mainpage Odometer
+\htmlinclude manifest.html
+
+This package receives velocity information from the Atlascar wheel encoder and its associated Arduino pulse counter.
+
+This package establishes a Ethernet communication with the Arduino server, it receives the number of pulses per second, the number of revolutions per second, the velocity of the vehicle and finally the simple counter value.
+
+This module publishes a locally defined status message with the received information.\n
+This module receives data at a weired rate of 9hz.\n
+
+The module makes use of the ros::diagnostics to publish the status of the Ethernet connection.\n
+On some occasions the Arduino takes a few seconds to start sending data.
+
+*/

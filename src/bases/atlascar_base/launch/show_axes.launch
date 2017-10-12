@@ -1,0 +1,14 @@
+<launch>
+	<!-- This is an atlascar launch file for showing all the axes with labes -->
+
+
+<!--	<node pkg="atlascar_base" name="atlascar_transforms" type="atlascar_transforms"/> -->
+
+	<!-- launch the device_mapper -->
+	<node pkg="atlascar_base" type="show_axes" name="show_axes_node" >
+	</node>
+
+	<!-- Launch rviz with the propper parameters for loading the atlascar rviz configuration file -->
+		<node name="rviz" pkg="rviz" type="rviz" args="--display-config $(find atlascar_base)/rvizconfig/show_axes.vcg /tf:=/trf/frames"/>
+
+</launch>

@@ -1,0 +1,10 @@
+<launch>
+  <!-- This is an arpua lauch file for starting up xb3. -->
+  <group ns="/snr/scam">
+    <node name="xb3" pkg="xb3" type="xb3">
+	<remap from="/xb3_optical_frame" to="/atc/camera/xb3/left"/>  
+  </node>
+	<param name="width" type="int" value="640"  />
+	<param name="height" type="int" value="480"  />
+</group>
+</launch>

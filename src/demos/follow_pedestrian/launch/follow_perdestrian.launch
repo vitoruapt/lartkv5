@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- Launch /atc/camera/right_roof/foveated -->
+	<include file="$(find mtt)/launch/generate_planar_pc_from_left_right_bumper_lasers.launch"/>
+	<include file="$(find mtt)/launch/mtt.launch"/>
+
+	<!--<include file="$(find foveation_control)/launch/foveation_control_atlascar.launch"/>-->
+
+  <node name="follow_pedestrian_node" pkg="follow_pedestrian" type="follow_pedestrian" >
+	<remap from="/follow_pedestrian_markers" to="/follow_pedestrian_node/markers"/>
+  </node>
+
+  <node name="sound_play_node" pkg="sound_play" type="soundplay_node.py" >
+  </node>
+
+	<!-- Launch rviz with the propper parameters for loading the atlascar rviz configuration file -->
+		<node name="rviz" pkg="rviz" type="rviz" args=" --display-config $(find follow_pedestrian)/rvizconfig/rviz.vcg"/>
+
+</launch>

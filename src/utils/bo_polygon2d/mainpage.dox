@@ -1,0 +1,10 @@
+/**
+\mainpage Boolean operations in polygons in 2D
+\htmlinclude manifest.html
+
+bo_polygon2d is a toolbox that uses libcgal to compute bolean operations over
+polygons. 
+The package provides conversion tools to convert pcl point clouds to cgal
+representatiosn, make the operatiosn in cgal, and then reconvert to pcl format.
+
+*/

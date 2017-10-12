@@ -1,0 +1,6 @@
+<launch>
+		<remap from="remote_monitor/gps_fix" to="/snr/gps/extended_fix" />
+		<remap from="remote_monitor/nav_sat_fix" to="/snr/gps/fix" />
+			
+		<node pkg="remote_monitor" name="remote_monitor" type="remote_monitor" />		
+</launch>

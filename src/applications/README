@@ -1,0 +1,14 @@
+/*
+@file applications
+
+@brief
+Contains the launch files/commands to deploy applications.
+This also include some base procedures for demonstrations, 
+for example. No source code is expected in this package set. 
+
+@examples
+atlascar system pre-launch
+launch sensors in atlascar
+launch processing algorithms in atlascar
+
+*/

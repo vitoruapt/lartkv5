@@ -1,0 +1,46 @@
+ATLASCAR Hardware systems
+
+CONTROL AND MONITOR
+======================
+Steering  - base defines limits. ]0.3, 4.7[ Volt
+		Isolate contacts (Zé)
+		Remains assymetric control...
+
+Laser 3D rotater - 
+Brake pedal - 
+Clutch pedal -
+Manual brake -  NOT OK (relocate/operate)
+actuate lights - Check (Zé)
+Ignition -  Check PLC (put software in SVN)
+Throtle  - (new command - launch files - remap needed - Gonçalo checks codei + new 9V regulator)
+PTU control - 
+
+Automatic gear changer (in development)
+
+---AUX SYSTEMS---
+E-stop
+Emergency buttons
+Automatic selectors
+
+
+
+MONITOR
+========
+RPM   - 
+Odometer  - 
+Optoelectric leveling - (CHECK! - power off??)
+IMU-xsens  - 
+LRF 2D-SICK (2X) - 
+LRF 2D-Hokuyo - (Where is power cable? Data cable poor contact?)) 
+LRF 3D Sick -  
+Flea camera wide
+Flea camera tele
+Xb3 camera RGB
+Xb3 camera disparity
+Brake pedal pressure
+Clutch pedal pressure
+GPS receiver 
+
+
+
+DEMO - missing base operation manager

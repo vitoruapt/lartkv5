@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<launch>
+    
+    <node name="optoelectic_vehicle_base" pkg="optoelectric" type="orientation_base">
+        <param name="parameters" value="package://optoelectric/calibrations/atlascar.yaml"/>
+    </node>
+    
+    
+    <!-- Launch the odometer node -->
+    <include file="$(find odometer)/launch/monitor.launch"/>
+    
+    <node pkg="atlascar_base" name="plc" type="plc" >
+        <param name="server_port" value="2000" type="string"/>
+        <param name="server_ip" value="10.0.0.5"/>
+        
+        <param name="steering_wheel_from_plc_min" value="3.94"/>
+        <param name="steering_wheel_from_plc_max" value="-2.35"/>
+        
+        <param name="steering_wheel_from_plc_rad_min" value="-9.7"/>
+        <param name="steering_wheel_from_plc_rad_max" value="9.2"/>
+        
+        <param name="steering_wheel_to_plc_min" value="4.4"/>
+        <param name="steering_wheel_to_plc_max" value="0.3"/>
+        
+        <param name="steering_wheel_to_plc_rad_min" value="-0.5"/>
+        <param name="steering_wheel_to_plc_rad_max" value="0.5"/>
+        
+        <param name="brake_plc_min" value="0.0001"/>
+        <param name="brake_plc_max" value="0.080"/>
+        
+        <param name="clutch_plc_min" value="50.0"/>
+        <param name="clutch_plc_max" value="51.0"/>
+    </node>
+    
+    <node pkg="rosbag" type="record" name="rosbag_record"
+    args="record -o /home/atlascar/Desktop/goncalo_carpinteiro/
+    
+    /optoelectic_vehicle_base/sharp_0
+    /optoelectic_vehicle_base/sharp_1
+    /optoelectic_vehicle_base/sharp_2
+    /optoelectic_vehicle_base/sharp_3
+    /optoelectic_vehicle_base/sharp_4
+    /optoelectic_vehicle_base/sharp_5
+    /optoelectic_vehicle_base/sharp_6
+    /optoelectic_vehicle_base/sharp_7
+    /odometer/status
+    /plc/status
+    
+    "/>
+        
+</launch>

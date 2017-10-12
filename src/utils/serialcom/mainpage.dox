@@ -1,0 +1,8 @@
+/**
+\mainpage
+\htmlinclude manifest.html
+
+\section codeapi SerialCom Code API
+\link serialcom::SerialCom SerialCom (C++) \endlink
+
+*/

@@ -1,0 +1,24 @@
+/*
+@file sensors
+
+@brief
+Contains packages concerning interface with sensors
+without any dedicated data processing. The packages
+connect to hardware or use other packages that interface
+the low level (data acquisition from sensors and similar
+devices). Occasionally, these packages may produce
+several representations of the same data, such as polar
+and cartesian measurements from environment.
+
+@examples
+camera
+fusion
+gps
+human_driver_monitor
+imu
+laser
+odometer
+optoelectric
+pressure_cells
+pedal_monitor
+*/

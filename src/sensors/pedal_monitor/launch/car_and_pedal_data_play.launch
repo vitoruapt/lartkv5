@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+    
+    
+<!--    <node pkg="rosbag" type="play" name="rosbag_play"
+    args="/media/Data/Data_Record/pedro_mendes/bag1_2014-06-12-17-05-26_SERGIO.bag -l"/>-->
+        <node pkg="rosbag" type="play" name="rosbag_play"
+	args="/home/atlascar/Desktop/pedro_mendes/bag1_2014-06-17-15-43-12.bag"/>
+    
+    
+    <node name="node" pkg="mtt" type="mtt_new_msg">
+<!--     <remap from="/points" to="/pcp/fus/planar_pc/points"/> -->
+    <remap from="/points" to="/scan_cloud"/>
+    <!--<remap from="/markers" to="/ids"/>-->
+  </node>
+    
+    
+<!--     <node name="rqt_graph" pkg="rqt_graph" type="rqt_graph" output="screen"></node> -->
+ <!--    -->
+</launch>

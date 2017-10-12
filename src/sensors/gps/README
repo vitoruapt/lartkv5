@@ -1,0 +1,64 @@
+This would be the procedure to install and compile
+the gps-umd package locally, but you can bypass
+it and install the ROS integrated version.
+Anyway, a few common things have to be done. See below:
+=========== LOCAL WAY ===================
+Stack gps_utm downloaded with
+	git clone git://ram.umd.edu/ros/gps_umd.git
+As can be seen in rosdep.yaml, the following 
+package has to be installed:
+	sudo apt-get install libgps-dev
+Then simply perform a rosmake
+=========== END OF LOCAL WAY ===================
+
+====GLOBAL WAY ===============
+
+sudo apt-get install ros-<distro>-gps-umd
+
+You can also install simple nmea drivers that do not
+require the gpsd to be running:
+	sudo apt-get install ros-<distro>-gps-drivers
+*Actually this did not work. Save your time....*
+
+=== COMMON CONCERNS =================
+
+The gpsd_client (from gps-umd) obtains data after gpsd 
+deamon in the operating system: if not installed/running
+install it with:
+	sudo apt-get install gpsd
+Then configure it:
+	dpkg-reconfigure gpsd
+to change the options into something like:
+	START_DAEMON="true"
+	GPSD_OPTIONS=""
+	DEVICES=""
+	USBAUTO="false"   # "true" to make autodetection of USB port!
+	GPSD_SOCKET="/var/run/gpsd.sock"
+If you do not want the gpsd scramble your serial ports,
+then do not allow auto USB detection and impose your
+serial port manually, e.g.
+	gpsd /dev/ttyUSB0
+But if you feel it's OK, use the automatic detection
+by the system. use: USBAUTO="true"
+(risk - conflict with other USB devices already
+on the system)
+
+You can test if GPS is operational by running
+several tools such as xgps... you should see
+a map of satelites... :-)
+
+The gps_umd ROS stack includes two packages:
+	gpsd_client
+		includes the gpsd_client node and some other unused node
+	gps_common 
+		includes the utm_odometry_node node 
+
+In some GPS receivers there is a problem with GPS time so
+the command must be invoked setting the gps_time as false.
+The actual command is something like this:
+	rosrun gpsd_client gpsd_client _host:=localhost _port:=2947 _use_gps_time:=false
+Port is the default. May be changed.
+
+So a launch file has been created to easily launch this gpsd_client
+
+V. Santos, 14-Mai-2013

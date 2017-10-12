@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- This is a launch file for recording the topics for my thesys  -->
+    
+  <node pkg="rosbag" type="rosbag" name="rosbag_record"
+   args="record -o /home/atlascar/Desktop/bags/bags_TMP
+
+	/trf/frames
+	/trf/joints
+	/vhc/driver/status
+	/vhc/gps/odom
+	/vhc/plc/command
+	/vhc/plc/status
+	/vhc/velocity/status
+
+	/snr/scam/short/left/image_color
+
+	/snr/las/0/scan
+	/snr/las/1/scan
+	/snr/las/2/scan
+	/snr/las/3/scan
+
+"/>
+
+
+</launch>
+
+
+

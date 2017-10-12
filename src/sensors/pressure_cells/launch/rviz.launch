@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+   <!-- This is a launcher for arduino pack w/ RViz-->
+   
+   <!-- This launches the Rviz module with the corect configurations-->
+    <node name="rviz" pkg="rviz" type="rviz" args="--display-config $(find pressure_cells)/rviz_config/rviz_view_force_cop.vcg"/>
+</launch>

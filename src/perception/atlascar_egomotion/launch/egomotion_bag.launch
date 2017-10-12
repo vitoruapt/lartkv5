@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<launch>
+<!--<include file="$(find atlascar)/launch/prelaunch_atlascar.launch"/>-->
+   <include file="$(find atlascar_base)/launch/state.launch"/>
+	 <param name="/use_sim_time" type="bool" value="true" />
+       <!-- launch node to calculate odometry-->
+	<node pkg="atlascar_base" name="odometry_node" type="odometry"/>
+	
+       <!-- launch node to calculate the car pose and attitude to the ground-->
+       <node pkg="atlascar_egomotion" type="car_attitude2ground_node" name="car_attitude2ground">
+                <remap from="/tf" to="/trf/frames"/>
+       </node>
+	<!-- launch the node responsible to add covariance to imu and odometry data to be used by robot_pose_ekf node-->
+       <node pkg="atlascar_egomotion" type="add_imu_odom_cov" name="imu_odometry_cov">
+              <remap from="odom" to="/odom_robot_ekf"/>
+                <remap from="/tf" to="/trf/frames"/>
+       </node>
+	<!--Launch the node responsible to fuse all the data to Egomotion -->
+       <node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
+              <param name="output_frame" value="/world"/>
+              <param name="freq" value="10.0"/>
+              <param name="sensor_timeout" value="3.0"/>
+              <param name="odom_used" value="true"/>
+              <param name="imu_used" value="true"/>
+              <param name="vo_used" value="false"/>
+              <param name="debug" value="true"/>
+              <param name="self_diagnose" value="true"/>
+              <remap from="imu_data" to="/imu_data"/>
+              <remap from="vo" to="/vo"/>
+              <remap from="odom" to="/odom_robot_ekf"/>
+                <remap from="/tf" to="/trf/frames"/>
+        </node>
+	
+	<node pkg="atlascar_egomotion" type="ground_attitude2world_node" name="ground_attitude2world">
+                <remap from="/tf" to="/trf/frames"/>
+        </node>
+	<!--Launch the node to accumulate the pointcloud -->
+	<node name="pc_accumulation_nodelet" pkg="pc_accumulation" type="pc_accumulation_nodelet" >
+              <param name="distance_from" value="8" type="double"/>
+              <param name="timer_value" value="0.1" type="double"/>
+              <param name="acc_frame" value="/world"/>
+              <param name="voxel_size" value="0.15" type="double"/>
+ <!--             <param name="removed_from" value="/atc/vehicle/center_car_axis"/>-->
+              <param name="removed_from" value="/ground"/>
+              <param name="odometry_topic" value="/vhc/odometry"/>
+              <remap from="/laserscan0" to="/snr/las/1/scan"/>
+        <!--      <remap from="/laserscan0" to="/atc/laser/center_top_roof/laser_scan"/>-->
+        <!--      <remap from="/pointcloud0" to="/xb3_short/points2"/>-->
+                <remap from="/tf" to="/trf/frames"/>
+	</node>
+
+            <node name="rviz" pkg="rviz" type="rviz" args="--display-config $(find atlascar_egomotion)/rviz.vcg /tf:=/trf/frames"/>
+
+
+</launch>
+                                                 

@@ -1,0 +1,162 @@
+/**
+\mainpage pointcloud_segmentation. A package with tools to handle pointcloud data
+\htmlinclude manifest.html
+
+\b pointcloud_segmentation is a package that provides some tools to segment 
+3D pointclouds. A detailed description about c++ node classes and nodelets 
+are given below.
+
+
+<h1>  Table of contents  </h1>
+
+<ol>
+    <li> <a href="#nodelets"> How to use the nodelets  </a> </li>
+    <ul>
+	<li> <a href="#filtering_nodelet"> filtering_nodelet  </a> </li>
+	<li> <a href="#laser_to_pc_nodelet"> laser_to_pc_nodelet  </a> </li>
+	<li> <a href="#plane_road_extraction_nodelet"> plane_road_extraction_nodelet  </a> </li>
+	<li> <a href="#euclidean_cluster_nodelet"> euclidean_cluster_nodelet  </a> </li>
+	<li> <a href="#region_growing_nodelet"> region_growing_nodelet  </a> </li>
+    </ul> 
+    <li> <a href="#classes"> The node classes  </a> </li>
+    <ul>
+    <li> <a href="#filtering"> filtering </a> </li>
+	<li> <a href="#plane_road_extraction"> plane_road_extraction </a> </li>
+	<li> <a href="#euclidean_cluster_extraction"> euclidean_cluster_extraction </a> </li>
+	<li> <a href="#region_growing_node"> region_growing_node </a> </li>
+    </ul> 
+    <li> <a href="#nodes"> Other usefull classes  </a> </li>
+    <ul>
+	<li> <a href="#region_growing"> region_growing </a> </li>
+	<li> <a href="#markers"> markers </a> </li>
+    </ul>
+</ol>
+
+
+
+
+<h1> <a name="nodelets">  How to use the nodelets </a> </h1>
+
+Here is a brief description on how to use the nodelets and node classes.
+
+<h2> <a name="filtering_nodelet"> filtering_nodelet </a> </h2>
+
+This node will take a message of type sensor_msg::PointCloud2 and pass a voxel grid filter and 
+a volume filter. Usefull tool for stereo pointclouds.
+
+\code
+       <!-- FILTER XB3 POINT CLOUD -->
+       <node name="cloud_filtering" pkg="pointcloud_segmentation" type="filtering_nodelet" >
+	   <param name="pointcloud_input" type="string" value="/snr/scam/wide/points2" />
+	   <param name="pointcloud_output" type="string" value="/snr/scam/wide/filtered/points2" />
+	   <param name="frame_id" type="string" value="/atc/vehicle/center_bumper" />
+	   <param name="voxel_size" type="double" value="0.05" />   Voxel resolution
+	   <param name="min_x" type="double" value="0.0" />         Min for x value relatively to /atc/vehicle/center_bumper
+	   <param name="max_x" type="double" value="15.0" />        Max for x value relatively to /atc/vehicle/center_bumper
+	   <param name="min_y" type="double" value="-8.0" />        Min for y value relatively to /atc/vehicle/center_bumper
+	   <param name="max_y" type="double" value="8.0" />         Max for y value relatively to /atc/vehicle/center_bumper
+	   <param name="min_z" type="double" value="-0.5" />        Min for z value relatively to /atc/vehicle/center_bumper
+	   <param name="max_z" type="double" value="5.0" />         Max for z value relatively to /atc/vehicle/center_bumper
+       </node>
+\endcode
+
+
+<h2> <a name="laser_to_pc_nodelet"> laser_to_pc_nodelet </a> </h2>
+
+Actualy this nodelet is similar to filtering_nodelet but it accepts only laser_scan instead of pointclouds
+
+\code
+<h2> <a name="laser_to_pc_nodelet"> laser_to_pc_nodelet </a> </h2>
+    <node name="laser_to_cloud" pkg="pointcloud_segmentation" type="laser_to_pc_nodelet">
+	<param name="laser_input" type="string" value="/snr/las/2/scan" />
+	<param name="pointcloud_output" type="string" value="/snr/las/2/filtered/points2" />
+	<param name="frame_id" type="string" value="/atc/vehicle/center_bumper" />
+	<param name="min_x" type="double" value="0.0" />
+	<param name="max_x" type="double" value="15.0" />    
+	<param name="min_y" type="double" value="-8.0" />    
+	<param name="max_y" type="double" value="8.0" />    
+	<param name="min_z" type="double" value="-0.5" />    
+	<param name="max_z" type="double" value="5.0" />    
+    </node>
+\endcode
+
+
+<h2> <a name="plane_road_extraction_nodelet"> plane_road_extraction_nodelet </a> </h2>
+
+This nodelet requires the use of package plane_model_road_segmentation to make a RANSAC model
+for road plane. It will accept a message of type sensor_msg::PointCloud2 and return two messages:
+one with road pointcloud and other with the rest of the points.
+
+\code
+       <!-- PLANE MODEL ROAD SEGMENTATION     -->
+       <node name="plane_model_road_extraction" pkg="pointcloud_segmentation" type="plane_road_extraction_nodelet">
+	   <param name="pointcloud_input" type="string" value="/snr/scam/wide/filtered/points2" />
+	   <param name="pointcloud_road" type="string" value="/snr/scam/wide/road/points2" />
+	   <param name="pointcloud_clusters" type="string" value="/snr/scam/wide/clusters/points2" />
+	   <param name="z_min" type="double" value="-0.5" />    Minimum value for road extraction value
+	   <param name="z_max" type="double" value="0.15" />    Maximum value for road extraction value
+	   <param name="threshold" type="double" value="0.15" />    Threshold limit for plane_model_road_segmentation class. see /lar3/utils/plane_model_road_segmentation
+       </node>
+\endcode
+
+<h2> <a name="euclidean_cluster_nodelet"> euclidean_cluster_nodelet </a> </h2>
+
+This nodelet will accept a pointcloud for euclidean segmentation. It will assume that the input data is already
+pre-processed and there is no contact between obstacles so you can set properly your parameters.
+
+\code
+ <!--   EUCLIDEAN CLUSTERING      -->
+   <node name="euclidean_cluster" pkg="pointcloud_segmentation" type="euclidean_cluster_nodelet">
+       <param name="pointcloud_input" type="string" value="/snr/scam/wide/clusters/points2" />
+       <param name="cluster_markers" type="string" value="/environment/clusters/marker" />
+       <param name="cluster_markers_text" type="string" value="/environment/clusters/info" />
+       <param name="cluster_tolerance" type="double" value="0.5" />
+       <param name="min_cluster_size" type="double" value="5" />
+       <param name="max_cluster_size" type="double" value="10000" />
+   </node>
+
+\endcode
+
+<h2> <a name="region_growing_nodelet"> region_growing_nodelet </a> </h2>
+
+This nodelet have as input two diferent pointclouds: one is from a laserscan or similar to make
+euclidean cluster segmentation, and then it will accept a 3D pointcloud for neighboor search.
+
+
+\code
+<!--  REGION GROWING -->
+<node name="region_growing" pkg="pointcloud_segmentation" type="region_growing_nodelet">
+    <param name="pointcloud_input" type="string" value="/snr/scam/wide/clusters/points2" />
+    <param name="laser_input" type="string" value="/snr/las/2/filtered/points2" />
+    <param name="cluster_markers" type="string" value="/environment/clusters/markers" />
+    <param name="cluster_markers_text" type="string" value="/environment/clusters/info" />
+    <param name="min_cluster_size" type="double" value="2" />
+    <param name="max_cluster_size" type="double" value="1000" />
+    <param name="clustering_tolerance" type="double" value="1.0" />
+    <param name="radius" type="double" value="0.5" />
+</node>
+\endcode
+
+<h1> <a name="nodes"> The node classes </a> </h1>
+
+If you need to configure your own nodelets for other applications you can use the class nodes
+as well. Each nodelet uses a c++ class and you can use them as your own will :)
+
+<h2> <a name="filtering"> filtering </a> </h2>
+
+<h2> <a name="plane_road_extraction"> plane_road_extraction </a> </h2>
+
+<h2> <a name="euclidean_cluster_extraction"> euclidean_cluster_extraction </a> </h2>
+
+<h2> <a name="region_growing_node"> region_growing_node </a> </h2>
+
+
+
+<h1> <a name="classes"> Other usefull classes </a> </h1>
+
+<h2> <a name="region_growing"> region_growing </a> </h2>
+
+<h2> <a name="markers"> markers </a> </h2>
+
+
+*/

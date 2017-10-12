@@ -1,0 +1,24 @@
+/**
+\mainpage pressure_cells Module
+\htmlinclude manifest.html
+
+\b pressure_cells
+
+<!-- 
+Provide an overview of your package.
+-->
+
+<p align="left">
+<b> Package description: </b>\n
+\n
+This package provides the readings of the Load Cells installed in the feet of the LAR humanoid robot.\n
+\n
+The readings come from two Arduinos Fio by Serial Port, 5 Bytes each measurement/Arduino.\n
+Each Arduinos reads from 4 analog pins after the Load Cell's signals are amplified.\n
+The package has two binaries: pressure_cells and force_cop.\n
+The pressure_cells binary reads the 5 bytes sent by the Arduinos and publish a message with there scaled value. The pressure_cells.launch file launches 
+2 binaries, one for each Arduino. The Ports are remapped by the launcher and obtained by the usage of the device_mapper package that is launched by a pre_pressure_cells.launch file.\n
+\n
+</p>
+*/
+

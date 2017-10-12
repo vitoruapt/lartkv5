@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- This is an xb3 lauch file for starting up xb3 and viewing stereo disparity map. -->
+
+  <!--call xb3 launch file -->
+  <include file="$(find xb3)/launch/xb3.launch" /> 
+ 
+  <!-- launch xb3_short stereo_image_proc with specific parameters and a vizualizer-->
+  <group ns="/snr/scam/short">
+	<!--<remap from="/snr/scam/short/left/image_raw" to="/vtrf/joints"/>-->
+      <node name="stereoproc" pkg="stereo_image_proc" type="stereo_image_proc" args="_prefilter_size:=255 _prefilter_cap:=63 _correlation_window_size:=31 _min_disparity:=0 _disparity_range:=1000 _uniqueness_ratio:=10 _texture_threshold:=100 _speckle_size:=400 _speckle_range:=15">
+	  </node>
+  </group>
+  <!--<node name="short_stereo_view" pkg="image_view" type="stereo_view" args="stereo:=/snr/scam/short  image:=image_rect_color"/>-->
+
+
+  <group ns="/snr/scam/wide">
+	  <node name="stereo_image_proc" pkg="stereo_image_proc" type="stereo_image_proc" args="_prefilter_size:=255 _prefilter_cap:=63 _correlation_window_size:=31 _min_disparity:=0 _disparity_range:=32 _uniqueness_ratio:=10 _texture_threshold:=100a _speckle_size:=400 _speckle_range:=15 __name:=xb3_wide_stereo_proc" />
+  </group>
+  <!--<node name="wide_stereo_view" pkg="image_view" type="stereo_view" args="stereo:=/snr/scam/wide  image:=image_rect_color"/>-->
+  </launch>

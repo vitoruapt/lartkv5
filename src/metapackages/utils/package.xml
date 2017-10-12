@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<package>
+  <name>utils</name>
+  <version>5.0.0</version>
+  <description>
+     Contains packages that are generic utilities
+that can be used by other packages. They can
+be drivers to common hardware, pre-processing
+algorithms, data transformation, etc.
+  </description>
+  <maintainer email="dem-atlas-admin@ua.pt">vsantos</maintainer>
+  <license>BSD</license>
+  <export>
+    <metapackage/>
+  </export>
+  <buildtool_depend>catkin</buildtool_depend>
+
+    <run_depend>bo_polygon2d</run_depend>
+  <run_depend>cereal_port</run_depend>
+  <run_depend>colormap</run_depend>
+  <run_depend>database_interface</run_depend>
+  <run_depend>device_mapper</run_depend>
+  <run_depend>hitec5980sg</run_depend>
+  <run_depend>human_leader</run_depend>
+  <run_depend>kfilter</run_depend>
+  <run_depend>kml_path_creator</run_depend>
+  <run_depend>mit_darpa_logs_player</run_depend>
+  <run_depend>pc_accumulation</run_depend>
+  <run_depend>plane_model_road_segmentation</run_depend>
+  <run_depend>points_from_volume</run_depend>
+  <run_depend>process_target</run_depend>
+  <run_depend>serialcom</run_depend>
+  <run_depend>tcp_client</run_depend>
+  <run_depend>toolkit_diagnostics</run_depend>
+  <run_depend>topic_priority</run_depend>
+  <run_depend>visp_ros</run_depend>
+  <run_depend>wrapper_collada</run_depend>
+
+</package>

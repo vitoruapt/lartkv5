@@ -1,0 +1,4 @@
+<launch>  
+  <include file="$(find atlasmv_base)/launch/pre_launch_atlasmv.launch"/>
+  <include file="$(find atlasmv_base)/launch/atlasmv_base.launch"/>
+</launch>

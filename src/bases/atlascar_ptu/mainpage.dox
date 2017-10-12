@@ -1,0 +1,8 @@
+/**
+\mainpage ptu_atlascar
+\htmlinclude manifest.html
+
+This package provides control over the PTU mounted on the atlascar.
+
+It enables direct joint control or foveation control.
+*/

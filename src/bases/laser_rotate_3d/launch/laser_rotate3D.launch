@@ -1,0 +1,17 @@
+<launch>
+  
+  <!-- Start the rotation of the laser -->
+  <group ns="/snr/las3d">
+  <remap from="/tf" to="/trf/frames"/>
+   <node pkg="laser_rotate3D" type="laser_rotate3D" name="node" args="state:=/trf/joints shaft:=/connect_laser_roof_rotating">
+    <remap from="/snr/las3d/node/port" to="/device_mapper/atc/laser/roof_rotating/pic"/>
+	<remap from="/snr/las3d/node/cmd" to="/snr/las3d/command"/>
+	<remap from="/snr/las3d/las3D_state/cmd" to="/snr/las3d/command"/>
+<!--     <param name="port" value="/dev/ttyUSB1" /> -->
+    <param name="baud" value="115200" />
+  </node>
+  </group>
+
+<!-- sample topic to test the speed change -->
+<!-- rostopic pub /snr/las3d/command sensor_msgs/JointState '{ header: {frame_id: test}, name: ['lasershaft'], position: [0], velocity: [30], effort: [0]}' -->
+</launch>

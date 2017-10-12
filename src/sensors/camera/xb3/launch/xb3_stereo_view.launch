@@ -1,0 +1,18 @@
+<launch>
+  <!-- This is an xb3 lauch file for starting up xb3 and viewing stereo disparity map. -->
+
+  <!--call xb3 launch file -->
+  <include file="$(find xb3)/launch/xb3.launch" />  
+ 
+  <!-- launch xb3_short stereo_image_proc with specific parameters and a vizualizer-->
+  <!--<group ns="xb3_short">-->
+      <!--<node name="stereo_image_proc" pkg="stereo_image_proc" type="stereo_image_proc" args="_prefilter_size:=255 _prefilter_cap:=63 _correlation_window_size:=31 _min_disparity:=3 _disparity_range:=32 _uniqueness_ratio:=66 _texture_threshold:=10000 _speckle_size:=400 _speckle_range:=15 __name:=xb3_short_stereo_proc" />-->
+  <!--</group>-->
+  <!--<node name="short_stereo_view" pkg="image_view" type="stereo_view" args="stereo:=xb3_short  image:=image_rect_color"/>-->
+
+   <!-- launch xb3_wide stereo_image_proc with specific parameters and a vizualizer-->
+  <group ns="xb3_wide">
+      <node name="stereo_image_proc" pkg="stereo_image_proc" type="stereo_image_proc" args="_prefilter_size:=255 _prefilter_cap:=63 _correlation_window_size:=51 _min_disparity:=10 _disparity_range:=32 _uniqueness_ratio:=17 _texture_threshold:=10000 _speckle_size:=700 _speckle_range:20 __name:=xb3_wide_stereo_proc"/>
+  </group>
+  <node name="wide_stereo_view" pkg="image_view" type="stereo_view" args="stereo:=xb3_wide  image:=image_rect_color"/>
+</launch>

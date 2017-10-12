@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+	<group ns='/snr/gps'>
+	<!-- This is a gps launch file to start gpd_client and maybe later a gsp_visualiser-->
+	<node name="gpsd_client" pkg="gpsd_client" type="gpsd_client" args="_host:=localhost _port:=2947 _use_gps_time:=false">
+	<!-- Had to use the _use_gps_time:=false because the BU-353 device 
+		does not give GPS time. V. Santos, 13-Mai-2013,23:09 :-( --> 
+	</node>
+  </group>
+</launch>
+

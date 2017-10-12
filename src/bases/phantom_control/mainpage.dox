@@ -1,0 +1,18 @@
+/**
+\mainpage haptic_control Module
+\htmlinclude manifest.html
+
+\b haptic_control 
+
+<!-- 
+Provide an overview of your package.
+-->
+<p align="left">
+<b> Package description: </b>\n
+\n
+This package uses the OpenHaptics library to read information from the Phantom Omni haptic device, command the force feedback to it and publish its state in a ROS message.\n
+\n
+WRITE MORE STUFF!!!\n
+\n
+</p>
+*/

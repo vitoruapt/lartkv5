@@ -1,0 +1,17 @@
+<launch>
+  
+  <!-- transform laser meas. to point cloud, to be used by mtt -->
+  <!-- can also change ref frame -->
+  <include file="$(find mtt)/launch/generate_planar_pc_from_laser_stage.launch"/>
+  
+  <!-- process point cloud and track targets -->
+  <include file="$(find mtt)/launch/mtt_new_msg.launch"/> 
+  
+  <node name="classifier" pkg="process_target" type="classify_features" args="$(find process_target)/trained_boost.xml"/>
+<!--     <remap from="/robot_0/base_link" to="/base_link"/> -->
+<!--   </node> -->
+  
+  <!-- launch rviz -->
+<!--   <node pkg="rviz" type="rviz" name="rviz" args="-d $(find mtt)/rvizconfig/test_atlasmv_data.vcg" /> -->
+
+</launch>

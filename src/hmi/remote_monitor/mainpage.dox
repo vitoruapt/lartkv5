@@ -1,0 +1,58 @@
+/**
+
+\mainpage Remote monitor module
+\htmlinclude manifest.html
+
+\b remote_monitor 
+
+This package manage a database, this can establish comunication from a internet connection to a server where the database is running.
+The to be added from the node to the DB are:
+	DBField<int> id_; 
+	DBField<int> rpm_; 
+	DBField<double> speed_; 
+	DBField<std::string> db_time_;
+	DBField<std::string> atlas_time_; 
+	DBField<int> throttle_;
+	DBField<int> brake_;
+	DBField<int> clutch_;
+	DBField<int> gear_;
+	DBField<double> steering_;
+	DBField<double> throttle_press_;
+	DBField<double> brake_press_;
+	DBField<double> clutch_press_;
+	DBField<int> auto_throttle_;
+	DBField<int> auto_brake_;
+	DBField<int> auto_clutch_;
+	DBField<int> auto_steering_;
+	DBField<int> auto_ignition_;
+	DBField<int> handbrake_;
+	DBField<int> emergency_;
+	DBField<int> lights_minimum_;
+	database_DBField<int> lights_medium_;
+	DBField<int> lights_high_;
+	DBField<int> lights_left_;
+	DBField<int> lights_right_;
+	DBField<int> lights_brake_;
+	DBField<int> lights_reverse_;
+	DBField<int> lights_warning_;
+	DBField<int> horn_;
+	DBField<double> lat_gps_;
+	DBField<double> long_gps_;
+	DBField<double> alt_gps_;
+	DBField<double> track_gps_;
+// 	This are some empty fiels for future data	
+	database_interface::DBField<int> empty_field3_;
+	database_interface::DBField<int> empty_field4_; 
+
+All the ubscribed fields are taken from the following messages:
+
+#include <atlascar_base/ManagerStatus.h> ->this are the most variables to monitor
+#include <sensor_msgs/NavSatFix.h> -> this have some GPS fields to be used for monitor
+
+the node are allways recieving the messages from manager and GPS coordinates and writting them over the DB, when the node
+is colosed a backup of the BD is created remotely in the directory /tmp/atlas/atlas_date_time.csv and then the DB is cleared.
+
+-->
+
+
+*/

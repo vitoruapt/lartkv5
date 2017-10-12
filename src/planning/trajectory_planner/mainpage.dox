@@ -1,0 +1,38 @@
+/**
+\mainpage Trajectory planner
+\htmlinclude manifest.html
+
+
+\b trajectory_planner_nodelet is a package that generates a few number of trajectories from an header file with two structures with ackermann angles and arc measurements.
+
+This package uses two classes, c_trajectory and c_manage_trajectory
+
+<h1>  How to use? </h1>
+\section Usage c_trajectory
+
+<h2>  c_trajectory class  </h2>
+This class is very simple to use, because you just need to give 3 input parameters. A structure of alphas (ackermann angles), arcs and speed (not very important yet). 
+The rest of the class is responsible to calculate the coordinates of the vehicle during the movement. After that, some markers are created, to perform a visual simulation of the movement and orientations.
+
+<h2>  The nodelet  </h2>
+To use the nodelet, you just need to perfom two actions:
+
+\section Usage c_manage_trajectory
+
+<h2>  c_manage_trajectory class  </h2>
+This class receive from the trajectory genarator a trajectory. It will be analized, to determine its overall score, depending on a few weight parameters.. The evaluations methods are:
+
+- Distance to attractor point;
+
+- Angular difference to attractor point;
+
+- Free Space;
+
+- Distance to Laser obstacles
+
+This class returns a vizual marker with the trajectory evaluation paramenters values and its final weight.
+
+\section Usage Execution node
+After being generated and evaluated, the trajectory with the higher final overall score must be followed. The node responsible to perform that is the trajectory_executive. It publishes a message with the speed and sirection parameters that the vehicle should have at each moment. 
+
+*/

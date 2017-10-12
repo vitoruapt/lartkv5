@@ -1,0 +1,11 @@
+<launch>
+  <node name="openni_node" pkg="openni_camera" type="openni_node" />	
+  <node name="points_from_volume_nodelet" pkg="points_from_volume" type="points_from_volume_nodelet" args="point_cloud_input:=/camera/depth/points"/>
+  <!-- Setting parameters -->
+    <param  name= "positive_offset" type="float"  value="2.0" />  
+    <param  name= "negative_offset" type="float" value="-0.1" /> 
+    <param  name= "flag_in_out" type="bool" value="false" /> 
+</launch>
+  
+
+

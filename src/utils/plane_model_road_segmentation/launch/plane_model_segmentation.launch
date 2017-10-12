@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<launch>
+  
+  <!--   Include atlascar model and transform -->
+  <include file="$(find atlascar_base)/launch/atlascar_state.launch"/>
+  
+  <param  name="/use_sim_time"   type="bool"  value="true" />
+  
+  <!-- This is a xb3 launch files for starting up previewing pointcloud -->
+  <group ns="xb3_short">
+    <node name="stereo_image_proc" pkg="stereo_image_proc" type="stereo_image_proc" args="_prefilter_size:=65 _prefilter_cap:=41 _correlation_window_size:=31 _min_disparity:=0 _disparity_range:=32 _uniqueness_ratio:=10 _texture_threshold:=2950 _speckle_size:=1000 _speckle_range:=31 __name:=xb3_short_stereo_proc"/>
+  </group>
+  
+  <group ns="plane_model_road_segmentation">
+    
+    <!--   Transform point cloud to center bumper -->
+    <node name="transform_cloud_nodelet"  pkg="plane_model_road_segmentation" type="transform_cloud_nodelet" />
+    
+    <param  name= "pointcloud_to_transform" value="/xb3_short/points2" /> 
+    <param  name= "frame_id" 		value="/atc/vehicle/center_bumper" /> 
+    <param  name="pointcloud_transformed"   value="/xb3_short_trans/points2" />
+
+
+<!--  My process stuff  -->
+    <node name="plane_model_road_segmentation_nodelet" pkg="plane_model_road_segmentation" type="plane_model_road_segmentation_nodelet"/> 
+    
+    <!-- Setting parameters -->
+    <param  name= "pointcloud_subscribed"  value="/xb3_short_trans/points2" />  
+    <param  name= "reference_ground_frame" value="/atc/vehicle/ground" /> 
+    <param  name= "road_frame" 		   value="/environment/road" /> 
+    <param  name= "coefficients_topic_name" value="/environment/road/model_coefficients" /> 
+    
+  </group>  
+  
+  
+  <!-- Visualization  -->
+  <node name="rviz" pkg="rviz" type="rviz" args="--display-config $(find plane_model_road_segmentation)/rvizconf/rviz.vcg"/>
+</launch>

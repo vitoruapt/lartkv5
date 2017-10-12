@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- this is comment-->
+    
+    <node name="Client_generator" pkg="multimodal_pedestrian_detection" type="single_laser_planar_pc_generator" output="screen">  </node>
+
+    
+</launch>

@@ -1,0 +1,16 @@
+<launch>
+  
+  <!-- uses hector slam to provide robot odometry, based on laser measurements -->
+  <include file="$(find atlasmv_base)/launch/hector_slam.launch"/>
+  
+  <!-- transform laser meas. to point cloud, to be used by mtt -->
+  <!-- can also change ref frame -->
+  <include file="$(find mtt)/launch/generate_planar_pc_from_laser_atlasmv.launch"/>
+  
+  <!-- process point cloud and track targets -->
+  <include file="$(find mtt)/launch/mtt_new_msg.launch"/> 
+  
+  <!-- launch rviz -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find mtt)/rvizconfig/test_atlasmv_data.vcg" />
+
+</launch>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- This is a launch file for recording the topics for my thesys  -->
+    
+  <node pkg="rosbag" type="record" name="rosbag_record"
+   args=" -o /home/phua-lar/Dropbox/Dissertacao/bags_humanoid/MoveYY
+    /arduino_1_values
+    /arduino_2_values
+    /cop_left
+    /cop_left_right
+    /cop_right
+    /force
+    /humanoid_state
+    /phantom_state
+    /rosout
+    /tf
+    /topic_raw_data
+    "/>
+
+
+</launch>

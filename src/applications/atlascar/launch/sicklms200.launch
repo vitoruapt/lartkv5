@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Start operation of the LMS200 -->
+  <!-- http://www.ros.org/wiki/sicktoolbox_wrapper/Tutorials/UsingTheSicklms -->
+  <group ns="/snr/las/0">
+<!--   <remap from="/scan" to= "/atc/laser/roof_rotating/laser_scan"/> -->
+  <node pkg="sicktoolbox_wrapper" type="sicklms" name="node">
+	<remap from="/snr/las/0/node/port" to="/device_mapper/atc/laser/roof_rotating/lms"/>
+<!--     <param name="port" value="/dev/ttyUSB0" /> -->
+    <param name="baud" value= "500000" />
+    <param name="frame_id" value= "/atc/laser/roof_rotating" />
+  </node>
+  </group>
+
+</launch>

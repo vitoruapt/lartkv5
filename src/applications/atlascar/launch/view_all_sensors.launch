@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- This is a atlascar launch files for starting all sensor drivers, the robot state publisher and also the rviz vizualiztion of data. IMPORTANT NOTE: prelaunch_atlascar.launch must be launched before-->
+
+	<!-- Launch rviz with the propper parameters for loading the atlascar rviz configuration file -->
+	<node name="rviz" pkg="rviz" type="rviz" args="">
+	<remap from="tf" to="/trf/frames"/>
+	</node>
+	<!--<node name="rviz" pkg="rviz" type="rviz"/>-->
+<!-- <node name="rviz" pkg="rviz" type="rviz" args="- -display-config /home/atlascar/Desktop/rviz_all_sensores.vcg"/> -->
+</launch>

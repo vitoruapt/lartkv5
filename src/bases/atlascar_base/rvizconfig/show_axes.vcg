@@ -1,0 +1,155 @@
+Background\ ColorR=1
+Background\ ColorG=1
+Background\ ColorB=1
+Fixed\ Frame=/atc/vehicle/center_bumper
+Target\ Frame=<Fixed Frame>
+Atlascar\ Model.Alpha=0.2
+Atlascar\ Model.Collision\ Enabled=0
+Atlascar\ Model.Enabled=1
+Atlascar\ Model.Robot\ Description=robot_description
+Atlascar\ Model.TF\ Prefix=
+Atlascar\ Model.Update\ Interval=0
+Atlascar\ Model.Visual\ Enabled=1
+CenterBumper\ Grid.Alpha=0.2
+CenterBumper\ Grid.Cell\ Size=1
+CenterBumper\ Grid.ColorR=0.12549
+CenterBumper\ Grid.ColorG=0.12549
+CenterBumper\ Grid.ColorB=0.12549
+CenterBumper\ Grid.Enabled=1
+CenterBumper\ Grid.Line\ Style=0
+CenterBumper\ Grid.Line\ Width=0.03
+CenterBumper\ Grid.Normal\ Cell\ Count=0
+CenterBumper\ Grid.OffsetX=0
+CenterBumper\ Grid.OffsetY=0
+CenterBumper\ Grid.OffsetZ=0
+CenterBumper\ Grid.Plane=0
+CenterBumper\ Grid.Plane\ Cell\ Count=20
+CenterBumper\ Grid.Reference\ Frame=/atc/vehicle/ground
+Interactive\ Markers.Enabled=1
+Interactive\ Markers.Show\ Axes=0
+Interactive\ Markers.Show\ Descriptions=1
+Interactive\ Markers.Show\ Tool\ Tips=1
+Interactive\ Markers.Update\ Topic=/show_axes/update
+MarkerArray.Enabled=1
+MarkerArray.Marker\ Array\ Topic=/axis_markers
+Tool\ 2D\ Nav\ GoalTopic=goal
+Tool\ 2D\ Pose\ EstimateTopic=initialpose
+Camera\ Type=rviz::XYOrbitViewController
+Camera\ Config=1.7504 0.0553982 10 -4.51916 -1.78814e-07 1.80589
+Property\ Grid\ State=selection=Atlascar Model.Enabled;expanded=.Global Options,Atlascar Model.Enabled,MarkerArray.Enabled,MarkerArray.Enabled.MarkerArray.Namespaces,Interactive Markers.Enabled;scrollpos=0,0;splitterpos=149,300;ispageselected=1
+[Display0]
+Name=CenterBumper Grid
+Package=rviz
+ClassName=rviz::GridDisplay
+[Display1]
+Name=Atlascar Model
+Package=rviz
+ClassName=rviz::RobotModelDisplay
+[Display2]
+Name=MarkerArray
+Package=rviz
+ClassName=rviz::MarkerArrayDisplay
+[Display3]
+Name=Interactive Markers
+Package=rviz
+ClassName=rviz::InteractiveMarkerDisplay
+[MarkerArray.]
+[MarkerArray./atc]
+[MarkerArray./atc/camera]
+flea_foveated=1
+flea_peripheral=1
+[MarkerArray./atc/camera/xb3]
+center=1
+left=1
+right=1
+[MarkerArray./atc/imu]
+xsens=1
+[MarkerArray./atc/laser]
+center_top_roof=1
+left_bumper=1
+right_bumper=1
+roof_rotating=1
+[MarkerArray./atc/laser/roof_rotating]
+base=1
+[MarkerArray./atc/ptu]
+base=1
+pan_block=1
+tilt_block=1
+[MarkerArray./atc/vehicle]
+center_bumper=1
+ground=1
+left_wheel=1
+rear_axis=1
+right_wheel=1
+[MarkerArray.CNT\ ]
+[MarkerArray.CNT\ /atc]
+[MarkerArray.CNT\ /atc/camera]
+flea_foveated=1
+flea_peripheral=1
+[MarkerArray.CNT\ /atc/camera/xb3]
+center=1
+left=1
+right=1
+[MarkerArray.CNT\ /atc/imu]
+xsens=1
+[MarkerArray.CNT\ /atc/laser]
+center_top_roof=1
+left_bumper=1
+right_bumper=1
+roof_rotating=1
+[MarkerArray.CNT\ /atc/laser/roof_rotating]
+base=1
+[MarkerArray.CNT\ /atc/ptu]
+base=1
+pan_block=1
+tilt_block=1
+[MarkerArray.CNT\ /atc/vehicle]
+center_bumper=1
+ground=1
+left_wheel=1
+rear_axis=1
+right_wheel=1
+[Robot\:\ Atlascar\ Model\ Link\ ]
+[Robot\:\ Atlascar\ Model\ Link\ /atc]
+[Robot\:\ Atlascar\ Model\ Link\ /atc/camera]
+flea_foveatedShow\ Axes=1
+flea_foveatedShow\ Trail=0
+flea_peripheralShow\ Axes=1
+flea_peripheralShow\ Trail=0
+[Robot\:\ Atlascar\ Model\ Link\ /atc/camera/xb3]
+centerShow\ Axes=1
+centerShow\ Trail=0
+leftShow\ Axes=1
+leftShow\ Trail=0
+rightShow\ Axes=1
+rightShow\ Trail=0
+[Robot\:\ Atlascar\ Model\ Link\ /atc/imu]
+xsensShow\ Axes=1
+xsensShow\ Trail=0
+[Robot\:\ Atlascar\ Model\ Link\ /atc/laser]
+center_top_roofShow\ Axes=1
+center_top_roofShow\ Trail=0
+left_bumperShow\ Axes=1
+left_bumperShow\ Trail=0
+right_bumperShow\ Axes=1
+right_bumperShow\ Trail=0
+roof_rotatingShow\ Axes=1
+roof_rotatingShow\ Trail=0
+[Robot\:\ Atlascar\ Model\ Link\ /atc/ptu]
+baseShow\ Axes=1
+baseShow\ Trail=0
+pan_blockShow\ Axes=1
+pan_blockShow\ Trail=0
+tilt_blockShow\ Axes=1
+tilt_blockShow\ Trail=0
+[Robot\:\ Atlascar\ Model\ Link\ /atc/vehicle]
+center_bumperShow\ Axes=1
+center_bumperShow\ Trail=0
+groundShow\ Axes=1
+groundShow\ Trail=0
+left_wheelShow\ Axes=1
+left_wheelShow\ Trail=0
+rear_axisShow\ Axes=1
+rear_axisShow\ Trail=0
+right_wheelShow\ Axes=1
+right_wheelShow\ Trail=0

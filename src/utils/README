@@ -1,0 +1,29 @@
+/*
+@file utils
+
+@brief
+Contains packages that are generic utilities
+that can be used by other packages. They can
+be drivers to common hardware, pre-processing
+algorithms, data transformation, etc.
+
+@examples
+bo_polygon2d
+cereal_port
+colormap
+database_interface
+device_mapper
+hitec5980sg
+kfilter
+kmlPathCreator
+mit_darpa_logs_player
+pc_accumulation
+plane_model_road_segmentation
+points_from_volume
+process_target
+serialcom
+tcp_client
+topic_priority
+wrapper_collada
+
+*/

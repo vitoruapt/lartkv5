@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+
+    <remap from="/tf" to="/trf/frames"/>
+
+    <node pkg="multimodal_pedestrian_detection" type="xb3_frame_tf_broadcaster" name="broadcaster_frame" />
+    
+</launch>

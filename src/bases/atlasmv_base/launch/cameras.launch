@@ -1,0 +1,30 @@
+<launch>
+
+  <!-- nodelet manager process -->
+  <node pkg="nodelet" type="nodelet" name="camera_nodelet_manager"
+    args="manager" />
+
+  <!-- camera driver nodelet -->
+  <node pkg="nodelet" type="nodelet" name="camera1394_nodelet"
+    args="load camera1394/driver camera_nodelet_manager" >
+    <param name="guid" value="081443610264dce8" />
+    <param name="video_mode" value="640x480_mono8" />
+    <param name="iso_speed" value="400" />
+    <param name="frame_rate" value="15" />
+  </node>
+    
+  <!-- mono rectification -->
+  <node pkg="nodelet" type="nodelet" name="image_proc_rect"
+    args="load image_proc/rectify camera_nodelet_manager">
+    <remap from="image_mono" to="camera/image_mono" />
+    <remap from="image_rect" to="camera/image_rect" />
+  </node>
+
+  <!-- color rectification -->
+  <node pkg="nodelet" type="nodelet" name="image_proc_rect_color"
+    args="load image_proc/rectify camera_nodelet_manager">
+    <remap from="image_mono" to="camera/image_color" />
+    <remap from="image_rect" to="camera/image_rect_color" />
+  </node>
+
+</launch>

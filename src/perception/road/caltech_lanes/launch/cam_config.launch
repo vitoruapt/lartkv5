@@ -1,0 +1,15 @@
+<launch>
+<!-- 	Launch para gerar o ficheiro de configurações da camera -->
+
+<!-- 	<node pkg="rosbag" type="play" name="rosbag" args=" /home/morais/Bags/bags_inspecção.bag " />	 -->
+	<node name="camera_configurations" pkg="caltech_lanes" type="config_cam" output="screen" >
+<!-- 	XB3 -->
+<!-- 		<param name="ref" value="/atc/camera/xb3/left"/>  -->
+		<param name="cam_info" value="/snr/scam/wide/left/camera_info"/>
+<!-- 	FLEA -->
+<!-- 		<param name="cam_info" value="/snr/cam/0/camera_info"/>  -->
+<!-- 		<param name="ref" value="/atc/camera/flea_foveated"/>  -->
+<!-- 	Remap dos tf -->
+		<remap from="tf" to="/trf/frames"/>
+	</node>
+</launch>

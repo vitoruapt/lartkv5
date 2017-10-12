@@ -1,0 +1,118 @@
+/**
+\mainpage plane_model_road_segmentation
+\author Tiago Talhada
+\htmlinclude manifest.html
+
+\b plane_model_road_segmentation
+
+\section Usage
+
+<h1>  How to find the road frame and publish it </h1>
+
+<h2>  Using tf::Transform find_and_publish_road_frame(pcl::PointCloud\< T > cloud_in);  </h2>
+This is what you should do
+<h3>declare the class on your code:</h3>
+\code
+plane_model_road<pcl::PointXYZRGB> pms;
+\endcode
+or
+\code
+plane_model_road<pcl::PointXYZ> pms;
+\endcode
+
+<h3>  Set your parameters  (Optional)  </h3>
+\code
+
+// Those are taken by default and are not mandatory
+
+    pms.threshold=0.01;   //Initialize default values      // RANSAC threshold
+    pms.iterations=50;					   // RANSAC maximum number of tries
+    
+    pms.point_origin.x=2; pms.point_origin.y=0; pms.point_origin.z=0;    // Origin point to project on plane
+    pms.pub_frame_name="/environment/road_frame";                        // Published frame_id
+    pms.debug=false;  // debug flag prints extra information
+
+\endcode
+NOTE If you dont set the parameters the above values are set automatically
+<h3>  Set your parameters  (Mandatory)  </h3>
+\code
+
+// Messages configuration    
+  tf::TransformListener listener_atc_ground;      // atc/vehicle/ground
+  tf::TransformBroadcaster br;
+
+// Configure your tf pointers
+  pms.listener_atc_ground_ptr=&listener_atc_ground;
+  pms.broadcast_ptr=&br;
+  
+// Configure your frame names
+  pms.reference_ground_frame="/atc/vehicle/ground";
+\endcode
+
+
+<h3> Then simply do </h3>
+\code
+tf::Transform road_tf=pms.find_and_publish_road_frame(cloud_in);
+\endcode
+<h3> Where cloud_in is your point cloud (pcl or sensor_msg from ros) </h3>
+
+This will publish a new frame with the name specified on pms.pub_frame_name. You can also read the plane model coeeficients AX+BY+CZ +D=0 stored in pcl::ModelCoefficients::Ptr coef
+and use them at your own will. Try type:
+\code
+cout << "A = "<< pms.coef.values[0] <<"B = "<< pms.coef.values[1] << "C = "<< pms.coef.values[2] << "D = "<< pms.coef.values[3] << endl;
+\endcode
+
+
+
+<h2>  Using tf::Transform find_road_frame(pcl::PointCloud\<pcl::PointXYZRGB> cloud_in);  </h2>
+
+you should use this functions if you only want to get the road transformation and not to publish it. use it the same way described above
+
+
+
+<h2>  Using the nodelet </h2>
+
+<h3>  Example of a xml launch file for xb3</h3>
+
+\code
+<?xml version="1.0"?>
+<launch>
+  
+  <!--   Include atlascar model and transform -->
+  <include file="$(find atlascar_base)/launch/atlascar_state.launch"/>
+  
+  <param  name="/use_sim_time"   type="bool"  value="true" />
+  
+  <!-- This is a xb3 launch files for starting up previewing pointcloud -->
+  <group ns="xb3_short">
+    <node name="stereo_image_proc" pkg="stereo_image_proc" type="stereo_image_proc" args="_prefilter_size:=65 _prefilter_cap:=41 _correlation_window_size:=31 _min_disparity:=0 _disparity_range:=32 _uniqueness_ratio:=10 _texture_threshold:=2950 _speckle_size:=1000 _speckle_range:=31 __name:=xb3_short_stereo_proc"/>
+  </group>
+  
+  <group ns="plane_model_road_segmentation">
+    
+    <!--   Transform point cloud to center bumper -->
+    <node name="transform_cloud_nodelet"  pkg="plane_model_road_segmentation" type="transform_cloud_nodelet" />
+    
+    <param  name= "pointcloud_to_transform" value="/xb3_short/points2" /> 
+    <param  name= "frame_id" 		value="/atc/vehicle/center_bumper" /> 
+    <param  name="pointcloud_transformed"   value="/xb3_short_trans/points2" />
+
+
+<!--  My process stuff  -->
+    <node name="plane_model_road_segmentation_nodelet" pkg="plane_model_road_segmentation" type="plane_model_road_segmentation_nodelet"/> 
+    
+    <!-- Setting parameters -->
+    <param  name= "pointcloud_subscribed"  value="/xb3_short_trans/points2" />  
+    <param  name= "reference_ground_frame" value="/atc/vehicle/ground" /> 
+    <param  name= "road_frame" 		   value="/environment/road" /> 
+    <param  name= "coefficients_topic_name" value="/environment/road/model_coefficients" /> 
+    
+  </group>  
+  
+  
+  <!-- Visualization  -->
+  <node name="rviz" pkg="rviz" type="rviz" args="--display-config $(find plane_model_road_segmentation)/rvizconf/rviz.vcg"/>
+</launch>
+
+\endcode
+*/

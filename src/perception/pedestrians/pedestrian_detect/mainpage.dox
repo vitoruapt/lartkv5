@@ -1,0 +1,79 @@
+/**
+\mainpage
+\htmlinclude manifest.html
+
+Integral Channel Features is an object detection framework that takes advantadge of the richness of information present in
+distinct channels of an image. By extracting and evaluating a large number of features from each detection window, a trained
+boosted classifier is able to perform classification.  This work uses this algorithm for pedestrian detection. \n
+An explanation of how to use the developed work, as well as an overview of all the source files is provided in this documentation.
+
+\page Usage instructions
+
+
+
+\page Source Files
+
+Several source files were created in this package. Although most of them are very similar, each is to be used in a specific 
+situation.
+Three binaries are created  when the code is compiled. A server, a client and a trainer. Note that the CMakeLists.txt file 
+has to be edited according to the source files you want to use.
+
+\section Servers
+
+The server files are used to generate the bins that send images over to a ROS Topic.
+
+<b>serverimg_singleimg.cpp<b> 
+This source file selects an image from file and sends that same image repeatedly over to a ROS Topic while it is running.
+It is useful for developing and test situations.\n
+To use it, edit the source code to add path to the image you want to work with and make sure the CMakeLists.txt file is set 
+to use this source file to produce the binary.
+
+<b>serverimg_folder.cpp<b>
+The most useful server source code. This code goes through the images contained in a folder and sends them over to the
+ROS Topic. \n
+It is useful to work with large datasets.\n
+
+
+\section Clients
+
+The client subscribes to the ROS Topic to which the server is publishing. A received image triggers a callback function
+that processes the image.
+Make sure that the ROS Topic names are the same in the server and in the client, or else the program will ot run.
+
+<b>clientimg_channels.cpp<b>
+
+This client was the product of the first stages of the developed work and it only computes the channels. Also, the channels 
+are computed in the main function, rather than in a different function which is the case of the other clients. Easy access
+to the channels facilitated the development in the first stages of the work.\n
+
+<b>clientimg_deprecated.cpp<b>
+
+This source file is deprecated and has no utility.
+
+<b>clientimg_train_pos.cpp<b>
+
+This client is used to write the features of positive windows on a .csv file, which is later used for training. Edit this 
+file to the desired filename on which the program will write. Be sure that the server is set to go through a folder of 
+positive windows. No detection is performed yet.
+
+<b>clientimg_train_neg.cpp<b>
+
+This client goes through a full image and selects 5 random windows to write its features on a .csv file, which is later 
+used for training. Edit this file to set the desired filename on which the program will write. Be sure that the server 
+is set to go through a folder of negative images (images where no pedestrians appear).
+
+<b>clientimg_detect.cpp<b>
+
+This is the final client that is used to perform detection. It outputs an image with green rectangles around detected
+objects. This file is also used when the developer needs to perform bootstrapping, however, this operation is explained in 
+another section.
+
+\section Other
+
+<b>boost_error.cpp<b>
+
+Not useful anymore.
+
+<b><b>
+
+*/

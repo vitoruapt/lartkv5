@@ -1,0 +1,10 @@
+/**
+\mainpage Polygonal primitives extraction 
+\htmlinclude manifest.html
+
+This node converts log files in MIT format (LCM) to bag files in ROS format.
+
+It also handles reads the LCM files and publishes velodyne point clouds as well
+as images from the cameras. 
+
+*/

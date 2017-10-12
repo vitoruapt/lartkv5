@@ -1,0 +1,36 @@
+/**
+\mainpage atlascar_egomotion
+\author Pedro Salvado
+\htmlinclude manifest.html
+
+\b atlascar_egomotion is a package responsible for estimating the car position and attitude.
+
+\section Requirements
+To use this package it is necessary several other nodes and packages:
+<h2> Odometry </h2>
+-pkg: atlascar_base  node:plc_base  topic:"/vhc/plc/status"\n
+
+-pkg: atlascar_base  node:velocity_status  topic:"vhc/velocity/status"\n
+
+\b These first two nodes gives the information necessary to calculate wheel odometry 
+
+-pkg: atlascar_base  node:odometry  topic:"/vhc/odometry"
+
+
+<h2> sensor_Sharp </h2>
+-pkg: optoelectric node:sensor_GP2D12 topic:
+
+This package gives the distance measure by four sensors placed under the car.
+
+
+<h2> Robot_pose_ekf </h2>
+Robot_pose_ekf is the node responsible for fusing the information of odometry node, imu and gps. It publishes a transformation between /base_footprint and /world frames.
+
+
+<h2> atlascar egomotion </h2>
+The <b>add_imu_odometry_cov</b> node is used to complete the imu and odometry msgs with respective covariances, that are necessary to the robot_pose_ekf pkg.
+
+<b>car_attitude2ground</b> node subscribes the topic from the four sensors and it calculates the mean height of the car to the ground. It also calculates pitch and roll between the car and the ground. It publishes the transformation between the car and the ground.
+
+<b>ground_attitude2world </b> node intersects the transformations published by robot_pose_ekf and car_attitude2ground. It publishes a new transformation between ground and world frame. It is use to distinguish between imu orientation and orientation given by the car_attitude2ground.
+*/

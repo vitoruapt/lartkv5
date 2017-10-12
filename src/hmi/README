@@ -1,0 +1,14 @@
+/*
+@file hmi
+
+@brief
+Contains packages concerning Human Machine Interface.
+This includes monitoring and information display from
+the robots, and teleoperation interfaces.
+
+@examples
+atlascar_teleop
+atlas_sound_player
+remote_monitor
+
+*/

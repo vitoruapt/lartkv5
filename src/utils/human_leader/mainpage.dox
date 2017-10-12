@@ -1,0 +1,13 @@
+/**
+\mainpage Process Targets
+\htmlinclude manifest.html
+
+This package contain three programs.
+The extract_features receives a target list produced by MTT and will extract features like velocity, distance, angle, heading and heading difference (wrt the robot) and output this features to the command line. Normally this information will be stored in a txt file for further processing with matlab.
+
+The bag_tagger publishes a topic called /timetag that is used to signal the transition from a good leader to a bad leader. It should be used while a bag file of a test is being played and a new bag file should be created subscribing to all the topics from the original bag + /timetag.
+
+The class_view program receives messages from matlab and creates markers to be used by rviz, so the leader classification can be seen using colored circles around targets.
+
+
+*/

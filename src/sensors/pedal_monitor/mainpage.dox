@@ -1,0 +1,88 @@
+/**
+\mainpage Pedal forces monitoring
+\htmlinclude manifest.html
+
+This module establishes communication with the system to monitor de vehicle pedals, which allows to 
+calibrate and monitor the pedals actuation.
+
+\page Usage Instructions
+
+\section How to run the programs
+
+To monitor the actuation on the pedals it is required to first have a calibration. It is possible to create one by using 
+the interface program. If a calibration already exists, it is possible just to monitor and publish the data from the pedals
+by using the monitoring and publish program.
+
+\subsection Interface
+
+To run the interface there are two ways:
+    - Run the launch file (<b>interface_pedal_monitor.launch<b>)
+    - Run the .cpp file (<b>interface_phidgets_getdata_synchronous.cpp<b>)
+    
+\subsection Monitor and publishing
+
+To run the interface there are two ways:
+    - Run the launch file (<b>car_and_pedal_data_record.launch<b>)
+    - Run the .cpp file (<b>phidgets_getdata_synchronous.cpp<b>)
+
+By using the launch file it is possible to create a .bag with the published messages which can be played by using the launch file <b>pedal_data_play.launch<b> and the published data can be saved to a .txt file by running the .cpp file named <b>phidgets_readdata_synchronous.cpp<b>
+
+\section Give premission to the Phidgets board
+
+In order to run the programs it is necessary give root permissions to Phidgets Interface:
+
+In a new shell type:
+    
+- <b>lsusb<b>
+
+    It should tell you something like this:
+
+    Bus 002 Device 013: ID 06c2:0045 Phidgets Inc. (formerly GLAB) PhidgetInterface Kit 8-8-8
+
+    The numbers separated by a colon are the codes for vendor:product. Since we want to set up the rule so that all Phidgets, no matter what product, can be used without root privileges, we use the vendor code, which is 06c2.
+
+- Navigate to <b>/etc/udev/rules.d/<b>.
+
+    To make sure the Phidget udev rules are found first, we can create a file 10-persistent-usb.rules (all udev rule files need to end with .rules) and add one line to it. You can do this by right clicking in the folder and creating a new text document.
+
+- <b>sudo gedit 10-persistent-usb.rules<b> :
+
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="06c2", MODE="0666", OWNER="user"
+
+
+    Make sure to replace user with your user name. Your username will have no capital letters. You probably recognize the 06c2 from the vendor discussion above. We have added the match on SUBSYSTEM to search first within usb (within a possibly big database). The MODE sets read and write privileges for everyone to the device, and OWNER sets the owner to be you.
+
+    Save the 10-persistent-usb.rules in /etc/udev/rules.d/ and then change its permissions so it can be read by all. Type in terminal:
+
+- <b>sudo chmod a+r /etc/udev/rules.d/10-persistent-usb.rules<b>
+
+    The udev rule is now set, and it just has to get read in.  To re-read and implement the rules without having to reset the daemon or reset the computer, you can use:
+
+- <b>sudo udevadm control --reload-rules<b>
+
+
+\page Source Files
+The version of this software is divided in two programs: 
+    1) the first is responsible for the calibration interface, where it is possible to create a new calibration
+or load an existing one. These calibration files are saved as .xml files.
+    2) the second loads an existing calibration file (by using the parameteres on the launch file) and publishes
+the calibrated data collected from the pedals.
+
+    
+The main class declaration file (interface_phidgets_getdata_synchronous.h, phidgets_getdata_synchronous.h)
+The main class implementation file (interface_phidgets_getdata_synchronous.cpp, phidgets_getdata_synchronous.cpp and phidgets_readdata_synchronous.cpp)
+    
+    
+\page Messages published
+The published messages are the following:
+    - Force values from the Load Cell sensors (~/ForceVal.sen1 and ~/ForceVal.sen2)
+    - Force values from the Force Sensitive Resistors (~/ForceVal.sen3 and ~/ForceVal.sen4)
+    - Distance values from the Infra-red distance sensor (~/IR_1.range and ~/IR_2.range)
+    
+\page Hardware Components
+The developed hardware is composed by 2 cases to install the sensors:
+    - 2x2 Load cells 
+    - 2x2 FSR's
+    - 2x1 Infra-Red sensors
+
+*/

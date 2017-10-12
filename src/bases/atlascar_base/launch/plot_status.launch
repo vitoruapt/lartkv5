@@ -1,0 +1,6 @@
+<launch>
+	<!-- This is a atlascar_base launch files for plotting status information-->
+
+	<node pkg="rxtools" name="rxplot_node" type="rxplot" args="/atc/base/status/speed /atc/base/status/steering_wheel">
+		</node>
+</launch>

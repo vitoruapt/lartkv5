@@ -1,0 +1,7 @@
+<launch>
+<!-- Launch file to play the recorded action (first run bagfile with clock parameter) -->
+  <node name="parking_detection" pkg="parking_detection" type="parking_detection" />
+			  <param  name="/use_sim_time"   type="bool"  value="true" />
+  <node name="rviz" pkg="rviz" type="rviz" args="- -display-config $(find parking_detection)/rvizconfig/rviz.vcg" />
+
+</launch>

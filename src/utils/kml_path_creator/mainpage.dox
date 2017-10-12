@@ -1,0 +1,10 @@
+/**
+\mainpage Kml Path Creator
+\htmlinclude manifest.html
+
+Google Cartesian coordinates integration.
+Create Google Earth compatible paths after a list
+of points with latitude-longitude.
+
+
+*/

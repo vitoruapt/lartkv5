@@ -1,0 +1,114 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ADC_RES	v0/header.h	20;"	d
+ALLCONFS	v0/nbproject/Makefile-impl.mk	/^ALLCONFS=default $/;"	m
+ASFLAGS	v0/nbproject/Makefile-default.mk	/^ASFLAGS=$/;"	m
+BUILD_SUBPROJECTS	v0/nbproject/Makefile-impl.mk	/^BUILD_SUBPROJECTS=${BUILD_SUBPROJECTS_${SUBPROJECTS}}$/;"	m
+BUILD_SUBPROJECTS_	v0/nbproject/Makefile-impl.mk	/^BUILD_SUBPROJECTS_=.build-subprojects$/;"	m
+BUILD_SUBPROJECTS_NO	v0/nbproject/Makefile-impl.mk	/^BUILD_SUBPROJECTS_NO=$/;"	m
+CCADMIN	v0/Makefile	/^CCADMIN=CCadmin$/;"	m
+CFLAGS	v0/nbproject/Makefile-default.mk	/^CFLAGS=$/;"	m
+CH_PEDAL	v0/header.h	22;"	d
+CH_REF_PLC	v0/header.h	23;"	d
+CH_THROTTLE	v0/header.h	21;"	d
+CLEAN_SUBPROJECTS	v0/nbproject/Makefile-impl.mk	/^CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}$/;"	m
+CLEAN_SUBPROJECTS_	v0/nbproject/Makefile-impl.mk	/^CLEAN_SUBPROJECTS_=.clean-subprojects$/;"	m
+CLEAN_SUBPROJECTS_NO	v0/nbproject/Makefile-impl.mk	/^CLEAN_SUBPROJECTS_NO=$/;"	m
+CND_ARTIFACT_DIR_default	v0/nbproject/Makefile-variables.mk	/^CND_ARTIFACT_DIR_default=dist\/default\/production$/;"	m
+CND_ARTIFACT_NAME_default	v0/nbproject/Makefile-variables.mk	/^CND_ARTIFACT_NAME_default=ACADM.production.cof$/;"	m
+CND_ARTIFACT_PATH_default	v0/nbproject/Makefile-variables.mk	/^CND_ARTIFACT_PATH_default=dist\/default\/production\/ACADM.production.cof$/;"	m
+CND_BASEDIR	v0/nbproject/Makefile-variables.mk	/^CND_BASEDIR=`pwd`$/;"	m
+CND_CONF	v0/nbproject/Makefile-default.mk	/^CND_CONF=default$/;"	m
+CND_PACKAGE_DIR_default	v0/nbproject/Makefile-variables.mk	/^CND_PACKAGE_DIR_default=${CND_DISTDIR}\/default\/package$/;"	m
+CND_PACKAGE_NAME_default	v0/nbproject/Makefile-variables.mk	/^CND_PACKAGE_NAME_default=acadm.tar$/;"	m
+CND_PACKAGE_PATH_default	v0/nbproject/Makefile-variables.mk	/^CND_PACKAGE_PATH_default=${CND_DISTDIR}\/default\/package\/acadm.tar$/;"	m
+CONF	v0/nbproject/Makefile-impl.mk	/^CONF=${DEFAULTCONF}$/;"	m
+CP	v0/Makefile	/^CP=cp$/;"	m
+CP	v0/nbproject/Makefile-default.mk	/^CP=cp $/;"	m
+DEFAULTCONF	v0/nbproject/Makefile-impl.mk	/^DEFAULTCONF=default$/;"	m
+DISTDIR	v0/nbproject/Makefile-default.mk	/^DISTDIR=dist\/${CND_CONF}\/${IMAGE_TYPE}$/;"	m
+FINAL_IMAGE	v0/nbproject/Makefile-default.mk	/^FINAL_IMAGE=dist\/${CND_CONF}\/${IMAGE_TYPE}\/ACADM.${IMAGE_TYPE}.cof$/;"	m
+FOSC_HS	v0/main.c	/^__CONFIG(WDTE_OFF & LVP_OFF & FOSC_HS);$/;"	v
+HEADER_H	v0/header.h	9;"	d
+I2C_POT_A0	v0/header.h	46;"	d
+I2C_POT_A1	v0/header.h	47;"	d
+I2C_POT_ADDRESS	v0/header.h	43;"	d
+I2C_POT_WP	v0/header.h	48;"	d
+I2C_READ_BIT	v0/header.h	45;"	d
+I2C_WRITE_BIT	v0/header.h	44;"	d
+IMAGE_TYPE	v0/nbproject/Makefile-default.mk	/^IMAGE_TYPE=debug$/;"	m
+IMAGE_TYPE	v0/nbproject/Makefile-default.mk	/^IMAGE_TYPE=production$/;"	m
+LDLIBSOPTIONS	v0/nbproject/Makefile-default.mk	/^LDLIBSOPTIONS=$/;"	m
+MAX_SRV_PWM	v0/header.h	72;"	d
+MAX_VOLT_CENTRALINA	v0/header.h	29;"	d
+MIN_SRV_PWM	v0/header.h	71;"	d
+MIN_VOLT_CENTRALINA	v0/header.h	28;"	d
+MKDIR	v0/Makefile	/^MKDIR=mkdir$/;"	m
+MKDIR	v0/nbproject/Makefile-default.mk	/^MKDIR=mkdir -p$/;"	m
+MP_AR	v0/nbproject/Makefile-default.mk	/^MP_AR=C:\\\\Program\\ Files\\ \\(x86\\)\\\\HI-TECH\\ Software\\\\PICC\\\\9.82\\\\bin\\\\picc.exe$/;"	m
+MP_AR_DIR	v0/nbproject/Makefile-default.mk	/^MP_AR_DIR=C:\\\\Program\\ Files\\ \\(x86\\)\\\\HI-TECH\\ Software\\\\PICC\\\\9.82\\\\bin$/;"	m
+MP_AS	v0/nbproject/Makefile-default.mk	/^MP_AS=C:\\\\Program\\ Files\\ \\(x86\\)\\\\HI-TECH\\ Software\\\\PICC\\\\9.82\\\\bin\\\\picc.exe$/;"	m
+MP_AS_DIR	v0/nbproject/Makefile-default.mk	/^MP_AS_DIR=C:\\\\Program\\ Files\\ \\(x86\\)\\\\HI-TECH\\ Software\\\\PICC\\\\9.82\\\\bin$/;"	m
+MP_CC	v0/nbproject/Makefile-default.mk	/^MP_CC=C:\\\\Program\\ Files\\ \\(x86\\)\\\\HI-TECH\\ Software\\\\PICC\\\\9.82\\\\bin\\\\picc.exe$/;"	m
+MP_CC_DIR	v0/nbproject/Makefile-default.mk	/^MP_CC_DIR=C:\\\\Program\\ Files\\ \\(x86\\)\\\\HI-TECH\\ Software\\\\PICC\\\\9.82\\\\bin$/;"	m
+MP_JAVA_PATH	v0/nbproject/Makefile-default.mk	/^MP_JAVA_PATH=C:\\\\Program\\ Files\\ \\(x86\\)\\\\Java\\\\jdk1.6.0_25\\\\jre\/bin\/$/;"	m
+MP_LD	v0/nbproject/Makefile-default.mk	/^MP_LD=C:\\\\Program\\ Files\\ \\(x86\\)\\\\HI-TECH\\ Software\\\\PICC\\\\9.82\\\\bin\\\\picc.exe$/;"	m
+MP_LD_DIR	v0/nbproject/Makefile-default.mk	/^MP_LD_DIR=C:\\\\Program\\ Files\\ \\(x86\\)\\\\HI-TECH\\ Software\\\\PICC\\\\9.82\\\\bin$/;"	m
+MP_PROCESSOR_OPTION	v0/nbproject/Makefile-default.mk	/^MP_PROCESSOR_OPTION=16F876$/;"	m
+MSG_MEM_NWP1	v0/header.h	51;"	d
+MSG_MEM_WP0	v0/header.h	50;"	d
+MSG_MEM_WP2	v0/header.h	52;"	d
+MSG_MEM_WP3	v0/header.h	53;"	d
+OBJECTDIR	v0/nbproject/Makefile-default.mk	/^OBJECTDIR=build\/${CND_CONF}\/${IMAGE_TYPE}$/;"	m
+OBJECTFILES	v0/nbproject/Makefile-default.mk	/^OBJECTFILES=${OBJECTDIR}\/_ext\/568001804\/i2c.p1 ${OBJECTDIR}\/_ext\/568007942\/adc.p1 ${OBJECTDIR}\/init.p1 ${OBJECTDIR}\/main.p1$/;"	m
+OS_CURRENT	v0/nbproject/Makefile-default.mk	/^OS_CURRENT="$(shell uname -s)"$/;"	m
+PERIOD_SRV_PWM	v0/header.h	73;"	d
+POT_RES	v0/header.h	42;"	d
+PROJECTNAME	v0/nbproject/Makefile-impl.mk	/^PROJECTNAME=ACADM$/;"	m
+RANLIB	v0/Makefile	/^RANLIB=ranlib$/;"	m
+RM	v0/nbproject/Makefile-default.mk	/^RM=rm -f $/;"	m
+SRV_CMD	v0/header.h	69;"	d
+SUBPROJECTS	v0/nbproject/Makefile-impl.mk	/^SUBPROJECTS=${SUB_${SUB}}$/;"	m
+SUB_no	v0/nbproject/Makefile-impl.mk	/^SUB_no=NO$/;"	m
+TMR0_PRE_SCALER	v0/header.h	92;"	d
+TMR0_VAL	v0/header.h	93;"	d
+VDD	v0/header.h	24;"	d
+_XTAL_FREQ	v0/main.c	7;"	d	file:
+adc_new_pos	v0/header.h	/^unsigned char adc_new_pos;$/;"	v
+adc_old_pos	v0/header.h	/^unsigned char adc_old_pos;$/;"	v
+adc_pos_dif	v0/header.h	/^unsigned char adc_pos_dif;$/;"	v
+adc_throttle	v0/header.h	/^unsigned int adc_throttle;$/;"	v
+b_adc2timer	v0/header.h	/^char b_adc2timer;$/;"	v
+checkReturnCode	v0/nbproject/Package-default.bash	/^function checkReturnCode$/;"	f
+copyFileToTmpDir	v0/nbproject/Package-default.bash	/^function copyFileToTmpDir$/;"	f
+counter_pwm	v0/header.h	/^unsigned int counter_pwm;$/;"	v
+duty_value	v0/header.h	/^unsigned int duty_value;$/;"	v
+init_dig_pot	v0/header.h	/^void init_dig_pot(unsigned char adress);$/;"	p	signature:(unsigned char adress)
+init_dig_pot	v0/init.c	/^void init_dig_pot(unsigned char adress)$/;"	f	signature:(unsigned char adress)
+init_pic	v0/header.h	/^void init_pic(void);$/;"	p	signature:(void)
+init_pic	v0/init.c	/^void init_pic(void)$/;"	f	signature:(void)
+int_call	v0/main.c	/^void interrupt int_call(void)$/;"	f	signature:(void)
+len	v0/init.c	/^    unsigned char len;$/;"	l
+m_adc2timer	v0/header.h	/^float m_adc2timer;$/;"	v
+main	v0/main.c	/^int main(void) {$/;"	f	signature:(void)
+makeDirectory	v0/nbproject/Package-default.bash	/^function makeDirectory$/;"	f
+man_auto	v0/header.h	/^unsigned char man_auto;$/;"	v
+max_centralina_pot	v0/header.h	/^unsigned char max_centralina_pot;$/;"	v
+max_pwm_duty	v0/header.h	/^unsigned int max_pwm_duty;$/;"	v
+min_pwm_duty	v0/header.h	/^unsigned int min_pwm_duty;$/;"	v
+msg	v0/init.c	/^    unsigned char msg[14];$/;"	l
+pot_car	v0/header.h	/^unsigned char pot_car;$/;"	v
+pot_plc	v0/header.h	/^unsigned char pot_plc;$/;"	v
+pot_ref_min_car	v0/header.h	/^unsigned char pot_ref_min_car;$/;"	v
+pot_servo_ctrl	v0/header.h	/^unsigned char pot_servo_ctrl;$/;"	v
+pot_values	v0/header.h	/^unsigned char pot_values[8];$/;"	v
+pwm_period	v0/header.h	/^unsigned int pwm_period;$/;"	v
+r_pot_adc	v0/header.h	/^float r_pot_adc;$/;"	v
+send_pot_val	v0/header.h	/^void send_pot_val(unsigned char adress, unsigned char* msg, unsigned char len);$/;"	p	signature:(unsigned char adress, unsigned char* msg, unsigned char len)
+send_pot_val	v0/main.c	/^void send_pot_val(unsigned char adress, unsigned char* msg, unsigned char len)$/;"	f	signature:(unsigned char adress, unsigned char* msg, unsigned char len)
+t_osc	v0/header.h	/^float t_osc;$/;"	v
+t_osc_pres	v0/header.h	/^float t_osc_pres;$/;"	v

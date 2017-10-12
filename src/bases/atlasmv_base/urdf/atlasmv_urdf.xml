@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<robot name="atlasmv">
+  <!--######################################################-->
+  <!--####################  LINKS  ########################-->
+  <!--######################################################-->
+  <!-- No links -->
+  
+  <!--######################################################-->
+  <!--####################  DEVICES  ########################-->
+  <!--######################################################-->
+  <!-- USE udevadm info -q all -n /dev/ttyUSB0-->
+  <sensor name="/atlasmv/base/des">
+    <device_information>
+      <SUBSYSTEM>tty</SUBSYSTEM>
+      <ID_SERIAL>FTDI_Dual_RS232</ID_SERIAL>
+      <ID_VENDOR_ID>0403</ID_VENDOR_ID>
+      <ID_USB_INTERFACE_NUM>01</ID_USB_INTERFACE_NUM>
+    </device_information>
+    <cable_label>DES servo Amplifier</cable_label>
+  </sensor>
+  <sensor name="/atlasmv/base/servos">
+    <device_information>
+      <SUBSYSTEM>tty</SUBSYSTEM>
+      <ID_SERIAL>FTDI_Dual_RS232</ID_SERIAL>
+      <ID_VENDOR_ID>0403</ID_VENDOR_ID>
+      <ID_USB_INTERFACE_NUM>00</ID_USB_INTERFACE_NUM>
+    </device_information>
+    <cable_label>Dir and Brake servos</cable_label>
+  </sensor>
+  <sensor name="/atlasmv/base/dioc">
+    <device_information>
+      <SUBSYSTEM>tty</SUBSYSTEM>
+      <ID_SERIAL>FTDI_UC232R_FTF91L8S</ID_SERIAL>
+    </device_information>
+    <cable_label>DIOC</cable_label>
+  </sensor>
+    <sensor name="/atlasmv/base/gamepad">
+    <device_information>
+      <SUBSYSTEM>input</SUBSYSTEM>
+      <ID_VENDOR_ID>045e</ID_VENDOR_ID>
+      <ID_USB_INTERFACE_NUM>00</ID_USB_INTERFACE_NUM>
+      <ID_MODEL>Xbox_360_Wireless_Receiver_for_Windows</ID_MODEL>
+    </device_information>
+    <cable_label>Gamepad</cable_label>
+  </sensor>
+</robot>

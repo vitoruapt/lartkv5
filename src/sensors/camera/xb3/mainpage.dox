@@ -1,0 +1,151 @@
+/**
+\mainpage XB3
+\htmlinclude manifest.html
+
+This is a ros driver package for Bumblebee xb3 stereocameras.
+This node receive images from camera and publish image topics and camera service info.
+
+\author Tiago Talhada
+\date May 2012
+
+<h1 name="contents" >   Table of contents  </h1>
+<OL TYPE="1">
+<LI> <h2> <a href="#topics"> Published topics  </a> </h2>
+<LI> <h2> <a href="#usage"> How to use the package?  </a> </h2>
+<LI> <h2> <a href="#stereo">  How to process stereo with stereo_image_proc?  </a> </h2>
+<LI> <h2> <a href="#parameters">  Stereo image processing parameters  </a> </h2>
+    <OL>
+	<LI> <h3> <a href="#prefilter">  	Pre - Filtering  </a> </h3>
+	<LI> <h3> <a href="#postfilter">  	Post - Filtering  </a> </h3>
+    </OL>
+</OL>
+
+
+<h1 id="topics" > Published Topics  </h1>
+
+This package publishes the following topics \n
+
+/snr/scam/short/left/image_raw  \n
+/snr/scam/short/left/camera_info \n
+/snr/scam/short/right/image_raw \n
+/snr/scam/short/right/camera_info \n
+
+/snr/scam/wide/left/image_raw \n
+/snr/scam/wide/left/camera_info \n
+/snr/scam/wide/right/image_raw \n
+/snr/scam/wide/right/camera_info \n
+
+<h1 id="usage"> How to use the package? </h1>
+
+Here is an example on how to use xb3 package.
+\code
+
+<launch>
+  <!-- This is an arpua lauch file for starting up xb3. -->
+  <group ns="/snr/scam">
+    <node name="xb3" pkg="xb3" type="xb3">
+	<remap from="/xb3_optical_frame" to="/atc/camera/xb3/left"/>  
+  </node>
+	<param name="width" type="int" value="640"  />
+	<param name="height" type="int" value="480"  />
+</group>
+</launch>
+
+\endcode
+
+You can use the full camera resolution 1280x960 or 640x480.\n
+If you change your resolution, remember to change also your calibration files.
+
+
+<h1 id="stereo"> How to process stereo with stereo_image_proc?  </h1>
+
+You can use the following as a launch file to run stereo_image_proc for both baselines. 
+
+\code
+<group ns="/snr/scam/short">
+      <node name="stereoproc" pkg="stereo_image_proc" type="stereo_image_proc" 
+	    args="_prefilter_size:=255 _prefilter_cap:=63 _correlation_window_size:=31 _min_disparity:=0 _disparity_range:=32 
+	    _uniqueness_ratio:=10 _texture_threshold:=100 _speckle_size:=400 _speckle_range:=15">
+      </node>
+</group>
+
+<group ns="/snr/scam/wide">
+      <node name="stereo_image_proc" pkg="stereo_image_proc" type="stereo_image_proc" 
+	    args="_prefilter_size:=255 _prefilter_cap:=63 _correlation_window_size:=31 _min_disparity:=0 _disparity_range:=32 
+	    _uniqueness_ratio:=10 _texture_threshold:=100a _speckle_size:=400 _speckle_range:=15 __name:=xb3_wide_stereo_proc" />
+</group>
+\endcode
+
+<h1 id="parameters"> Stereo image processing parameters   </h1>
+
+Here is a brief description on what does each parameter from opencv block match stereo processing. \n
+I take this description from the book: \b Learning \b OpenCV (page: 438:444). \n 
+There are three stages to the block-matching stereo correspondence algorithm.
+
+<OL TYPE="A">
+<LI>  <h2> Pre-filtering to normalize image brightness and enhance texture. </h2>
+<LI> <h2> Correspondence search along horizontal epipolar lines using an SAD ("sum of absolute difference") window. </h2>
+<LI> <h2> Post-filtering to eliminate bad correspondence matches. </h2>  
+</OL>
+
+<h3 id="prefilter"> Pre-filter parameters</h3>
+
+<OL TYPE="1">
+   <LI>  \b prefilter_size    (5, 255) (5x5, 21x21) \n
+                -Reduce lighting differences and to enhance image texture. \n
+                -The center pixel Ic under the window is replaced by min[max(Ic - I , Icap), Icap],   \n
+                where I is the average value in the window and Icap is  \n
+                a positive numeric limit whose default value is 30 (prefilter cap). \n
+                - Default 9x9.   \n
+
+  <LI>   \b prefilter_cap  (1, 63)  (about 1/4 of image range (0-255)) \n
+                -definition above (prefilter_size) \n
+                - default 30.   \n
+
+  <LI>	 \b correlation_window_size   (5, 255) \n
+		-With smaller windows the processing speed is much higher \n
+                -SAD matching window size. (5x5,...,21x21). \n
+                - default 15. \n
+
+  <LI>   \b min_disparity     (-128, 128) \n
+                -Minimum disparity (=0) \n
+                -Minimum value where the matching search will start \n
+                - default 0.  \n
+
+<LI>	 \b disparity_range   (32, 128) \n
+                -Reducing the disparity range to be searched can help cut down computation \n
+                time by limiting the length of a search for a matching point along an epipolar line. \n
+                - default 64 \n
+</OL>
+
+<h3 id="postfilter"> Post filtering parameters</h3>
+
+<OL TYPE="1">
+
+<LI>   \b uniqueness_ratio  (0, 100) \n
+                -The minimum margin in percents between the best (minimum) cost function value and \n
+                the second best value to accept the computed disparity. \n
+                - UniquenessRatio > (match_val-min_match)/min_match.  \n
+
+<LI>	\b texture_threshold  (0, 100) \n
+                -Minimum value for texture to compute disparity. \n
+                -That is, if the sum of absolute values of x-derivatives \n
+                computed over SADWindowSize by  SADWindowSize pixel neighborhood  \n 
+		is smaller than the parameter, no disparity is \n
+                computed at the pixel.  \n
+                - default 10.   \n
+
+<LI>	\b speckle_size     (0,1000) \n
+                -The maximum area of speckles to remove (set to 0 to disable speckle filtering) \n
+                -Set a speckle detector over a speckle window to prevent speckles. \n
+                - default 100  \n
+
+<LI>	\b speckle_range    (0,31) \n
+                -Acceptable range of disparity variation in each connected component. \n
+                -As long as the minimum and maximum detected disparities are within speckleRange, \n
+                the match is allowed. \n
+                - default 4. \n
+</OL>
+
+
+*/

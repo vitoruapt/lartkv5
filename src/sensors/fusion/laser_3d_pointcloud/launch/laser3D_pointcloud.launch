@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- This is a atlasmv launch files for starting a pointcloud accumulation from the laser3D-->
+	<group ns="/snr/las3d/fus/pointcloud">
+		
+		<!-- Remmaping topics-->
+		<remap from="/joint_state" to="/trf/joints"/>
+		
+		<remap from="/laserscan0" to="/snr/las/0/scan"/>
+		
+		<remap from="/pc_out" to="/snr/las3d/fus/pointcloud"/>
+		<remap from="/tf" to="/trf/frames"/>
+
+		<!-- Set the accumulation frame_id-->
+		<remap from="/ac_frame" to="/atc/laser/roof_rotating/base"/>
+	
+		<node name="node" pkg="laser3D_pointcloud" type="las3D_pc">
+			
+			<!-- Set the accumulation_mode;
+			1 - Use slerp projection, with time t0 and tn based on the shaft angle stamp; 
+			2 - No correction (project the laser scan in only one phi), using t0 as scan start time
+			3 - Use slerp projection, with time t0 and tn based on the scan time;  -->
+			<param name="accumulation_mode" type="int" value="1"/>
+			
+			<!-- Max of scans to be accumulated -->
+			<param name="max_scans_accumulated" type="int" value="500"/>
+
+			<!-- 1	- ros time now;
+				 0  - rost time scan, using when we are using bag-->
+			<param name="pointcloud_stamp" type="int" value="0"/>
+
+			<!-- Set the output_frequency-->
+			<param name="output_frequency" type="double" value="200.0"/>
+		</node>
+		
+	</group>
+</launch>

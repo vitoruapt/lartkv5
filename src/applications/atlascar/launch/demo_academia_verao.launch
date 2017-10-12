@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<launch>
+	
+	<remap from="/xb3/left/image_raw" to="/snr/scam/short/left/image_raw"/>
+	<remap from="/xb3/center/image_raw" to="/snr/scam/short/right/image_raw"/>
+	
+	<!--Launch the XB3 Camera-->
+    <node name="xb3" pkg="xb3" type="xb3_full_speed">
+        <param name="left_calibration_file" value="package://xb3/calibrations/left.yaml"/>
+        <param name="center_calibration_file" value="package://xb3/calibrations/center.yaml"/>
+        <param name="right_calibration_file" value="package://xb3/calibrations/right.yaml"/>
+		<remap from="/xb3_optical_frame" to="/atc/camera/xb3/left"/>  
+    </node>
+	
+	<node ns="/snr/scam/short" name="stereoproc_short" pkg="stereo_image_proc" type="stereo_image_proc" args="_prefilter_size:=255 _prefilter_cap:=63 _correlation_window_size:=31 _min_disparity:=0 _disparity_range:=1000 _uniqueness_ratio:=10 _texture_threshold:=100 _speckle_size:=400 _speckle_range:=15"/>
+  
+	<!--Launch the first flea camera-->
+	<node ns="/snr/cam/1" pkg="camera1394" type="camera1394_node" name="node" args="_video_mode:=320x240_yuv422 _format7_color_coding:=rgb8 _bayer_pattern:=rggb camera:= ">
+	  <param name="guid" value="00b09d01007de43b"/>
+      <param name="frame_id" value="/atc/camera/right_roof/foveated"/>
+	  <rosparam file="$(find atlascar)/flea_configuration/right_roof_foveated.yaml"/>
+    </node>
+	
+	<!--Launch the second flea camera-->
+	<node ns="/snr/cam/0" pkg="camera1394" type="camera1394_node" name="node" args="_video_mode:=320x240_yuv422 _format7_color_coding:=rgb8 _bayer_pattern:=rggb camera:= ">
+	  <param name="guid" value="00b09d01007de42d"/>
+	  <param name="frame_id" value="/atc/camera/right_roof/peripheral"/>
+	  <rosparam file="$(find atlascar)/flea_configuration/right_roof_peripheral.yaml"/>
+	</node>
+	
+	<!--Launch the first laser-->
+	<node ns="snr/las/2" name="laser_1" pkg="lms1xx" type="lms1xx">
+		<param name="host" value="10.0.0.10"/>
+		<param name="frame_id" value="/atc/laser/left_bumper"/>
+	</node>
+    
+	<!--Launch the second laser-->
+	<node ns="snr/las/3" name="laser_2" pkg="lms1xx" type="lms1xx">
+		<param name="host" value="10.0.0.11"/>
+		<param name="frame_id" value="/atc/laser/right_bumper"/>
+	</node>
+	
+	<node ns="/snr/las/0" pkg="sicktoolbox_wrapper" type="sicklms" name="node">
+		<remap from="/snr/las/0/node/port" to="/device_mapper/atc/laser/roof_rotating/lms"/>
+		<param name="baud" value= "500000" />
+		<param name="frame_id" value= "/atc/laser/roof_rotating" />
+	</node>
+	
+	<node ns="/snr/ptu" name="node" pkg="ptu46" type="ptu46_node" output="screen" args="tilt:=/connect_ptu_tilt pan:=/connect_ptu_pan">
+		<remap from="/snr/ptu/node/port" to="/device_mapper/atc/bases/ptu"/>
+		<param name="baud" value="9600"/> 
+		<remap from="/snr/ptu/node/state" to="/trf/joints"/>  
+		<remap from="/snr/ptu/node/cmd" to="/snr/ptu/command"/>  
+	</node>
+	
+	 <include file="$(find atlascar_ptu)/launch/ptu_interactive_control.launch"/> 
+	 <include file="$(find foveation_control)/launch/foveation_control_atlascar.launch"/> 
+	 <include file="$(find foveation_control)/launch/foveation_control_interactive_target.launch"/> 
+
+</launch>

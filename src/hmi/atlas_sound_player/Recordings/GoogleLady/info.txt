@@ -1,0 +1,23 @@
+sit0
+Found a pedestrian to follow
+
+sit1
+Comment while continuing pursuit
+
+sit2
+In TRACKING_NOT_SAFE, pedestrian or others are in safety zone
+
+sit3
+Everyone cleared the area. Can resume the pursuit
+
+sit4
+Waiting for someone to start pursuit
+
+sit5
+Pedestrian disapeared
+
+sit6
+Pedestrian being followed is too close
+
+tut_s0 
+Então queres ser seguido? vou explicar o funcionamento

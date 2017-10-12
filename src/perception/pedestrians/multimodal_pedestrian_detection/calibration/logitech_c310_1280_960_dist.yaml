@@ -1,0 +1,20 @@
+image_width: 1280
+image_height: 960
+camera_name: logitech_c310_1280_960_dist
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [1448.14743396683, 0, 583.90982963904, 0, 1456.87905232716, 430.752219788344, 0, 0, 1]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [0.0602286152249353, -0.12636111339109, -0.00281640891280542, -0.0065908083074176, 0]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1, 0, 0, 0, 1, 0, 0, 0, 1]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [1457.330078125, 0, 577.192047065822, 0, 0, 1472.30639648438, 428.301071081289, 0, 0, 0, 1, 0]

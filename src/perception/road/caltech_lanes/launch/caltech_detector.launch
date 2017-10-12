@@ -1,0 +1,10 @@
+<launch>
+	<node pkg="rosbag" type="play" name="rosbag" args=" /home/morais/Bags/bags_morais_TMP_2013-05-15-12-37-53.bag" /> 
+<!-- 	<node pkg="rosbag" type="play" name="rosbag" args=" /home/morais/Bags/2013-05-09-15-01-39.bag" /> --> <!--dataset do algoritmo do Matlab-->
+<!-- 	<node pkg="rosbag" type="play" name="rosbag" args=" /home/morais/Bags/bags_inspecção.bag " /> -->
+<!-- 	<node pkg="rosbag" type="play" name="rosbag" args=" /home/morais/Bags/bags_do_morais_2013-05-24-10-42-29.bag" /> -->
+	<node name="caltech_lane" pkg="caltech_lanes" type="LaneDetector32" output="screen" args="--show --wait=50 --stoplines-conf=$(find caltech_lanes)/config/Stoplines.conf --lanes-conf=$(find caltech_lanes)/config/Lanes.conf --camera-conf=$(find caltech_lanes)/config/CameraInfo.conf">
+<!-- 		<remap from="/image" to="snr/cam/0/image_color"/> -->
+		<remap from="/image" to="snr/scam/wide/left/image_color"/>
+	</node>
+</launch>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- This launches an haptic_force node-->
+    <node name="cell_force" pkg="haptic_force" type="cell_force"/>
+
+</launch>

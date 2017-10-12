@@ -1,0 +1,20 @@
+Header header
+
+float64 linear_acceleration_x
+float64 linear_acceleration_y
+float64 linear_acceleration_z
+
+float64 angular_velocity_x
+float64 angular_velocity_y
+float64 angular_velocity_z
+
+float64 angular_displacement_x
+float64 angular_displacement_y
+float64 angular_displacement_z
+
+float64 magnetometer_x
+float64 magnetometer_y
+float64 magnetometer_z
+
+uint8 number
+uint8 total_number

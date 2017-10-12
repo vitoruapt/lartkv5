@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<robot name="atlascar">
+  <!--######################################################-->
+  <!--####################  LINKS  ########################-->
+  <!--######################################################-->
+  <link name="/atc/vehicle/center_bumper">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://atlascar_base/models/FordEscort.DAE"/>
+      </geometry>
+      <material name="green">
+        <color rgba=".2 .2 .2 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="/atc/laser/left_bumper">
+    <visual>
+      <origin xyz="0 0 -0.0577" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.152" radius="0.047"/>
+      </geometry>
+      <material name="grey">
+        <color rgba="0.6 0.6 1 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="/atc/laser/right_bumper">
+    <visual>
+      <origin xyz="0 0 -0.0577" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.152" radius="0.047"/>
+      </geometry>
+      <material name="grey">
+        <color rgba="0.6 0.6 1 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="/atc/laser/roof_rotating">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size=".156 .155 .185"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.1 0.1 1 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="/atc/camera/xb3/right">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size=".277 .0418 .037"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="0.6 0.6 0 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="/atc/camera/xb3/center">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size=".001 .001 .001"/>
+      </geometry>
+      <material name="yellow"/>
+    </visual>
+  </link>
+  <link name="/atc/camera/xb3/left">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size=".001 .001 .001"/>
+      </geometry>
+      <material name="yellow">
+</material>
+    </visual>
+  </link>
+  <link name="/atc/ptu/base">
+    <visual>
+      <origin xyz="0 0 0.02286" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.089789 0.05715 0.04572 "/>
+      </geometry>
+      <material name="black">
+        <color rgba="0.2 0.2 0.2 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="/atc/ptu/pan_block">
+    <visual>
+      <origin xyz="0 0 0.02286" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.089789 0.0437134 0.04572"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <link name="/atc/ptu/tilt_block">
+    <visual>
+      <origin xyz="0 0 0.022987" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0254 0.064135 0.045974"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <link name="/atc/camera/right_roof/peripheral">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.0421" radius="0.0145"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <link name="/atc/camera/right_roof/foveated">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.0421" radius="0.0145"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <link name="/atc/laser/center_top_roof">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0254 0.0254 0.04"/>
+      </geometry>
+      <material name="orange">
+        <color rgba="0.7 0.2 0.7 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!--######################################################-->
+  <!--####################  JOINTS  ########################-->
+  <!--######################################################-->
+  <joint name="connect_laser_bumper_left" type="fixed">
+    <origin xyz="-0.080000 0.835000 0.000000" rpy="0.000000 -0.000000 -0.637001"/>
+    <parent link="/atc/vehicle/center_bumper"/>
+    <child link="/atc/laser/left_bumper"/>
+  </joint>
+  <joint name="connect_laser_bumper_right" type="fixed">
+    <origin xyz="-0.120000 -0.890000 -0.095000" rpy="0.000000 -0.000000 -2.530736"/>
+    <parent link="/atc/vehicle/center_bumper"/>
+    <child link="/atc/laser/right_bumper"/>
+  </joint>
+  <joint name="connect_laser_roof_rotating" type="continuous">
+    <origin xyz="-1.780300 0.000000 1.186100" rpy="0.087264 0.148343 0.000000"/>
+    <axis xyz="1 0 0"/>
+    <parent link="/atc/vehicle/center_bumper"/>
+    <child link="/atc/laser/roof_rotating"/>
+  </joint>
+  <joint name="connect_xb3_right" type="fixed">
+    <origin xyz="-1.840500 0.240000 1.117000" rpy="-1.710445 -0.000000 -1.570796"/>
+    <parent link="/atc/vehicle/center_bumper"/>
+    <child link="/atc/camera/xb3/right"/>
+  </joint>
+  <joint name="connect_xb3_center" type="fixed">
+    <origin xyz="-0.120 0 0" rpy="0 0 0"/>
+    <parent link="/atc/camera/xb3/right"/>
+    <child link="/atc/camera/xb3/center"/>
+  </joint>
+  <joint name="connect_xb3_left" type="fixed">
+    <origin xyz="-0.240 0 0" rpy="0 0 0"/>
+    <parent link="/atc/camera/xb3/right"/>
+    <child link="/atc/camera/xb3/left"/>
+  </joint>
+  <joint name="connect_ptu_base" type="fixed">
+    <origin xyz="-1.877000 -0.492000 0.990000" rpy="0.000000 -0.000000 0.000000"/>
+    <parent link="/atc/vehicle/center_bumper"/>
+    <child link="/atc/ptu/base"/>
+  </joint>
+  <joint name="connect_ptu_pan" type="revolute">
+    <origin xyz="0 0 0.04572" rpy="0.000000 -0.000000 0.000000"/>
+    <axis xyz="0 0 1"/>
+    <limit upper="3.14" lower="-3.14" effort="10" velocity="10"/>
+    <parent link="/atc/ptu/base"/>
+    <child link="/atc/ptu/pan_block"/>
+  </joint>
+  <joint name="connect_ptu_tilt" type="revolute">
+    <origin xyz="0 0 0.045974" rpy="0.000000 -0.000000 0.000000"/>
+    <axis xyz="0 1 0"/>
+    <limit upper="0.540" lower="-1.395" effort="10" velocity="10"/>
+    <parent link="/atc/ptu/pan_block"/>
+    <child link="/atc/ptu/tilt_block"/>
+  </joint>
+  <joint name="connect_right_roof/peripheral" type="fixed">
+    <origin xyz="0 0 0.07" rpy="-1.57 0 -1.57"/>
+    <parent link="/atc/ptu/tilt_block"/>
+    <child link="/atc/camera/right_roof/peripheral"/>
+  </joint>
+  <joint name="connect_right_roof/foveated" type="fixed">
+    <origin xyz="0 0 0.11" rpy="-1.57 0 -1.57"/>
+    <parent link="/atc/ptu/tilt_block"/>
+    <child link="/atc/camera/right_roof/foveated"/>
+  </joint>
+  <joint name="connect_laser_center_top_roof" type="fixed">
+    <origin xyz="-1.858300 0.000000 0.992700" rpy="0.000000 0.226943 0.000000"/>
+    <parent link="/atc/vehicle/center_bumper"/>
+    <child link="/atc/laser/center_top_roof"/>
+  </joint>
+
+  <!--######################################################-->
+  <!--####################  DEVICES  ########################-->
+  <!--######################################################-->
+  <sensor name="conversor">
+    <device_information>
+      <SUBSYSTEM>tty</SUBSYSTEM>
+      <ID_SERIAL>Prolific_Technology_Inc._USB-Serial_Controller_D</ID_SERIAL>
+      <ID_VENDOR_ID>0557</ID_VENDOR_ID>
+    </device_information>
+  </sensor>
+  <sensor name="cabo">
+    <device_information>
+      <SUBSYSTEM>tty</SUBSYSTEM>
+      <ID_SERIAL>Prolific_Technology_Inc._USB-Serial_Controller_D</ID_SERIAL>
+      <ID_VENDOR_ID>067b</ID_VENDOR_ID>
+    </device_information>
+  </sensor>
+  <sensor name="/atc/laser/center_top_roof">
+    <device_information>
+      <SUBSYSTEM>tty</SUBSYSTEM>
+      <ID_SERIAL>Hokuyo_Data_Flex_for_USB_URG-Series_USB_Driver</ID_SERIAL>
+      <ID_VENDOR_ID>15d1</ID_VENDOR_ID>
+    </device_information>
+  </sensor>
+
+</robot>

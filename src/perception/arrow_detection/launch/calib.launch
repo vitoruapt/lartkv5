@@ -1,0 +1,8 @@
+<launch>
+  <!-- % rxconsole -->
+  <node pkg="rqt" name="rqtconsole" type="rqtconsole"/>
+  <!-- % rosrun camera1394 camera1394_node -->
+  <node pkg="camera1394" type="camera1394_node" name="my_camera1394_node"/>
+  <!-- % rosrun image_view image_view image:=/camera/image_raw -->
+  <node pkg="image_view" type="image_view" name="my_image_raw_viewer" args="image:=/camera/image_raw"/> 
+</launch>

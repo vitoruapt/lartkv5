@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<launch>
+    
+    <remap from="phidgets_getdata_synchronous/IR_1" to="/pedal_monitor/IR_1"/>
+    <remap from="phidgets_getdata_synchronous/IR_2" to="/pedal_monitor/IR_2"/>
+    <remap from="phidgets_getdata_synchronous/ForceVal" to="/pedal_monitor/ForceVal"/>
+    
+    <node pkg="pedal_monitor" name="phidgets_getdata_synchronous" type="phidgets_getdata_synchronous">
+        <param name="file_name" value="$(find pedal_monitor)/src/calibration_test.xml"/>  
+    </node>
+    
+    <!-- Launch the laser node -->
+<!--    <group ns="laser_1">
+    <node name="laser_1" pkg="lms1xx" type="lms1xx">
+        <param name="host" value="10.0.0.11"/>
+        <param name="frame_id" value="/base_link"/>
+    </node>-->
+
+    <!-- Launch the odometer node -->
+    <remap from="odometer/status" to="/pedal_monitor/odometer"/>
+    
+    <node pkg="odometer" name="odometer" type="odometer_node">
+        <param name="server_ip" value="10.0.0.31"/>  
+        <param name="server_port" value="120" type="string"/>  
+    </node>
+
+    
+    <!-- This is a launch file for recording the topics for my thesys  -->
+    
+    <node pkg="rosbag" type="record" name="rosbag_record"
+    args="record -o /media/Data/Data_Record/newtests/bag1
+ 
+    /pedal_monitor/ForceVal
+    /pedal_monitor/IR_1
+    /pedal_monitor/IR_2
+    /pedal_monitor/odometer  
+    "/>
+
+</launch> 

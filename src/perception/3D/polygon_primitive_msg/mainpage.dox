@@ -1,0 +1,10 @@
+/**
+\mainpage Polygonal primitives extraction 
+\htmlinclude manifest.html
+
+This node defines the messages to be used by the polygonal_primitives_extraction
+package.
+
+Messages include geometric_primitives and textured_primitives.
+
+*/

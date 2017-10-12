@@ -1,0 +1,14 @@
+<launch>
+	<!-- This is a atlascar_teleop launch files for starting up -->
+
+	<!-- the following file is used when is necessary to include another launch file-->
+	<!-- <include file="$(find pkg-name)/launch/filename.xml"/> -->
+
+		<remap from="/joy" to="/atc/hmi/gamepad"/>
+		<remap from="/cmd_out" to="/atc/base/command"/>
+		<remap from="/joy_node/dev" to="/device_mapper/atc/bases/gamepad"/>
+		
+		<node pkg="joy" name="joy_node" type="joy_node"/>
+		<node pkg="atlascar_teleop" name="atlascar_teleop" type="gamepad_teleop"/>
+		
+</launch>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- This is a launch file for recording the topics for my thesys  -->
+    
+  <node pkg="rosbag" type="record" name="rosbag_record"
+  args=" -o /home/phua-lar/bags_experiments/YYMove
+    /topic_raw_data
+    "/>
+
+
+</launch>

@@ -1,0 +1,15 @@
+<launch>
+  <!-- This is an arpua launch file for calibrating the xb3 stereo camera. -->
+
+  <!--call xb3 launch file -->
+  <include file="$(find xb3)/launch/xb3.launch" />  
+ 
+  <!-- launch cameracalibrator.py with propper arguments --> 
+  <group ns="snr/scam/short">
+      <node name="camera_calibration" pkg="camera_calibration" type="cameracalibrator.py" args="--size 8x6 --square 0.027 right:=/right/image_raw left:=/left/image_raw right_camera:=/right left_camera:=/left" />
+  </group>
+  
+  <group ns="snr/scam/wide">
+    <node name="camera_calibration" pkg="camera_calibration" type="cameracalibrator.py" args="--size 8x6 --square 0.027 right:=/right/image_raw left:=/left/image_raw right_camera:=/right left_camera:=/left" />
+  </group>
+</launch>

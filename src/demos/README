@@ -1,0 +1,17 @@
+/*
+@file demos
+
+@brief
+Contains packages regarding demonstrations,
+including the required launch files as well
+as instructions or other launch files from
+other packages or applications.
+
+@examples
+FollowPedestrian (OK)
+PerformParking (not yet)
+FollowRoad (not yet)
+InvertMotionSense (not yet)
+
+*/
+

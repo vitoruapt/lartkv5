@@ -1,0 +1,6 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~min_ang" : \b [double] The angle of the first range measurement. min: -3.14159265359, default: -1.57079632679, max: 3.14159265359
+

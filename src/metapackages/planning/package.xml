@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <name>planning</name>
+  <version>5.0.0</version>
+  <description>
+     Contains packages concerning motion planning in the
+context of navigation, such as trajectory planning
+for local navigation actions or more long term
+path or course planning such as map based planning.
+  </description>
+  <maintainer email="dem-atlas-admin@ua.pt">vsantos</maintainer>
+  <license>BSD</license>
+  <export>
+    <metapackage/>
+  </export>
+  <buildtool_depend>catkin</buildtool_depend>
+
+    <run_depend>trajectory_planner</run_depend>
+
+</package>

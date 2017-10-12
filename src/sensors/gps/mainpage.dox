@@ -1,0 +1,60 @@
+/**
+\mainpage GPS module data receiver
+\htmlinclude manifest.html
+
+\b gps is a wrapper package to use existing GPS packages based on gpsd
+
+\section Description
+The package depends on existing ROS gps package \c gps-umd 
+that you can install using the following generic procedure:
+\verbatim
+	sudo apt-get install ros-<distro>-gps-umd
+\endverbatim
+\b gps_umd is actually a ROS stack with two packages:
+\li \b	gpsd_client -  includes the gpsd_client node and some other unused node
+\li \b	gps_common - includes the utm_odometry_node node 
+
+\c gpsd_client obtains data after \c gpsd, which is a deamon in the operating system.
+If \c gpsd is not installed then install it with:
+\verbatim
+	sudo apt-get install gpsd
+\endverbatim
+And then configure it:
+\verbatim
+	dpkg-reconfigure gpsd
+\endverbatim
+to change the options, stored in \c /etc/default/gpsd, into something like:
+\verbatim
+	START_DAEMON="true"
+	GPSD_OPTIONS=""
+	DEVICES=""
+	USBAUTO="false"   # "true" to make autodetection of USB port!
+	GPSD_SOCKET="/var/run/gpsd.sock"
+\endverbatim
+
+If you do not want the \c gpsd scramble your serial ports,
+then do not allow auto USB detection and impose your
+serial port manually, e.g.
+\verbatim
+	gpsd /dev/ttyUSB3
+\endverbatim
+
+You can test if GPS is operational by running several tools such as cgps (text) or 
+xgps (graphical) where you should see data and even a map of satelites... :-)
+
+In some GPS receivers there is a problem with GPS time so
+the command must be invoked setting the gps_time as false.
+The actual command is something like this:
+\verbatim
+	rosrun gpsd_client gpsd_client _host:=localhost _port:=2947 _use_gps_time:=false
+\endverbatim
+Port is the default but can be changed.
+
+The \c launch/gpsBU-353.launch launch file has been created to easily launch this \c gpsd_client for the particular receiver. 
+
+<!-- 
+
+-->
+
+
+*/

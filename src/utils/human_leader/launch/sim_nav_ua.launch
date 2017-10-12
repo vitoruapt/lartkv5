@@ -1,0 +1,61 @@
+<!-- simulation of a single robot in stage -->
+<!-- using previously saved map, from following test -->
+<!-- must play bag file that contains ids and targets, or provide them running mtt+hector_slam -->
+<!-- author: Procopio -->
+
+<launch>
+  
+  <param name="/use_sim_time" value="true" /> 
+  <arg name="scenario" default="ua15" />
+  
+  ## Publish map
+  <node pkg="map_server" type="map_server" name="map_server" output="screen" args="$(find wheelchair)/world/$(arg scenario)/map.yaml" respawn="false" >
+    <param name="frame_id" value="/map" />
+  </node>
+
+  ## Start stage
+  <node pkg="stage" type="stageros" name="stageros" args="$(find wheelchair)/world/$(arg scenario)/scenario.world" respawn="false" output="screen">
+    <param name="base_watchdog_timeout" value="0.2"/>
+  </node>
+  
+  ## initialize amcl
+  <include file="$(find wheelchair)/launch/amcl.launch"/>
+  
+  ## load robot position
+  <include file="$(find wheelchair)/world/$(arg scenario)/scenario_specific.launch"/> 
+  
+  ## rviz
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find wheelchair)/conf/ua_nav.vcg" />
+  
+  ## classifier
+  <node pkg="process_target" type="classify_features" name="classifier" args="$(find process_target)/trained_boost.xml" />
+  
+  ## leader manager and follower
+  <node pkg="social_filter" type="leader_follower_class" name="leader_follower_class" output="screen"/>
+ 
+  ## move base
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base_node" output="screen">
+    <remap from="map" to="/map" />
+    <param name="controller_frequency" value="10.0" />
+    <rosparam file="$(find wheelchair)/move_base_config/common.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find wheelchair)/move_base_config/common.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find wheelchair)/move_base_config/local.yaml" command="load" />
+    <rosparam file="$(find wheelchair)/move_base_config/global.yaml" command="load" />
+    <rosparam file="$(find wheelchair)/move_base_config/planner.yaml" command="load" />
+  </node>
+
+<!-- <param name="base_global_planner" value="goal_passer/GoalPasser"/> -->
+<!-- <param name="base_global_planner" value="carrot_planner/CarrotPlanner"/> -->
+<!-- <param name="base_global_planner" value="SBPLLatticePlanner"/>-->
+
+<!-- <param name="base_global_planner" value="ompl_planner_base/OMPLPlannerBase" /> -->
+<!-- <param name="OMPLPlannerBase/publish_diagnostics" value="true" /> -->
+<!-- <param name="OMPLPlannerBase/interpolate_path" value="true" /> -->
+<!-- <param name="OMPLPlannerBase/global_planner_type" value="LazyRRT" /> -->
+
+<!-- <param name="base_local_planner" value="pose_follower/PoseFollower"/> -->
+<!-- <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS"/> -->
+<!-- <param name="base_local_planner" value="eband_local_planner/EBandPlannerROS"/> -->
+  
+  
+</launch>

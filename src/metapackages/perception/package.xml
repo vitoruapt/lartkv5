@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<package>
+  <name>perception</name>
+  <version>5.0.0</version>
+  <description>
+     Contains packages concerned with sensorial data
+interpretation and representation. It covers algorithms
+to transform and extract from raw (or barely processed) 
+sensorial data some kind of higher-level meaning.
+This covers both for exteroception (enviroment) and
+proprioception (robots internal state).
+  </description>
+  <maintainer email="dem-atlas-admin@ua.pt">vsantos</maintainer>
+  <license>BSD</license>
+  <export>
+    <metapackage/>
+  </export>
+  <buildtool_depend>catkin</buildtool_depend>
+
+    <run_depend>3D</run_depend>
+  <run_depend>arrow_detection</run_depend>
+  <run_depend>atlascar_egomotion</run_depend>
+  <run_depend>datamatrix_detection</run_depend>
+  <run_depend>driver_monitoring</run_depend>
+  <run_depend>driver_recognition</run_depend>
+  <run_depend>haptic_force</run_depend>
+  <run_depend>lidar_egomotion</run_depend>
+  <run_depend>navigability_map</run_depend>
+  <run_depend>parking_detection</run_depend>
+  <run_depend>pedestrians</run_depend>
+  <run_depend>planarobstacles</run_depend>
+  <run_depend>pointcloud_segmentation</run_depend>
+  <run_depend>road</run_depend>
+
+</package>

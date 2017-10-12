@@ -1,0 +1,27 @@
+#the header of the message
+Header header
+string name
+string frame_global_name
+string frame_local_name
+
+geometry_msgs/Transform frame_current
+geometry_msgs/Transform frame_previous
+
+uint8 color_r
+uint8 color_g
+uint8 color_b
+
+float64 convex_hull_area
+float64 convex_hull_solidity
+sensor_msgs/PointCloud2 convex_hull
+sensor_msgs/PointCloud2 extended_convex_hull
+
+float64 concave_hull_area
+float64 concave_hull_solidity
+sensor_msgs/PointCloud2 concave_hull
+sensor_msgs/PointCloud2 extended_concave_hull
+
+float64 support_plane_A
+float64 support_plane_B
+float64 support_plane_C
+float64 support_plane_D

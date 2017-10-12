@@ -1,0 +1,8 @@
+/**
+\mainpage Colormap
+\htmlinclude manifest.html
+
+colormap is a library that can provide the same kind of functionality as
+matlab colormap.
+
+*/

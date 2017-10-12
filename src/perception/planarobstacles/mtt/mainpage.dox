@@ -1,0 +1,68 @@
+/**
+\mainpage Multi target tracking
+\htmlinclude manifest.html
+
+This node is intended as a global object tracker from 2D planar scans, primarily from laser scanners.
+
+When a new scan is received it is broken into small groups of points named segments.
+
+After obtaining the current set of measurements from the most recent scan, we associate these objects with objects from past iterations. This association is based on the distance from the current object position and its predicted position, this association is complicated with a few gate criteria.
+
+This node publishes a list of current targets with their id and position.
+
+Documentation on the <b>Mht</b> algorithm may be found \ref mhtpage "here", while documentation on the Graphviz plug-in and class may be found \ref graphpage "here".
+
+\page Mht
+\anchor mhtpage
+\section Mht Multi hypothesis tracking, what is it?
+
+All the mht* files contain code for a very elaborate tracking algorithm by the name of 
+Multi Hypothesis Multi Target Tracking.
+
+This algorithm is based around a delayed decision method that instead of propagating just the 
+most probable hypothesis propagates all probable hypothesis reserving decisions for a latter 
+time when more information may remove ambiguities.
+
+The mht algorithm runs on top of a tree structure with reference material \ref treepage "here".
+
+\section Description Global description
+
+The binary for this algorithm is created using the mht.cpp file. 
+
+The code present in this file preforms only a set of basic data conversion functions. 
+
+When new data is received the dataHandler() function is called; this function converts the ros format
+to a vector of PointPtr using pointCloud2ToVector(). 
+
+This vector is converted into a set of measurements via clustering using createObjects().
+
+This vector of MeasurementPtr will be the input for the Mht::iterate() main function.
+
+\section Generic Main function of the Mht algorithm
+
+The current main function is called Mht::iterate().
+
+The main tasks of this functions are as follows:
+	- measurement to cluster assignment, these clusters are NOT the same has the basic data clusters, these clusters are hypotheses clusters. They divide the hypotheses tree into groups of conflicting hypotheses, the Mht algorithm will be implemented in each cluster independently.
+	- merging of clusters, if a measurement is associated with more that one cluster, those two clusters are in conflict and must be solved together, this is done by merging these clusters.
+	- once all clusters are correctly defined a list of problems to solve is created, each problem is a set of measurements and hypotheses that must be solved simultaneously, each clusters provides us with one problem to solve.
+	- the solution for each problem is a set of j-best hypotheses, these hypotheses are children of previous hypotheses effectively branching the hypotheses tree.
+
+The most up to date list of targets can be extracted by going through each branch of the tree and selecting the best hypothesis from that branch.
+That hypothesis will contain a set of targets that are not conflicting with each other.
+
+\page Graphviz
+\anchor graphpage
+\section Graphviz What is implemented and is it useful?
+
+The current version of the \ref mhtpage "mht algorithm" uses the Graphviz C library to visually access the evolution of the hypotheses tree.
+
+The Graphviz library consist of two main libraries Libgrah and Libgvc. Libgraph is responsible for the organization of the graph structure while Libgvc is a graphical context manager, responsible for plug-ins and render engines.
+	
+In order to obtain a dynamic representation of the tree both libraries were used, using Libgvc and Gtk a render plug-in was created named "xgtk". This plug-in is configured to create a Gtk drawing area and update it with a GVC/GVJ cairo contextualized job.
+
+In order to keep track of the Libgraph graph, with its nodes and edges a wrapper was created named GVGraph. This class contains a series of auxiliary functions that make the management of the graph tree very easy.
+
+The graphical representation is initialized in a thread running in the mht binary module, this module dynamically links with the plug-in.
+
+*/

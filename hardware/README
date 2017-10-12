@@ -1,0 +1,105 @@
+README file for LAR toolkit Hardware component
+================================================
+
+This directory includes information and data related
+to the hardware involved in the development of the 
+robotic platforms and their several subsystems.
+Each robot platform has its own directory.
+Also, a common_hw directory is created for hardware
+solutions that are not limited to a single robot platform.
+
+
+You can create a new subsystem documentation folder
+by running the script CreateNewHardwareSubsystem.sh
+
+Follows more details about the strucuture of that
+subsystem folder.
+
+On each robot platform, each respective subsystem will be installed
+in one directory and on each directory there will be files and directories
+concerning the hardware involved (mechanical, electrical,
+drawing schematics, firmwares, microcontrollers code, etc.)
+Suggestions for standard names of files/directories to create:
+
+	<subsystem>_index.html - File with a general description of the subsystem with explanations and links to the remainder of the directory
+	Mechanical             - Folder with mechanical drawings and CAD models
+	Electrical             - Folder with electrical and electronics circuits (schematics, PCBs, component lists, etc.)
+	Code                   - Code for microcontrollers and other firmware (must contain Makefiles or other instructions to build the binaries)
+
+The <subsystem>_index.html is a HTML file that should have
+common areas in order to be uniform among authors (see below).
+[In a near future, a XML template should be the base to build 
+this HTML file.]
+There is also a file named subsystemId.js used for generic 
+definitions about a given susbsystem. This is a javascript code 
+included by the main html file. This code includes the name of
+the subsystem, author of documentation and date of elaboration. 
+Adjust this file accordingly.
+
+The following sections/fields are required for the HTML file
+	Title
+	Brief description
+	System operation 
+		[Long description]
+	Mechanical components 
+		[conceptual mechanism, Drawings of fixing and supporting systems...]
+	Electrical circuits 
+		[Electrical circuits of the devices]
+	Firmware and similar code 
+		[Describe what programs and environments are used alogn with links to relevant code]
+	Maintenance 
+		[Specific instructions for technitians and engineers]
+
+	Last update information (Author, date)
+
+On each section, include when applicable links and images.
+
+------------------------------------------------------------------
+
+Each of the mentioned directories may have several subdirectories
+in case the subsystem has several valid approaches, or if 
+it is convenient to split the subsystem in smaller parts.
+That should however be avoided to keep the system simple.
+
+These are the current platforms of LAR3 toolkit
+	atlascar_hw
+	atlasmv_hw
+	atlas20XX_hw
+	arenabots_hw
+	humanoid_hw
+	common_hw
+
+This is an example of a starting partial structure 
+of the hardware subdirectory of LAR3 toolkit:
+
+|-- atlascar_hw
+|   |-- PedalActuation
+|   |   |-- Code
+|   |   |-- Electrical
+|   |   |-- Mechanical
+|   |   `-- pedalactuation_index.html
+|   |-- DriveWheelActuation
+|   `-- Throttle
+|-- atlasmv_hw
+|-- atlas20XX_hw
+|-- arenabots_hw
+|-- humanoid_hw
+`-- README
+
+
+============================================================================
+
+SUMMARY OF PROCEDURE TO CREATE THE HARDWARE DOCUMENTATION.
+[Inspire yourself for example in the "PedalActuation" directory in atlascar_hw]
+
+	1-Locate the base harware platform directory (atlascar_hw, humanoid_hw, ...)
+	2-Inside it, create a directory for the given subsystem (if not yet existing)
+	3-Create/adapt the following files/directories
+		<subsystem>_index.html (file)
+        	Mechanical             (folder)
+        	Electrical             (folder)
+        	Code                   (folder)
+	4-Adjust the subsystemId.js file with specific details
+	5-Fill in the previous folders with associated documents and images
+
+-

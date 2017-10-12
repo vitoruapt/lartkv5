@@ -1,0 +1,49 @@
+/**
+\mainpage Parking detection
+\htmlinclude manifest.html
+
+\b parking_detection is a package that calculates the coordinates of an empty parking space (If there is one) 
+
+That package includes 3 nodes, kinect_freq_mod, pub_transformations and parking_detection
+
+\section Usage
+
+<h1>  How to use? </h1>
+
+<h2>  Kinect_freq_mode  </h2>
+This node is responsible to modulate the frequency of the pointclouds publication (ex. kinect pointclouds) and to 'trim' the pointcloud at certain values (ex. z>0.5, which means that only points with a z coordinate bbigger than 0.5m are published)
+\code
+// This section defines the frequency of publication (10Hz)
+ros::Rate loop_rate(10);
+\endcode
+\code
+// Limitation of the admissible points
+for (int i=0;i<(int)pc_cut.points.size();i++)
+  {
+    if (pc_cut.points[i].z>0.6 && pc_cut.points[i].z<1.5)
+    {
+      processed_pc.push_back(pc_cut.points[i]);
+    }
+  }
+\endcode
+
+
+<h2>  pub_transformations  </h2>
+Here is necessary to define the transformation matrix between the kinect frame and the axis of the robotic vehicle frame
+\code
+// Coordinates of the kinect frame on the atlasMV vehicle (lars.mec.ua)
+float alpha=(38.5)*(3.1415/180);// 38.5 is obtained by multiplying the tillt angle by -1
+	
+tf::Transform transform(btMatrix3x3(0,-1,0, cos(alpha),0,sin(alpha), -sin(alpha),0,cos(alpha)),
+						  btVector3(0.236, -0.05, 0.68));
+\endcode
+
+<h2>  parking_detection </h2>
+This node is the one that is responsibe to search for an empty parking space. The conditions of what is a parking space are defined with the existance/no existance of points in four diferent volumes (represented by convexhulls);
+Those convexhulls change their colour from red to green, if the conditions are satisfied.
+
+<h1>  Launch Files </h1>
+There are three important launch files on this package, parking_detection_bagplay.launch, parking_detection_bagrecord.launch and parking_detection.launch
+
+The first one is to run the packadge from a recorded point cloud message, the second one is to recor the point cloud message, and the third one is to run the package in live action.
+*/

@@ -1,0 +1,42 @@
+<!-- Tagging Play -->
+<!-- author: Procopio -->
+<!-- usage: bagname:=xxxx to change the bag -->
+<!-- output ?? unknown, maybe txt file to begin, but better is message -->
+<!-- the following files: xxxxxxx -->
+
+<!-- usage: bagname:=follow21.bag INSIDE /bags/following/processed package -->
+
+<!--   <param name="/use_sim_time" value="true" />   -->
+<!--  <node pkg="rviz" type="rviz" name="rviz" 
+    args="-d $(find mtt)/rvizconfig/test_atlasmv_data.vcg" />-->
+
+<!-- <launch> -->
+
+<!--   <arg name="file" default="follow21.bag" /> -->
+  
+<!--   <node pkg="rosbag" type="play" name="rosbag_image" args="play -d $(arg file)"/> -->
+<!--   <node pkg ="rosbag" type="play" name="rosbag" args="$(arg file)"/> -->
+
+  <!--   <node pkg="image_view" type="image_view" name="target_video" args="image:=/camera/rgb/image_color"/> -->
+
+<!--   </launch> -->
+
+<!--<launch>
+  <node pkg="rosbag" type="play" name="rosbag" args="-d 2 $(find image_view)/test.bag"/>
+  <node name="extract" pkg="image_view" type="extract_images" respawn="false" output="screen" cwd="ROS_HOME">
+    <remap from="image" to="/camera/image_raw"/>
+  </node>
+</launch>-->
+
+<launch>
+  
+  <arg name="file" />
+
+  <param name="use_sim_time" type="bool" value="true" />
+
+<!--   <node pkg="rviz" type="rviz" name="rviz" args="-d $(find wheelchair)/conf/ar_test.vcg"/> -->
+
+  <node pkg="rosbag" type="play" name="rosbag_image" 
+    args="$(arg file) --clock -d 3"/>
+
+</launch>

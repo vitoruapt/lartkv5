@@ -1,0 +1,13 @@
+<!-- Plays a bag file with marker image that are detected and shown with social interactions -->
+<!-- author: Procopio -->
+<!-- usage: must specify full path and the bag name -->
+<!-- roslaunch wheelchair social_filter_bag.launch file:=/home/prometeu/ros/bags/social_filters_duo_2_images.bag -->
+
+<launch>
+  
+  <param name="use_sim_time" type="bool" value="true" />
+
+  <!-- Publish our map --> 
+  <node pkg="map_server" type="map_server" name="map_server" output="screen" args="$(find wheelchair)/world/hall_inria.yaml" />
+
+</launch>

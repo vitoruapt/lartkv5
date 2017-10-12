@@ -1,0 +1,8 @@
+<!-- Publish our map -->
+
+<launch>
+
+  <arg name="map" default="lar.yaml" />
+  <node pkg="map_server" type="map_server" name="map_server" output="screen" args="$(find atlasmv_base)/launch/$(arg map)" />
+  
+</launch>

@@ -1,0 +1,21 @@
+/**
+\mainpage datamatrix_detection
+\htmlinclude manifest.html
+
+This package aims to find and decode DataMatrix barcodes on a received image.
+
+
+\section Description
+The \b datamatrix_detection package uses the existing open source <a href="http://www.libdmtx.org/" target="_blank"> dmtx library</a> for DataMatrix decoding, which can be installed from Ubuntu repository by doing:
+\verbatim
+	sudo apt-get install libdmtx-dev
+\endverbatim
+
+\section Usage
+Here is an example on how to use the \b datamatrix_detection package. Using the \b usb_cam_reader package as an image publisher:
+
+\code
+    $ roslaunch datamatrix_detection datamatrix_detection_launch.launch
+\endcode
+
+*/

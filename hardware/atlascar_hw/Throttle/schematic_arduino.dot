@@ -1,0 +1,46 @@
+
+digraph arduino_schematic
+{
+	rankdir=TB;
+	size="8,8";
+	compound=true;
+	nodesep=0.8;
+	ranksep=0.1;
+	
+	subgraph cluster_init{
+		init[shape=box,label="Initialization"];
+		style=invis;
+	}
+	
+	subgraph cluster_setup{
+		
+		ethernet_setup[shape=box,label="ethernet"];
+		I2C_setup[shape=box,label=<I<sup>2</sup>C>];
+		IO_setup[shape=box,label="inputs/outputs"];
+		PWM_setup[shape=box,label="PWM generation"];
+		servo_setup[shape=box,label="initialize servo position"];
+		
+		label="Setup";
+		pencolor=grey;
+	}
+	
+	ethernet_setup->I2C_setup->IO_setup->PWM_setup->servo_setup;
+	
+	init->ethernet_setup[ltail=cluster_init,lhead=cluster_setup];
+	
+	subgraph cluster_loop{
+		hardware_mode[shape=box,label="get mode selection"];
+		client[shape=box,label="client"];
+		isclientconnected[shape=diamond,label="connected?",fixedsize=true,width=1.2,height=1.2];
+		
+		hardware_mode->client->isclientconnected[weight=10];
+		
+		label="Loop";
+		pencolor=grey;
+	}
+	
+	servo_setup->hardware_mode[ltail=cluster_setup,lhead=cluster_loop];
+	
+	isclientconnected->hardware_mode[tailport=e,headport=e,label="no"];
+	
+}

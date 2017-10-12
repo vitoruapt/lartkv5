@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+  <group ns="/snr/ptu/ctrl">
+  <node name="bytarget" pkg="foveation_control" type="publish_target" >
+	<remap from="/target" to="/snr/ptu/ctrl/bytarget/target"/>
+  </node>
+  </group>
+
+</launch>

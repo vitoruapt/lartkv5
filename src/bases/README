@@ -1,0 +1,23 @@
+/*
+@file bases
+
+@brief
+Contains packages concerning the control of hardware
+devices: the bases. Each base (one package) may contain
+several nodes (executables) regarding different hardware
+subsystems. The bases are normally robots basic motion
+units or dedicated subsystems with own motion independent
+of the robot motion itself. Most of these nodes use
+other utils packages for motor driver interface and similar.
+
+@examples
+atlascar_base
+atlascar_ptu
+atlasmv_base
+foveation_control
+humanoid_control
+laser_rotate3D
+phantom_control
+phua_haptic
+
+*/

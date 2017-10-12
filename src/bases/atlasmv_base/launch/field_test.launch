@@ -1,0 +1,21 @@
+<launch>
+
+  <!-- cameras launch file, at same dir  -->
+  <!-- <include file="$(find atlasmv_base)/launch/pre_launch_atlasmv.launch" /> -->
+
+  <include file="cameras.launch"/>
+  <include file="$(find atlasmv_base)/launch/atlasmv_base.launch" />
+
+  <!-- launch laser  -->
+  <node pkg="hokuyo_node" type="hokuyo_node" name="laser_scan">
+    <param name="port" value="/dev/ttyACM0"/>
+    <param name="frame_id" value="base_laser_link"/>
+  </node>
+  
+  <!-- static transformations  -->
+  <node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="0.058 0 0.125 0.0 0.0 3.1416 /base_link /base_laser_link 100" />
+  <!-- <node pkg="tf" type="static_transform_publisher" name="camera_to_base" args="1 0 1 0.0 0.0 0.0 /base_link /camera 100" /> -->
+  <node pkg="tf" type="static_transform_publisher" name="camera_to_base" args="0 0 0.5 0.0 0.0 0.0 /base_link /camera 100" />
+  <node pkg="tf" type="static_transform_publisher" name="world_to_odom" args="0 0 0 0.0 0.0 0.0 /world /odom 100" />
+  
+</launch>   

@@ -1,0 +1,9 @@
+/**
+\mainpage Polygonal primitives extraction 
+\htmlinclude manifest.html
+
+This node is designed to extract polygonal primitives from 3D point clouds.
+
+It also handles geometric refinement, texture mapping and texture refinement.
+
+*/

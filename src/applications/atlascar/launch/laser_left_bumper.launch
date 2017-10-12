@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- This is a atlascar launch files for starting laser LMS151 publication -->
+  <!-- the following file is used when is necessary to include another launch file-->
+  <!-- <include file="$(find pkg-name)/launch/filename.xml"/> -->
+  <group ns="snr/las/2">
+  <!--<remap from="/scan" to="/atc/laser/left_bumper/laser_scan"/>-->
+  <node name="node" pkg="lms1xx" type="lms1xx">
+    <param name="host" value="10.0.0.10"/>
+    <param name="frame_id" value="/atc/laser/left_bumper"/>
+  </node>
+  </group>
+</launch>

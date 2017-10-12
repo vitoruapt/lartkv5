@@ -1,0 +1,10 @@
+/**
+\mainpage Hitec 5980SG servos
+\htmlinclude manifest.html
+
+This module implements the Hitec HMI protocol to control the 5980SG servos.
+
+This modules allows to control the position and velocity of each servo independently, or all together.
+It also allows to read the current position of each servo, and to get or set a servo ID number.
+
+*/

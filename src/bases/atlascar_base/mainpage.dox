@@ -1,0 +1,133 @@
+/**
+\mainpage Atlascar Base module
+\htmlinclude manifest.html
+
+This module establishes communication with the atlascar control PLC, handling
+all control communications.
+
+It also preforms many other operations that the respective owners should explain
+expanding this page.
+
+\section base Multi layer architecture
+
+The new version of this software is divided into layers.
+
+There are tree layers in total: the \ref hardware "hardware layer", the \ref
+low_level "low level software layer" and the \ref middle_layer
+"middle level software layer".
+
+\subsection hardware Hardware layer
+
+This layer is responsible for the control of each individual system on a
+firmware level, so the
+code is not present here  (references for the hardware folders should be
+presented here).
+
+The hardware is composed of a number of different systems:
+	- plc
+	- throttle
+	- gearbox
+
+Expansion to accommodate new modules is possible.
+
+\subsection low_level Low level software layer
+
+The low level software layer establishes communications with the firmware layer
+and relays commands from the middle layer.
+
+This layer should not interpreter in anyway, other than to check the limits, the
+commands being received.
+
+System status coming from the hardware should not be changed in anyway.
+
+Each system is comprised of tree files at the low level:
+	- The main class declaration file (plc.h, throttle.h and gearbox.h)
+	- The main class implementation file (plc.cpp, throttle.cpp and gearbox.cpp)
+	- The node responsible for the use of the main class
+(plc_node.cpp,throttle_node.cpp and gearbox_node.cpp)
+
+The style of each of these files is very restrictive and should follow the style
+in plc.cpp and plc.h that are already complete.
+
+The authors of each class must pay special attention to the use of namespaces,
+mandatory common functions, naming and function operation.
+
+The use of global variables is strictly prohibited!!
+
+The node of each system should be as similar as possible to easy code
+interpretation.
+
+All low level classes are obliged to use atlascar_base::CommandQueuePriority class to interpreter
+command messages. The documentation of the class provides details into its use.
+
+These are some recommendations to the poor fellows that will make the code.
+
+Links to the mandatory classes:
+	- atlascar_base::Plc, finished, not tested
+	- atlascar_base::Throttle, finished, not tested
+	- atlascar_base::Gearbox, finished, fully functional
+
+All the messages that will be transmitted between the low level and the middle
+layer are already created:
+	- atlascar_base::PlcCommand and atlascar_base::PlcStatus, real class
+documentation in atlascar_base::PlcCommand_ the underscore is true for all of
+them 
+	- atlascar_base::ThrottleCommand and atlascar_base::ThrottleStatus
+	- atlascar_base::GearboxCommand and atlascar_base::GearboxStatus
+	
+\subsection middle_layer Middle level software layer
+
+This layer coordinates communication from the outside to each of the systems.
+
+It is still not implemented, but the main functions will be status messages
+coordination and single publishing, calibration of variables, 
+state machine control in several operating modes (still to be defined), etc...
+
+The code of the middle level will be very similar to the low level layer, class
+declaration in manager.h, implementation in manager.cpp and
+node in manager_node.cpp.
+
+Link to the mandatory class:
+	- atlascar_base::Manager
+	
+\subsection Gearbox 
+
+- Instructions to initialize gearbox:    
+    - 1 step: turn on the UPS
+    - 2 step: turn on the switch Y11 (Control unit power) and Y10 (Ethernet Switch)
+    - 3 step: turn on the switch ont he car panel and pull emergency 
+    - 4 step: push clutch (and help the gearbox switch if necessary) 
+    - 5 step: connect the manipule to the gearbox switch
+    - 6 step: Now it's able use the gamepad or PC to control the gearbox switch (change mode in gamepad)
+ 
+ 
+ - Instructions to initialize manually gearbox: 
+    - 1 step: put the neutral gear (0)
+    - 2 step: disconnect the manipule to the gearbox switch
+    - 3 step: put the 1 gearbox
+    - 4 step: push the emergency and/or the switch in car panel
+    - 5 step: turn of the switch Y11 and Y10
+
+ - Initialize Software of maneuvers:
+    - 1 step: turn on the UPS
+    - 2 step: realize all steps of "Instructions to initialize gearbox"
+    - 3 step: turn one the PC
+    - 4 step: push the buttom in gampead to change mode to automatic
+    - 5 step: open a terminal
+    - 6 step: run $ roslaunch atlascar_base maneuvers.launch
+    - 7 step: turn on the xbox gamepad
+    - 8 step: turn on all switchs below the screen
+    - 9 step: turn on the car
+    - 10 step: have fun!!!!
+ 
+ - Calibration:
+    - 1 step: open the box inside car panel that contains the control unit (Arduino Ethernet) 
+    - 2 step: connect the Arduino with the PC
+    - 3 step: upload software to read potentiometer (file:///home/sergio/workincopies/lar4/hardware/atlascar_hw/Gearbox/Electrical/read_potentiometer.ino)
+    - 4 step: disconnect the supply cables of motors
+    - 6 step: with the 5V supply the motors and read the position on the Arduino IDE (annotate all necessary position)
+    - 7 step: open the software to control the motors (file:///home/sergio/workincopies/lar4/hardware/atlascar_hw/Gearbox/Electrical/arduino_controller.ino)
+    - 8 step: change the position for the correct values
+    - 9 step: upload the software with new alterations 
+
+*/

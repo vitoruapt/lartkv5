@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<launch>
+	
+	<node name="xb3" pkg="xb3" type="xb3_full_speed">
+        <param name="left_calibration_file" value="package://xb3/calibrations/left_full_resolution.yaml"/>
+        <param name="center_calibration_file" value="package://xb3/calibrations/center_full_resolution.yaml"/>
+        <param name="right_calibration_file" value="package://xb3/calibrations/right_full_resolution.yaml"/>
+    </node>
+    
+    <group ns="laser_1">
+        <node name="laser_1" pkg="lms1xx" type="lms1xx">
+            <param name="host" value="10.0.0.10"/>
+            <param name="frame_id" value="/laser_1"/>
+        </node>
+    </group>
+    
+    <group ns="laser_2">
+        <node name="laser_2" pkg="lms1xx" type="lms1xx">
+            <param name="host" value="10.0.0.11"/>
+            <param name="frame_id" value="/laser_2"/>
+        </node>
+    </group>
+	
+	
+	
+</launch>

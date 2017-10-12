@@ -1,0 +1,22 @@
+/**
+\mainpage The KFilter Project: A Variable Dimension Extended Kalman Filter Library
+\htmlinclude manifest.html
+
+ "The %Kalman filter is a set of mathematical equations that provides an
+ efficient computational (recursive) solution of the least-squares method.
+ The filter is very powerful in several aspects: it supports estimations
+ of past, present, and even future states, and it can do so even when the
+ precise nature of the modeled system is unknown." (quoted from [02])
+ \n
+ This version of the %Kalman filter is in fact a Variable-Dimension
+ Extended %Kalman Filter (VDEKF). It supports optimized algorithms 
+ (translated from Fortran - see [01]), even in the presence of 
+ correlated process or measurement noise.
+ \n
+ For a usage example, please check out the \ref expage "example page" in the related pages section.
+ \par References
+ [01] Bierman, G. J. "Factorization Methods for Discrete Sequential
+ Estimation", Academic Press, 1977. \n
+ [02] Welch, G. and Bishop, G. "An Introduction to the Kalman Filter",
+ http://www.cs.unc.edu/~welch/kalman/kalmanIntro.html
+*/

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+      
+    <!-- This is a launches Humanoid node-->
+    <node name="humanoid_node" pkg="humanoid_control" type="humanoide_state">
+<!--
+        <remap from="/device" to ="/device_mapper/serial_com1"/>
+-->
+        
+        <param name="op_mode" value="0"/>
+    
+    </node>
+
+ <!-- This is a launches PHANTOM node-->
+    <node name="phantom_node" pkg="phantom_control" type="phantom_control" >
+<!--
+        <remap from=" " to =" "/>
+-->
+        
+<!--
+        <param name="  " value=" "/>
+-->
+    
+    </node>
+</launch>

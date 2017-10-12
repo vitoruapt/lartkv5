@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<!-- Just insert some automatic text -->
+<script src="subsystemId.js" type="text/javascript"> </script> 
+</head>
+
+<body>
+<h2>Brief description</h2>
+The system described here allows the actuation of the vehicle air intake valve,
+allowing this way, the control of the car throttle in the same manner as a human
+counterpart.
+
+<h2>Objectives</h2>
+
+<ul>
+<li>The main objective of this work has the electric control of the car throttle allowing its command via a PC.</li>
+<li>This system should still be able to be controlled using the throttle pedal in the vehicle.</li>
+<li>The throttle control should be as precise and robust as possible.</li>
+</ul>
+
+<h2>System operation</h2>
+
+<p>The vehicle throttle is commanded by the proportional opening of the air intake valve.
+The original air intake valve was operated via the throttle pedal directly,
+meaning that a steel cable connected the pedal to the valve.
+Pressing the pedal would force open the valve allowing for a larger amount of
+air to enter the engine; the intake valve was fitted with 
+a potentiometer sensor that allowed the monitoring of it's positions.<br>
+
+The valve position sensor is crucial to the engine management. This sensor
+together with a air mass flow sensor, located in the air intake filter, define
+the amount of fuel that the engine needs to inject. The command of the vehicle
+throttle is performed by operating only the air intake valve and consecutively the signal associated with the valve
+position.</p>
+
+<p>In order to control the vehicle throttle automatically, the air intake valve
+had to be automatically actuated. To this end,
+the original valve was substituted by a motor driven valve from a different
+vehicle. This new valve, as the original one, also possesses a position 
+potentiometer.</p>
+
+<p>This new motor driven valve created the additional need for a motor position
+controller. Given that the new system should be able to be actuated by
+a human driver as well as a computer program, a control board was also needed.
+This board is responsible for reading the pedal command signal (human control), receiving an
+external command (automatic control) and also receiving a operation mode selection signal.
+It should be able to interface with the motor position controller relaying to it the
+correct command signal.</p>
+
+<p>The main electronic components consists of an <a href="http://arduino.cc/en/Main/ArduinoBoardEthernet">Arduino Ethernet</a>
+board coupled with the motor controller from an servo motor (Hitec HS-815BB<sup>+</sup>). Between the two board exists another 
+electronic circuit responsible for tension levels conversions and power distribution.</p>
+
+The following image provides a detailed schematic overview of all the components of the system.<br><br>
+<img src="schematic_full.dot.png" alt="schematic_full.dot"/>
+
+<h3>Power distribution</h3>
+
+<p>Power enters the system by a connection with the car main battery using a control relay. The input voltage is not constant, it depends
+on the state of the battery. If the car engine is running this voltage will remain stationary at 14V.</p>
+
+<p>The 14V are converted into two different level; 9V for the Arduino and 6V for the motor controller. 
+In theory and according to the documentation the Arduino is able to receive 14V at input. In practice it works but the Arduino board will
+overheat and the Ethernet communication will stop working. Steeping the input voltage down to 9V will solve the overheating without 
+any disadvantage (the Arduino will regulate it's input voltage to 5V to work with the micro-controller).<br>
+The conversion to 6V will be used to power the servo motor controller. The 6V are achieved using a Switched Battery Eliminator Circuit (SBEC)
+typically used in Radio Controlled (RC) models. This circuit is in fact just a switched DC-DC converter optimized either at 5V or 6V being 
+able to supply 4A constant or 5A peak.
+</p>
+
+<p>
+The level converter board receives the 6V from the SBEC and powers the motor controller and the pedal potentiometer.
+</p>
+
+<p>
+The motor controller is responsible for the close loop control of the motor position, so it powers the motor has needed and the potentiometer
+attached to it. One important fact is that the <b>motor controller powers the potentiometer with a variable tension</b> this causes problems 
+when trying to read the potentiometer value using the Arduino.
+</p>
+
+<h3>Control signals</h3>
+<p>The Arduino signal inputs are: the automatic commands for the Ethernet connection with the PC; the hardware mode selection signal from the 
+PLC and mode selection switch; the analog throttle pedal position; the analog throttle valve position and finally a bidirectional communication
+line with the level converter board.
+</p>
+<p>The level converter board is equipped with 4 digital potentiometers capable of I2C communication, one of these potentiometers is used to 
+create the Engine Control Unit (ECU) analog signal (the signal the engine uses to increase or decrease the fuel injection). This board also relays the PWM signal
+from the Arduino to the servo motor controller.</p>
+
+<h2>Mechanical components</h2>
+
+The system posses the following mechanical components:
+<ol>
+<li>Motor driven intake valve</li>
+<li>Valve adapter</li>
+</ol>
+
+The intake valve substitutes the vehicle original valve and can be electrically actuated. The valve adapter is a 15mm wide piece that fits
+between the new valve and the old valve support. Its function is to adapt the old support to the new valve configuration and intake diameter.
+The new valve has a ~20% smaller intake diameter.
+
+<h2>Electrical components</h2>
+
+The system is comprised of the following electrical components:
+<ol>
+<li>14V to 9V DC-DC converter</li>
+<li>SBEC 6V (Switched Battery Eliminator Circuit, aka switched DC-DC converter)</li>
+<li>Arduino Ethernet</li>
+<li><a href="Electronic/PCB Level Converter/acadam_2_t.pdf">Level converter board</a></li>
+<li>Motor controller (Hitec HS-815BB<sup>+</sup> electronic controller)</li>
+<li>Pedal potentiometer</li>
+<li>Intake valve potentiometer</li>
+<li>Intake valve motor</li>
+</ol>
+
+<h2>Firmware</h2>
+
+The code will be explained as clearly as possible, but only when i update the current version on the server.<br>
+
+<img src="schematic_arduino.dot.png" alt="schematic_arduino.dot"/><br>
+
+<a href="Code/Throttle/Throttle.ino">Arduino firmware code</a>
+
+<h2>Maintenance</h2>
+No maintenance operations are needed under normal use.
+
+<h2>TODO</h2>
+<ol>
+<li>Install the DC-DC 9V converter in the vehicle</li>
+</ol>
+
+<h2>Acknowledges</h2>
+I would like to thank David Gameiro for his contribution to the current version of this system. He projected and soldered the 
+level converter board, not exactly the current version but the main components are still there.<br>
+His help was also invaluable in the original solution, the idea to use a motor driven valve and a pedal potentiometer from another
+vehicle were also his.
+</body>
+</html>

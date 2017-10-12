@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+
+    <node name="cam_writer" pkg="multimodal_pedestrian_detection" type="cam_writer" output="screen">
+        
+        <param name="image_transport" value="compressed"/>
+        
+    </node>
+
+</launch>

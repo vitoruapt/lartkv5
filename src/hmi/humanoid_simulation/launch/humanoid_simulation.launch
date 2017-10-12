@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<launch>
+  
+  <node pkg="humanoid_simulation" name="phantom_node" type="phantom_control_vrep" output="screen" launch-prefix="xterm -e" />
+
+  <node pkg="humanoid_simulation" name="state_node" type="robot_state" output="screen" launch-prefix="xterm -e" /> 
+  
+  <node pkg="humanoid_simulation" name="feedback_node" type="haptic_feedback" output="screen" launch-prefix="xterm -e" /> 
+  
+  <node pkg="humanoid_simulation" name="record_node" type="record_data" output="screen" launch-prefix="xterm -e" />
+  
+  <node pkg="humanoid_simulation" name="perturbations_node" type="vrep_perturbations" output="screen" launch-prefix="xterm -e" />
+  
+  <!-- declare arg to be passed in -->
+  <arg name="plane" />
+  <arg name="amplitude" />
+  <arg name="frequency" />
+  <arg name="user" />
+  
+  <!-- read value of arg -->
+  <param name="plane" value="$(arg plane)" type="string" />
+  <param name="amplitude" value="$(arg amplitude)" type="string" />
+  <param name="frequency" value="$(arg frequency)" type="string" />
+  <param name="user" value="$(arg user)" type="string" />
+  
+</launch>
+
+<!-- launch-prefix="xterm -e" -->

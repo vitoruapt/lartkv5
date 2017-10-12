@@ -1,0 +1,174 @@
+/**
+\mainpage TCP/IP Client library
+\htmlinclude manifest.html
+
+This module provides an easy to use TCP/IP client library.\n
+The library takes the form of a class that implements sys/socket, 
+netinet/in and arpa/inet functions for socket control.\n
+Only a client class was developed and it only supports IPv4 and not IPv6,
+though the expansion is easy to achieve.\n
+
+An example on how to use the class is presented at \ref expage "example page".\n
+
+For the more experienced user, the usage of the additional asynchronous client is <b>highly</b> recommended.\n
+This library is based on the boost::asio library supporting either IPv4 and IPv6 connections.\n
+This library is also accepts names of typical services (ssh, http, etc...) instead of port numbers.
+
+An example on how to use the asynchronous client at \ref asyncexpage "AsyncClient page".\n
+
+Happy coding!!
+
+\page AsyncClient Asynchronous class usage
+\anchor asyncexpage
+\section example_async How to use the asynchronous library?
+
+\subsection intro Include and link
+
+This library is header only. The user must include the header file and add the dependency to the manifest.
+
+Include the main header for the library.\n
+@code
+#include <tcp_client/AsyncClient.h>
+@endcode
+
+Add to the manifest the dependency.\n
+@code
+<depend package="tcp_client"/>
+@endcode
+
+\subsection usage Class usage
+
+The main class is based on the boost::asio library, before usage the user should be acquainted with the naming scheme of the boost library.
+Link to library http://www.boost.org/doc/libs/1_53_0/doc/html/boost_asio.html.
+
+The boost tcp communication relies on a input/output service.
+The user must declare the service using as:
+@code
+boost::asio::io_service io_service;
+@endcode
+
+The service constructor has no arguments.
+With the service declared the user must declare the AsyncClient class.
+
+@code
+AsyncClient comm(io_service,server_ip,server_port);
+@endcode
+
+The class constructor receives the io service, the server ip and port (both as std::string). Once the constructor is called the class will schedule a connection attempt.
+
+The user may specify a connection event handler. This function will be asynchronously called once a successful connection is established.
+
+@code
+comm.connectHandler.connect(boost::bind(&HandlerClass::connectionHandler,handler_class_instance));
+@endcode
+
+In this example the class method connectionHandler will be used, the boost::bind is used to link a class method with the class instance handler_class_instance.
+
+The connectHandler member of the AsyncClient is a boost::signal slot, it also supports non-member functions.
+
+The user can also specify a receive data event handler. This function will be asynchronously called once a complete line is available (terminated with \\n  by default, see the AsyncClient class constructor documentation for additions details on how to change this behavior).
+
+@code
+comm.readHandler.connect(boost::bind(&HandlerClass::newDataHandler,handler_class_instance,_1));
+@endcode
+
+The final step to initialize the communication is to run the io service. this can be achieved by calling the run method on the io_service instance. Since we are talking about asynchronously communication the best practice is to run this method on a separate thread, using, by example, boost::thread:
+
+@code
+boost::thread thread(boost::bind(&boost::asio::io_service::run, &io_service));
+@endcode	
+
+Once the tread is launched the process continuously tries to establish a connection to the server. If the connection is lost, the class schedules a new reconnection attempt.
+
+To write to the server the user can simply call:
+
+@code
+comm.write("hello world!");
+@endcode
+
+This functions receives a std::string as input and schedules an asynchronous write request.
+
+The io service can be closed asynchronously from another thread by calling:
+
+@code
+//Stop the io service running in a separate thread
+io_service_.stop();
+@endcode	
+
+An to join the asynchronous thread:
+@code
+//Join the thread
+thread.join();
+@endcode
+
+This example, due to the extra boost functions, requires additional includes:
+
+@code
+#include <boost/bind.hpp>
+#include <boost/thread/thread.hpp>
+@endcode
+
+\page Example TCP/IP client library usage
+\anchor expage
+
+\section example_tcp_ip How to use the TCP/IP client library?
+
+\subsection intro Include and link
+
+Include the main header for the library.\n
+@code
+#include <tcp_client/class_tcp.h>
+@endcode
+
+Add to the manifest the dependency.\n
+@code
+<depend package="tcp_client"/>
+@endcode
+
+This two steps should be enough to compile and link with the library.
+
+\subsection declaration Class declaration
+
+First create the object and initialize it.\n
+@code
+tcp_client comm("192.168.1.100",1000);
+@endcode
+
+The class constructor will setup the socket but will  <b><em>NOT</em></b> open it.
+The first argument of the constructor is the IP of the server and the second the port number
+to use.\n
+The class can also be used in asynchronous communications by using the following constructor:\n
+@code
+tcp_client comm("192.168.1.100",1000,true);
+@endcode
+The user is responsible for the interception of communication signals (\c SIGIO) and its handling.\n
+
+\subsection use Using the class
+
+Class usage is very simple, the user must only class the desired function to \c Send() or \c Receive() data.
+
+@code
+
+char output_message[1024];
+char input_message[1024];
+
+memset(output_message,0,sizeof(output_message));
+memset(input_message,0,sizeof(input_message));
+
+strcpy(output_message,"I'm alive");
+
+comm.Send(output_message,strlen(output_message));
+comm.perr("Could not send message");
+
+if(!comm.err)
+printf("Message \"%s\", sent successfully\n",output_message); 
+
+comm.Receive(input_message,sizeof(input_message));
+comm.perr("Could not receive message");
+
+if(!comm.err)
+printf("Message \"%s\", received\n",input_message); 
+
+@endcode
+
+*/

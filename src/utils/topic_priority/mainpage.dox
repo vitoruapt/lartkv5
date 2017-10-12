@@ -1,0 +1,56 @@
+/**
+\mainpage Topic Priority
+\htmlinclude manifest.html
+
+This package provides a topic priority management library.
+
+This library allows a module to receive multiple command messages with different origins and order them by priority and lifetime. A topic is kept while its lifetime does not expire. Of the still surviving topics the one with the highest priority is returned.
+
+\section example How to use?
+
+First add to the module manifest as:
+
+\code
+<depend package="topic_priority"/>.
+\endcode
+
+Then include the necessary header:
+
+\code
+#include <topic_priority/topic_priority.h>
+\endcode
+
+The next step is to declare the class with the appropriate command message type (in this example we are using the atlascar_base::ThrottleCommand message type).
+
+\code
+TopicQueuePriority<atlascar_base::ThrottleCommandPtr> command_queue;
+\endcode
+
+It is recommended to put a fall back safety message in the queue, this message will be used if no other is available. 
+
+\code
+atlascar_base::ThrottleCommandPtr safety_command(new atlascar_base::ThrottleCommand);
+			
+//Set the safety message default values, this messages will never be removed from the list
+safety_command->lifetime=INFINITY;
+safety_command->priority=0;
+safety_command->throttle=0;
+safety_command->mode=MANUAL;
+			
+//Push the safety message into the queue
+command_queue.push_msg(safety_command);
+\endcode
+
+In normal use, the user will push to the queue any command message received
+\code
+command_queue.push_msg(command);
+\endcode
+
+And will obtain the current command to use with:
+\code
+command=command_queue_.top_msg();
+\endcode
+
+If the queue is empty the class will return a null boost::shared_ptr.
+
+*/

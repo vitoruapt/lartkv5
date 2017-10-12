@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- This is a atlascar launch files for starting laser hokuyo publication -->
+
+	<!-- the following file is used when is necessary to include another launch file-->
+	<!-- <include file="$(find pkg-name)/launch/filename.xml"/> -->
+
+  <group ns="/snr/las/1">
+	<remap from="/scan" to="/atc/laser/center_top_roof/laser_scan"/>
+	<!--<remap from="/laser_center_top_roof/port" to="/device_mapper/atc/laser/center_top_roof"/>-->
+	<node pkg="hokuyo_node" name="node" type="hokuyo_node"/>
+	<!--<param name="laser_center_top_roof/port" value="/dev/ttyACM0"/>-->
+	<param name="/snr/las/1/node/frame_id" value="/atc/laser/center_top_roof"/>
+	</group>
+</launch>

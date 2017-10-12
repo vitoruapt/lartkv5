@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<launch>
+    
+    <node name="usb_cam_reader" pkg="usb_cam_reader" type="usb_cam_reader_node" output="screen">
+        <param name="cam_id" value="1" />
+        <param name="camera_name" value="logitech_c310_1280_960_laser2" />
+    </node>
+    
+    <group ns="usb_cam_reader">
+        <node pkg="image_proc" type="image_proc" name="image_proc" />
+    </group>
+    
+<!--    <group ns="laser_1">
+        <node name="laser_1" pkg="lms1xx" type="lms1xx">
+            <param name="host" value="10.0.0.11"/>
+            <param name="frame_id" value="/laser_1"/>
+        </node>
+    </group>-->
+    
+    <!--             <param name="host" value="10.0.0.10"/> -->
+
+    <node name="datamatrix_detection" pkg="datamatrix_detection" type="datamatrix_detection_node" output="screen">
+        <param name="image_transport" value="compressed"/>
+    </node>
+    
+    
+    <node name="datamatrix_calculations" pkg="datamatrix_detection" type="datamatrix_calculations_node" output="screen">
+        <param name="plant_path" value="/home/luis/Documentos/Dissertação/PlantaLar.png"/>
+        <param name="matrix_height" value="0.200"/>
+          <!-- m --><!--0.192-->
+        <param name="plant_width" value="1733"/>
+            <!-- cm -->
+        <param name="image_transport" value="compressed"/>
+    </node>
+    
+<!--     <node name="rqt_graph" pkg="rqt_graph" type="rqt_graph" output="screen"></node> -->
+  
+</launch>

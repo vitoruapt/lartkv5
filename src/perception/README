@@ -1,0 +1,25 @@
+/*
+@file perception
+
+@brief
+Contains packages concerned with sensorial data
+interpretation and representation. It covers algorithms
+to transform and extract from raw (or barely processed) 
+sensorial data some kind of higher-level meaning.
+This covers both for exteroception (enviroment) and
+proprioception (robots internal state).
+
+@examples
+3D
+atlascar_egomotion
+driver_monitoring
+driver_recognition
+lidar_egomotion
+navigability_map
+parking_detection
+pedestrians
+planarobstacles
+pointcloud_segmentation
+road
+
+*/

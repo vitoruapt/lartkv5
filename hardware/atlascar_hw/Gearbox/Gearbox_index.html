@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<!-- Just insert some automatic text -->
+<script src="subsystemId.js" type="text/javascript"> </script> 
+</head>
+<body>
+<h2>Brief description</h2>
+This description deals with a mechanism to actuate the gearbox on the AtlasCar.
+<h2>System operation</h2>
+<li>The AtlasCar is a car without automatic gearbox but for the autonomous driving, Atlas Car need start and move alone. So, this system come to satisfy this necessity. The gearbox system are responsible for changing gears in AtlasCar, to do this, the gearbox system move the maniple for the right position. 
+<br>
+The mechanical part uses two DC motors with a 104:1 reduction and to bases to handle the movement in xx and yy axis. 
+<br>
+The electrical part consists of an <a href="http://arduino.cc/en/Main/ArduinoBoardEthernet">Arduino Ethernet</a> , responsible to controle the motors and communication with the PC via ETHERNET. The system allows three modes of operation : manual, without intervention do gearbox system; semi-automatic, with gearbox system and a gamepad to changing gear sequentially; and automatic with gearbox system and a PC.
+</li>
+
+<h2>Mechanical components</h2>
+<li>Assembly drawing:</li>
+<ul>
+<li><a href="Mechanical/assembly.png">Assembly</a></li>
+<li><a href="Mechanical/assembly_sectional_view.png">Assembly, sectional view</a></li>
+</ul>
+<li>Exploded view:</li>
+<ul>
+<li><a href="Mechanical/exploded.png">Exploded</a></li>
+<li><a href="Mechanical/column.png">column</a></li>
+<li><a href="Mechanical/smaller_base_exploded.png">smaller base</a></li>
+</ul>
+<li>List of components:</li>
+<ul>
+<li><a href="Mechanical/larger_base.png">Larger base</a></li>
+<li><a href="Mechanical/smaller_base.png">Smaller base</a></li>
+<li><a href="Mechanical/lower_base_column_adjustment.png">Lower base - column adjustment</a></li>
+<li><a href="Mechanical/upper_base_column_adjustment.png">Upper base - column adjustment</a></li>
+<li><a href="Mechanical/lower_base_fixed_column.png">Lower base - fixed column</a></li>
+<li><a href="Mechanical/upper_base_fixed_column.png">Upper base - fixed column</a></li>
+<li><a href="Mechanical/column_pillar.png">Column pillar</a></li>
+<li><a href="Mechanical/larger_mounting.png">Larger mounting</a></li>
+<li><a href="Mechanical/smaller_mounting.png">Smaller mounting</a></li>
+<li><a href="Mechanical/mounting_adaptor.png">Mounting adaptor</a></li>
+<li><a href="Mechanical/basis.png">Basis</a></li>
+<li><a href="Mechanical/grip.png">Grip</a></li>
+<li><a href="Mechanical/grip_swap.png">Grip_swap</a></li>
+<li><a href="Mechanical/shaft_1.png">Shaft</a></li>
+<li><a href="Mechanical/shaft_2.png">Shaft 1</a></li>
+<li><a href="Mechanical/shaft_3.png">Shaft 2</a></li>
+<li><a href="Mechanical/shaft_4.png">Shaft 3</a></li>
+</ul>
+
+<h2>Electrical circuits</h2>
+<li>Electrical circuit:</li>
+<ul>
+<li><a href="Electrical/schematic.png">Board</a></li>
+</ul>
+
+<li><a href="Electrical/available_arduino_pins.pdf">Available arduino pins</a></li>
+
+<h2>Firmware and similar code<br>
+</h2>
+<li>Codes:</li>
+<ul>
+<li><a href="Electrical/arduino_controller.ino">Arduino controller</a></li>
+<li><a href="Electrical/read_potentiometer.ino">Read potentiometer</a></li>
+</ul>
+
+<h2>Maintenance</h2>
+Check connections with bolts and coupling shaft (regular), and lubricate the chain.</body>
+</html>

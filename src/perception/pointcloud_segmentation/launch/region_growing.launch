@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+
+<launch>
+
+   <!--   Include atlascar model and transform -->
+   <include file="$(find atlascar_base)/launch/state.launch"/>
+   <param  name="/use_sim_time"   type="bool"  value="true" />
+   
+   <include file="$(find atlascar_base)/launch/offline.launch"/>
+   
+   <!--  Run wide stereo proc -->
+   <group ns="snr/scam/wide">
+       <node name="stereo_image_proc" pkg="stereo_image_proc" type="stereo_image_proc" args="_prefilter_size:=65 _prefilter_cap:=30 _correlation_window_size:=31 _min_disparity:=0 _disparity_range:=32 _uniqueness_ratio:=10 _texture_threshold:=2950 _speckle_size:=1000 _speckle_range:=31 __name:=xb3_wide_stereo_proc" />
+   </group>    
+
+   <remap from="/tf" to="/trf/frames" />
+
+
+<!-- FILTER XB3 POINT CLOUD -->
+   <node name="cloud_filtering" pkg="pointcloud_segmentation" type="filtering_nodelet" >
+       <param name="pointcloud_input" type="string" value="/snr/scam/wide/points2" />
+       <param name="pointcloud_output" type="string" value="/snr/scam/wide/filtered/points2" />
+       <param name="frame_id" type="string" value="/atc/vehicle/center_bumper" />
+       <param name="voxel_size" type="double" value="0.05" />
+       <param name="min_x" type="double" value="0.0" />
+       <param name="max_x" type="double" value="15.0" />    
+       <param name="min_y" type="double" value="-8.0" />    
+       <param name="max_y" type="double" value="8.0" />    
+       <param name="min_z" type="double" value="-0.5" />    
+       <param name="max_z" type="double" value="5.0" />    
+   </node>
+
+
+<!-- FILTER LASER SCAN -->
+    <node name="laser_to_cloud" pkg="pointcloud_segmentation" type="laser_to_pc_nodelet">
+	<param name="laser_input" type="string" value="/snr/las/2/scan" />
+	<param name="pointcloud_output" type="string" value="/snr/las/2/filtered/points2" />
+	<param name="frame_id" type="string" value="/atc/vehicle/center_bumper" />
+	<param name="min_x" type="double" value="0.0" />
+	<param name="max_x" type="double" value="15.0" />    
+	<param name="min_y" type="double" value="-8.0" />    
+	<param name="max_y" type="double" value="8.0" />    
+	<param name="min_z" type="double" value="-0.5" />    
+	<param name="max_z" type="double" value="5.0" />    
+    </node>
+ 
+<!-- PLANE MODEL ROAD SEGMENTATION     -->
+<node name="plane_model_road_extraction" pkg="pointcloud_segmentation" type="plane_road_extraction_nodelet">
+    <param name="pointcloud_input" type="string" value="/snr/scam/wide/filtered/points2" />
+    <param name="pointcloud_road" type="string" value="/snr/scam/wide/road/points2" />
+    <param name="pointcloud_road_perimeter" type="string" value="/snr/scam/wide/nav_zone/points2" />
+    <param name="pointcloud_clusters" type="string" value="/snr/scam/wide/clusters/points2" />
+    <param name="z_min" type="double" value="-0.5" />    
+    <param name="z_max" type="double" value="0.15" />
+    <param name="threshold" type="double" value="0.15" />    
+</node>
+    
+
+<!--  REGION GROWING -->
+<node name="region_growing" pkg="pointcloud_segmentation" type="region_growing_nodelet">
+    <param name="pointcloud_input" type="string" value="/snr/scam/wide/clusters/points2" />
+    <param name="laser_input" type="string" value="/snr/las/2/filtered/points2" />
+    <param name="cluster_markers" type="string" value="/environment/clusters/markers" />
+    <param name="cluster_markers_text" type="string" value="/environment/clusters/info" />
+    <param name="min_cluster_size" type="double" value="2" />
+    <param name="max_cluster_size" type="double" value="1000" />
+    <param name="clustering_tolerance" type="double" value="1.0" />
+    <param name="radius" type="double" value="0.5" />
+</node>
+
+   <!-- Launch rviz -->
+   <node name="rviz_rg" pkg="rviz" type="rviz" args="display-config $(find pointcloud_segmentation)/rviz/region_growing.vcg /tf:=/trf/frames"/>
+   
+
+</launch>

@@ -1,0 +1,33 @@
+
+********************************************************
+   Haptic teleoperation in V-REP - standard procedure
+********************************************************
+
+
+1.  Connect the PHANToM Omni haptic device(s) to the computer(s).
+
+2.  The PHANToM drivers do not have access to the FireWire communication port object, it falls to the user responsability to change the access rules. 
+    To set permissions do "sudo chmod 777 /dev/fw*".
+
+3.  The "roscore" is the first thing you should run when using ROS. 
+    Run: "roscore" on the first computer, typically the one that will be running V-REP.
+
+4.  Launch the V-REP 3.1.3 in the first computer. 
+    Go to the V-REP folder, and from the COMMAND LINE run "./vrep.sh" to launch V-REP.
+
+5.  The ROS functionality in V-REP is enabled via a plugin. 
+    Make sure to inspect V-REP's console window or terminal for details on plugin load operations.
+    
+6.  All ROS modules are designed to work together. A "launch file" is used to initiate the five main nodes of the "humanoid_simulation" package at the same time.
+    On the second computer run "roslaunch humanoid_simulation humanoid_simulation.launch plane:=lat amplitude:=2.0 frequency:=0.10 user:=jb" (example)
+    to launch the "phantom_control_vrep", "robot_state", "haptic_feedback", "record_data", and "vrep_perturbations" nodes. 
+    The input parameters allow the scene perturbations and must be defined to enable the "launch". 
+
+7.  The command "rosrun" allows the use of the package name to directly run a node within a package. 
+    To run the joystick module on the second computer do: "rosrun humanoid_simulation phantom_control_vrep".  
+
+8.  The V-REP simulation should be started if all the remaining nodes are correctly initiated.
+
+9.  When the simulation stops all ROS modules are automatically shutted down.
+
+10. Log files relating to the teleoperation tasks are added to /home/phua3-lar/Experiments/. 

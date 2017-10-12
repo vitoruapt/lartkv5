@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+    
+<!--    <include file="$(find usb_cam_reader)/launch/usb_cam_reader_launch.launch"/> -->
+    
+<!--     <include file="$(find multimodal_pedestrian_detection)/launch/single_laser_tracking.launch"/> -->
+    
+<!--    <include file="$(find multimodal_pedestrian_detection)/launch/generate_single_laser_planar_cloud.launch"/>
+   
+    <include file="$(find mtt)/launch/mtt_pedect.launch"/> -->
+   
+<!-- only to use, when a transformation is provided, ex. ATLASCAR-->
+    <include file="$(find multimodal_pedestrian_detection)/launch/generate_single_laser_planar_cloud_with_tf.launch"/> 
+    
+</launch>

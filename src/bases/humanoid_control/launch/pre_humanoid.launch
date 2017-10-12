@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+   <!-- This is a launcher for arduino pack-->
+      <node name="device_mapper" pkg="device_mapper" type="device_mapper">
+        <param name="robot_urdf_path" value="$(find humanoid_control)/urdf/humanoid_urdf.xml" />
+    </node>
+
+    <node name="control_test" pkg="humanoid_control" type="control_test"/>
+   
+</launch>

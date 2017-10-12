@@ -1,0 +1,23 @@
+/**
+\mainpage Egomotion from LIDAR aboard nonholonomic vehicle
+\htmlinclude manifest.html
+
+This module estimates in real time the egomotion of a vehicle based
+solely on laser range data.\n
+This technique calculates the discrepancy between closely spaced
+2D laser scans due to the vehicle motion using scan matching techniques.\n
+The result of the scan alignment is converted into a nonlinear motion measurement and fed into a nonholo-
+nomic extended Kalman filter model.This model better approximates the real motion of the vehicle, when compared to more simplistic models, thus improving performance and im-
+munity to outliers.\n
+
+The motion estimate is intended to be used for egomotion compensation
+in a target tracking algorithm for situation awareness applications; without the knowledge
+of the vehicle own motion it is impossible to correctly assess the motion of other agents.\n
+
+The proposed approach is especially attractive as a complement to traditional systems in
+situations where other more common egomotion sensors, like GPS or wheel encoders, either
+fail or provide insufficient data. Several recent scan matching algorithms were
+evaluated for their accuracy and computational speed. The proposed approach performs in
+real time and provides an accurate estimate of the current robot motion.\n
+The algorithm is validated through experimental test in real world conditions.
+*/

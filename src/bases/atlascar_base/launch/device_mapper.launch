@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+<!-- launch the device_mapper -->
+	<node pkg="device_mapper" type="device_mapper" name="device_mapper" >
+		<param name="robot_urdf_path" value="$(find atlascar_base)/urdf/atlascar_urdf_3dsmodels.xml" />
+	</node>
+</launch>

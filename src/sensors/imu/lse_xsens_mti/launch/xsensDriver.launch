@@ -1,0 +1,38 @@
+<launch>
+
+<node ns="lse_xsens_mti" pkg="lse_xsens_mti" type="mti_node" name="xsens">
+<!-- port configuration -->
+<param name="port" value="/dev/ttyS0" />
+
+<!-- output mode configuration -->
+<param name="temperature" value="true" />
+<param name="calibrated" value="true" />
+<param name="orientation" value="true" />
+<param name="auxiliary" value="false" />
+<param name="position" value="true" />
+<param name="velocity" value="true" />
+<param name="status" value="true" />
+<param name="rawGPS" value="false" />
+<param name="rawInertial" value="false" />
+
+<!-- output settings configuration -->
+<param name="timeStamp" value="true" />
+<param name="orientationMode" value="0" />  <!-- Quaternion = 0, EulerAngles = 1, Matrix = 2, if you enter another value you need to REBOOT the XSENS--> 
+<param name="enableAcceleration" value="true" />
+<param name="enableRateOfTurn" value="true" />
+<param name="enableMagnetometer" value="true" />
+<param name="velocityModeNED" value="false" />  
+
+<!-- Scenario (Some scenario does not exist according to the xsens model, be careful):
+General = 1, Automotive = 2, Aerospace = 3, Human = 4, Human_large_accelerations = 5, Machine = 6, Machine_nomagfield = 7, Marine_MTIMTX = 8, General_nobaro = 9, Aerospace_nobaro = 10, Automotive_nobaro = 11, Marine_MTIG = 17, -->
+<param name="scenario" value="2" /> 
+
+<!-- GPS lever Arm-->
+<param name="GPSLeverArm_X" value="0.0" /> 
+<param name="GPSLeverArm_Y" value="0.25" /> 
+<param name="GPSLeverArm_Z" value="0.70" /> 
+
+
+</node>
+
+</launch>
