@@ -4,6 +4,8 @@
 The LAR toolkit is a software suite developed at LAR (http://lars.mec.ua.pt) since 2009 intended to support the software development involving robots, especially for the ATLAS project (http://atlas.web.ua.pt) and the PHUA project.
 The initial versions (v1 and v2) used the CARMEN/IPC framework and later versions used ROS framework. Up to version 4, SVN was the version control support used, but with this version 5 (updated by 2014/2015) a migration to git was carried out.
 
+The toolkit is quite a complex web of packages with many relations and interdependencies. A graphical view of these dependencies can be checked for version 4 (http://lars.mec.ua.pt/lartk4/) which is quite similar to this version 5.
+
 ## Using version v5
 The lartkv5 was created using git in lar.mec.ua.pt server. The repository contains two folders, src and hardware.
 Users from that repository must clone the repository
